@@ -1,4 +1,4 @@
-# gfgp-website
+# website
 
 [![Build Status](https://travis-ci.com/incuna/gfgp-website.svg?token=B7FBjzP1Jq2YnjxxXA33&branch=master)](https://travis-ci.com/incuna/gfgp-website)
 
