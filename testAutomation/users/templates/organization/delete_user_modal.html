@@ -1,0 +1,11 @@
+<form action="{% url 'delete-user' pk=user.id %}" method="POST">
+    {% csrf_token %}
+    <label class="mt-2">Are you sure you want to delete '{{ user.name }}'?</label>
+    <div class="highlighted-sec my-3">
+        <span class="text-bold">Warning:</span> This action cannot be undone.
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn white p-x-md" data-dismiss="modal">Cancel</button>
+        <button type="submit" class="btn is-sec-action p-x-md">Confirm</button>
+    </div>
+</form>

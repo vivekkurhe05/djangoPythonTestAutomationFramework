@@ -1,0 +1,195 @@
+{% extends "app_base.html" %}
+
+{% load html_time %}
+{% load level_display %}
+
+
+{% block app_content %}
+    <div>
+        {% block report_header %}
+        <div class="box mb-5">
+            <div class="box-header d-flex pb-0 justify-content-between flex-xs-sm-down-wrap">
+                <h2 class="mr-1 mb-2">Assessment overview</h2>
+                <div class="d-flex">
+                    <a href="{% url 'survey-section-start' pk=object.pk %}" class="btn is-primary d-print-none">
+                        Edit assessment
+                    </a>
+                    {% if object.submitted %}
+                        <button class="btn is-sec-action ml-1 d-print-none" title="Assessment was published {{ object.submitted|timesince }}" disabled>Submitted</button>
+                    {% elif progress.is_complete %}
+                        <button data-id="{{ object.pk }}" class="btn is-sec-action ml-1 d-print-none" onclick="app.loadModal('{% url 'survey-submit' pk=object.pk %}', 'Submit {{ object.survey.name }}')">Submit</button>
+                    {% else %}
+                        <button class="btn is-sec-action ml-1 d-print-none" title="Only complete assessments can be published" disabled>Submit</button>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="box-body px-4">
+                {% if not progress.is_complete %}
+                    <div class="d-flex align-items-center flex-column flex-sm-row d-print-row">
+                        <div class="flex-sm d-flex align-items-center my-1 max-w-full">
+                            <i class="fa fa-check-square-o fa-5x color-light-silver mr-3"></i>
+                            <div class="mb-1 w-100 {{ progress.slug }}">
+                                <div class="d-flex flex-wrap">
+                                    <form method="post" action="{{ form_action }}" class="form-inline">
+                                        <div class="align-self-center mr-2 text-bold">
+                                            {{ survey.name }}
+                                        </div>
+                                    {% include 'surveys/_change_level.html' %}
+                                    </form>
+                                </div>
+                                <div class="mt-1 w-128 ">
+                                    <span><span class="number">{{ progress.percentage }}</span>% complete:</span>
+                                    <div class="progress my-1">
+                                        <div class="progress-bar" style="width: {{ progress.percentage }}%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="text-center text-sm-right my-1 text-print-right">
+                            <span class="text-bold">Last modified:</span>
+                            <div class="mt-1 l-h-1_2">
+                                <div class="number">{% html_time object.modified %}</div>
+                            </div>
+                        </div>
+                    </div>
+                {% else %}
+                    <div class="d-flex align-items-center flex-column flex-sm-row p-4 d-print-row">
+                        <div class="flex-sm d-flex align-items-center my-1">
+                            <div class="status-icon bg-level-{{ object.level }} mr-3">
+                                <i class="fa fa-check-square-o fa-4x"></i>
+                            </div>
+                            <p class="m-0 sec-font-color text-bold text-md w-128">Completed to <span class="text-capitalize">{{ object.get_level_display }}</span> level</p>
+                        </div>
+                        <div class="text-center text-sm-right my-1 text-print-right">
+                            {% if object.submitted %}
+                                <span class="text-bold">Submitted:</span>
+                                <div class="mt-1 l-h-1_2">
+                                    <div class="number">{% html_time object.submitted %}</div>
+                                </div>
+                            {% else %}
+                                <span class="text-bold">Completed:</span>
+                                <div class="mt-1 l-h-1_2">
+                                    <div class="number">{% html_time object.modified %}</div>
+                                </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                {% endif %}
+            </div>
+            <div class="box-divider m-0 d-print-none"></div>
+            <div class="px-4 pt-3 d-print-none">
+                <span class="text-bold">Bad internet connection?</span>
+                <a href="{% url 'survey-export' pk=object.survey.pk %}" class="link text-u-l text-nowrap" download>Download this assessment</a> (in Excel format) to complete offline.
+            </div>
+        </div>
+        {% endblock report_header %}
+        <div class="box mb-5 pt-0">
+            <div class="box-header d-flex flex-column flex-md-row justify-content-between align-items-md-center">
+                <h2 class="my-3 mr-2">{{ object.organisation }}: {{ object.survey.name }} - {{ report_name }} report</h2>
+                {% block report_options %}
+                <div class="text-right d-print-none">
+                    <div class="d-flex flex-xs-sm-down-wrap">
+                        {% url 'survey-progress' pk=object.pk as progress_url %}
+                        <a class="btn is-regular py-2 {% if form_action == progress_url %}active{% endif %}" href="{{ progress_url }}">Completion</a>
+                        {% url 'survey-compliance' pk=object.pk as compliance_url %}
+                        <a class="btn is-regular py-2 {% if form_action == compliance_url %}active{% endif %}" href="{{ compliance_url }}">Compliance</a>
+                        {% if progress.is_complete %}
+                            {% url 'survey-report' pk=object.pk as full_url %}
+                            <a class="btn is-regular py-2 {% if form_action == full_url %}active{% endif %}" href="{{ full_url }}">Full assessment</a>
+                        {% endif %}
+                    </div>
+                </div>
+                {% endblock %}
+            </div>
+            <div class="box-divider m-0"></div>
+            <div class="box-body px-4">
+                <div class="d-flex flex-column flex-sm-row align-items-center align-items-sm-start d-print-row print-align-items-start">
+                    <div class="flex-sm mr-1">
+                        <div class="text-md sec-font-color">
+                            {% block report_summary %}
+                            {% endblock %}
+                        </div>
+                        <div class="text-sm mt-3 d-flex d-print-none">
+                            <i class="fa fa-2x fa-info-circle has-violet-color mr-2"></i>
+                            <div class="flex">
+                                {% block report_info %}
+                                {% endblock %}
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="text-center" >
+                        {% block report_total_progress %}
+                            <div>{{ report_name }}</div>
+                            <div class="progress progress-vertical progress-vertical-lg fa-rotate-180 my-1">
+                                <div class="progress-bar" style="height: {{ progress.percentage }}%"></div>
+                            </div>
+                            <div><span class="number">{{ progress.percentage }}</span>%</div>
+                        {% endblock %}
+                    </div>
+                </div>
+
+            </div>
+            <div class="box-divider m-0"></div>
+            <div class="box-header pb-0 pt-4 d-flex">
+                <h2 class="flex">{% block report_by_section %}{{ report_name }}{% endblock %} by section</h2>
+                <a href="javascript:window.print();" class="btn white ml-1 d-print-none">
+                    Print report
+                </a>
+            </div>
+            <div class="box-body px-0">
+                <div class="table-responsive">
+                    {% block report_table %}
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th class="pl-4">#:</th>
+                                <th>Section name:</th>
+                                <th>{{ report_name }}:</th>
+                                <th class="w-sm pr-4 d-print-none"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% block report_table_body %}
+                                {% for step in progress.sections %}
+                                    {% with section=step.section %}
+                                        {% ifchanged section.area.number %}
+                                            <tr>
+                                                <td class="px-4" colspan="4">
+                                                    <span class="number _700 text-s-md">{{ section.area.number }}</span> <span class="text-bold">{{ section.area.name }}</span>
+                                                </td>
+                                            </tr>
+                                        {% endifchanged %}
+                                        <tr>
+                                            <td class="pl-4 number">{{ section.get_code }}</td>
+                                            <td>{{ section.name }}</td>
+                                            <td>
+                                                <div class="d-flex align-items-center">
+                                                    {% if step.slug == 'no-question' %}
+                                                        <span class="text-sm">No {{ object.get_level_display|lower }} tier questions for this section</span>
+                                                    {% else %}
+                                                        <div class="progress my-1 w-128">
+                                                            <div class="progress-bar" style="width: {{ step.percentage }}%"></div>
+                                                        </div>
+                                                        <div class="number mx-1">{{ step.percentage }}%</div>
+                                                        {% if step.is_complete %}
+                                                            <i class="fa fa-2x fa-check has-primary-highlight"></i>
+                                                        {% endif %}
+                                                    {% endif %}
+                                                </div>
+                                            </td>
+                                            <td class="pr-4 d-print-none">
+                                                <a href="{% url 'survey-section' pk=object.pk section=section.pk %}" class="btn w-xs white">Edit</a>
+                                            </td>
+                                        </tr>
+                                    {% endwith %}
+                                {% endfor %}
+                            {% endblock %}
+                        </tbody>
+                    </table>
+                    {% endblock %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock app_content %}

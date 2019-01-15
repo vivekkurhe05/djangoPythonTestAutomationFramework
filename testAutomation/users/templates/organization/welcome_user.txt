@@ -1,0 +1,25 @@
+{% load i18n %}{% blocktrans %}
+Dear {{ user_name }},
+
+Welcome to the Global Grant Community. A user account has been created for you by {{ organisation_name }}
+
+To complete your registration, please click the link below to set a password:
+{% endblocktrans %}
+{% block register_link %}
+https://{{ site_domain }}{% url 'password_reset_confirm' uidb64=uid token=token %}
+{% endblock %}
+{% blocktrans %}
+You have been given the role of {{ user_role }}
+{% endblocktrans %}
+{% blocktrans %}
+Thank you,
+
+The {{ site_name }} Team
+
+BETA Privacy Policy statement on General Data Protection Regulation (GDPR)
+
+The portal and all your data will be hosted on the Amazon Web Services servers located in Eire.We are working hard to ensure we shall be compliant with the requirements of GDPR when the production version goes live in Mid’18.
+
+African Academy of Sciences has not been assessed for compliance to GDPR. The beta portal has been developed to test and refine the production / launch version of the portal. The security and privacy of your data has been a core requirement throughout the development process.
+
+{% endblocktrans %}

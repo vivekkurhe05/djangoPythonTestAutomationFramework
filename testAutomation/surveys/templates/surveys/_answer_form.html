@@ -1,0 +1,98 @@
+{% load crispy_forms_tags %}
+{% load html_time %}
+
+{% with answer=form.instance %}
+{% with question=answer.question respons=answer.response document_list=answer.documents.all %}
+    <form method="post" enctype="multipart/form-data"
+        action="{% url 'survey-answer' pk=respons.pk question=question.pk %}" >
+
+        <div class="d-flex flex-column flex-sm-row px-4">
+            <span class="number _700 question_text">{{ question.get_code }}</span>
+
+            <div class="flex-sm pl-sm-4">
+                <div class="question_text">
+                    {{ question.name | safe }}
+                    {% if question.notes %}
+                        <span class="question_text_notes vr-middle">
+                            <div class="d-flex align-items-center justify-content-center info-circle pointer bg-md-champagne has-cbronze-color size-25 min-size-25"  data-trigger="hover" data-toggle="popover"  data-placement="top" data-title="Note:" data-template="{% include 'surveys/question_notes_popover.html' %}">
+                                <i class="fa fa-info"></i>
+                            </div>
+                        </span>
+                    {% endif %}
+                </div>
+                <div class="js-main-answer-form mt-4">
+                    {% crispy form %}
+                </div>
+
+                {% if question.upload_type %}
+                    <div class="js-attach-document-form collapse">
+                        {% if document_list %}
+                        <div class="mb-3">
+                            <h6 class="heading">Attached documents:</h6>
+                            <div class="table-responsive">
+                                <table class="table table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th>Document name:</th>
+                                            <th>Expires:</th>
+                                            <th class="w-sm"></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for document in document_list %}
+                                        <tr>
+                                            <td>
+                                                <div>{{ document.document }}</div>
+                                                <small class="sec-font-color">
+                                                    {{ document.explanation|linebreaks }}
+                                                </small>
+                                            </td>
+                                            <td class="text-nowrap number">
+                                                {{ document.document.expiry|date }}
+                                            </td>
+                                            <td>
+                                                <button type="button" class="btn is-sec-action btn-fw" onclick="app.loadModal('{% url 'survey-document-delete' pk=document.id %}', 'Remove {{ document.document }}')">Remove</button>
+                                            </td>
+                                        </tr>
+                                        {% endfor %}
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        {% endif %}
+                        <div>
+                            <h6 class="heading mb-4">Attach {{ question.upload_type }} documents:</h6>
+                            <div class="b-b b-is-primary nav-active-is-primary">
+                                <ul class="nav nav-tabs">
+                                    <li class="nav-item">
+                                        <a class="nav-is-link active" href="#attach-tab-{{ question.pk }}" data-toggle="tab" data-operation="attach_document">Attach document</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-is-link" href="#upload-tab-{{ question.pk }}" data-toggle="tab" data-operation="upload_document">Upload new document</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="tab-content p-3 mb-3 b-b b-2x b-is-primary">
+                                <div class="tab-pane animate fadeIn text-muted active" id="attach-tab-{{ question.pk }}">
+                                    <label class="text-bold text-s-md mb-3 mt-2">Attach a document from your document library:</label>
+                                    {% crispy form form.attach_helper %}
+
+                                    <label class="mt-2">If the document you need is not in your library, you will need to <span class="text-moss-green text-u-l pointer" onclick="app.showTab('upload-tab-{{ question.pk }}')">upload it</span>.</label>
+                                </div>
+                                <div class="tab-pane animate fadeIn text-muted" id="upload-tab-{{ question.pk }}">
+                                    <div class="mb-3 mt-2">
+                                        <div class="text-bold text-s-md">Upload new document:</div>
+                                        <small>Please remove all personal data from document</small>
+                                    </div>
+                                    {% crispy form form.upload_helper %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </form>
+{% endwith %}
+{% endwith %}

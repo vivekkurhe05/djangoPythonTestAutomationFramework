@@ -1,0 +1,28 @@
+{% extends "base.html" %} {% load crispy_forms_field %} {% load crispy_forms_tags %} {% load crispy_forms_field %}
+{% load html_time %}
+{% block main_content %}
+<div class="d-flex flex-column flex">
+        <div class="py-4 w-100">
+            <div class="mx-auto w-auto-xs max-w-800">
+                <div class="px-3">
+                    <form name="form" method="POST" action="{% url 'register' %}" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        {% crispy user_form %}
+                        <h6 class="text-bold col-md-12 p-3 text-center">Organization Details</h6>
+                        {% crispy organisation_form %}
+                        <input type="hidden" name="token" value="{{ token }}">
+                        <div class="form-group text-center">
+                            <input type="submit" class="btn is-primary" value="Register">
+                        </div>
+
+                    </form>
+                    <div class="py-3 text-center">
+                        <div>Already have an account?
+                            <a href="{% url 'login' %}" class="link">Login</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>
+{% endblock main_content %}

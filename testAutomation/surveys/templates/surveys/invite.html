@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% load crispy_forms_tags %}
+
+
+{% block body_class %} page-invite{% endblock body_class %}
+
+{% block main %}
+    <h1>Invite grantees</h1>
+
+    <div class="message">
+        Invite grantees to complete a survey for a grantor
+    </div>
+    {% crispy form %}
+{% endblock main %}

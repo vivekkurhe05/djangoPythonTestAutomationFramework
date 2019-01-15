@@ -1,0 +1,172 @@
+{% extends "app_base.html" %} {% load html_time %} {% load level_display %}
+{% block app_content %}
+<div>
+    {% for survey in surveys %}
+        <div class="box">
+            <div class="box-header d-flex pb-0 justify-content-between flex-xs-sm-down-wrap">
+                <h2 class="mr-1 mb-2">{{ survey.name }}</h2>
+                {% if survey.survey_response %}
+                    <a href="{{ survey.survey_response.summary_url }}" class="btn is-primary">
+                        Assessment details
+                    </a>
+                {% else %}
+                    <a href="{% url 'survey-start' pk=survey.pk %}" class="btn is-primary">
+                        Start assessment
+                    </a>
+                {% endif %}
+            </div>
+            <div class="box-body px-0">
+                {% if not survey.survey_response %}
+                    <div class="d-flex align-items-center px-4">
+                        <i class="fa fa-check-square-o fa-5x color-light-silver mr-3"></i>
+                        <p class="mb-1 sec-font-color text-bold text-md flex max-w-240">
+                            Your Organization has not yet started this assessment
+                        </p>
+                    </div>
+                {% else %}
+                    {% with progress=survey.survey_response.progress %}
+                        {% if not progress.is_complete %}
+                            <div class="d-flex align-items-center flex-column flex-sm-row px-4">
+                                <div class="flex-sm d-flex align-items-center my-1">
+                                    <i class="fa fa-check-square-o fa-5x color-light-silver mr-3"></i>
+                                    <div class="mb-1 {{ progress.slug }}">
+                                        {{ survey.survey_response.level | level_display }}<span class="text-bold ml-1">{{ progress.label }}</span>
+                                        <div class="mt-1 w-128 ">
+                                            <span><span class="number">{{ progress.percentage }}</span>% complete:</span>
+                                            <div class="progress my-1">
+                                                <div class="progress-bar" style="width: {{ progress.percentage }}%"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="text-center text-sm-right my-1">
+                                    <span class="text-bold">Last modified:</span>
+                                    <div class="mt-1 l-h-1_2">
+                                        <div class="number">{% html_time survey.survey_response.modified %}</div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% else %}
+                            <div class="d-flex align-items-center flex-column flex-sm-row p-4">
+                                <div class="flex-sm d-flex align-items-center my-1">
+                                    <div class="status-icon bg-level-{{ survey.survey_response.level }} mr-3">
+                                        <i class="fa fa-check-square-o fa-4x"></i>
+                                    </div>
+                                    <p class="m-0 sec-font-color text-bold text-md w-128">Completed to <span class="text-capitalize">{{ survey.survey_response.get_level_display }}</span> level</p>
+                                </div>
+                                <div class="text-center text-sm-right my-1">
+                                    {% if survey.survey_response.submitted %}
+                                        <span class="text-bold">Submitted:</span>
+                                        <div class="mt-1 l-h-1_2">
+                                            <div class="number">{% html_time survey.survey_response.submitted %}</div>
+                                        </div>
+                                    {% else %}
+                                        <span class="text-bold">Completed:</span>
+                                        <div class="mt-1 l-h-1_2">
+                                            <div class="number">{% html_time survey.survey_response.modified %}</div>
+                                        </div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        {% endif %}
+                    {% endwith %}
+                    {% if survey.invites %}
+                        <div class="table-responsive">
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th class="pl-4">Shared with:</th>
+                                        <th class="text-right pr-4">Date shared:</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for invite in survey.invites %}
+                                        <tr>
+                                            <td class="pl-4">{{ invite.grantor }}</td>
+                                            <td class="pr-4 text-right number">{% html_time invite.last_sent %}</td>
+                                        </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    {%endif%}
+                {%endif%}
+            </div>
+        </div>
+    {% endfor %}
+
+    {% with latest_subscription=user.organisation.latest_subscription active_subscription=user.organisation.active_subscription %}
+        {% if active_subscription or latest_subscription.get_is_renewal_due  %}
+            <div class="box mt-5">
+                <div class="box-header pb-0">
+                    <div class="d-flex justify-content-between flex-xs-sm-down-wrap">
+                        <h2 class="mr-1 mb-2">Assessments shared with me</h2>
+                        {% if latest_subscription.get_is_renewal_due %}
+                            <a href="{% url 'subscription' %}" class="btn is-primary btn-fw">Renew subscription</a>
+                        {% else %}
+                            <div class="text-xs-sm-right">
+                                {% if user.organisation.remaining_invites %}
+                                    <div class="mb-3">
+                                        You have<span class="badge badge-pill bg-crystal-blue _700 number mx-1">{{user.organisation.remaining_invites}}</span>invitations (<a href="{% url 'subscription' %}" class="link text-u-l text-nowrap">buy more</a>)
+                                    </div>
+                                    <a href="{% url 'survey-invite-create' %}" class="btn is-primary btn-fw">Invite grantee</a>
+                                {% else %}
+                                    <div class="mb-3">
+                                        You have no invitations (<a href="{% url 'subscription' %}" class="link text-u-l text-nowrap">buy more</a>)
+                                    </div>
+                                {% endif %}
+                            </div>
+                        {% endif %}
+                    </div>
+                    {% if not active_subscription %}
+                    <label class="text-bold has-pastel-red-color d-flex mt-3">
+                        <i class="fa fa-2x fa-warning mr-2"></i>
+                        <div class="vr-middle max-w-350">You must have a valid subscription to view assessments that have been shared with you</div>
+                    </label>
+                    {% endif %}
+                </div>
+                <div class="box-body px-0">
+                    {%if not shared_with_me %}
+                    <div class="d-flex align-items-center px-4">
+                        <i class="fa fa-plus-circle fa-5x color-light-silver mr-3 mb-1"></i>
+                        <p class="m-0 sec-font-color max-w-350 text-bold flex">There are currently no assessments shared with your organization. You can request one by inviting a grantee.</p>
+                    </div>
+                    {% else %}
+                    <div class="table-responsive">
+                        <table class="table table-striped {% if latest_subscription.get_is_expired %}opacity-3{% endif %}">
+                            <thead>
+                                <tr>
+                                    <th class="pl-4">Organization:</th>
+                                    <th>Requested assessment:</th>
+                                    <th class="w-sm pr-4"></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for invite in shared_with_me %}
+                                    <tr>
+                                        <td class="pl-4">{{ invite.grantee }}</td>
+                                        <td> {{ invite.survey }} {{ invite.level | level_display }} </td>
+                                        <td class="pr-4 text-right">
+                                            {% if active_subscription %}
+                                                {% if invite.response_id %}
+                                                    <a class="btn w-xs white" href="{% url 'survey-report' pk=invite.response_id %}">View</a>
+                                                {% else %}
+                                                    {{ invite.get_status_display }}
+                                                {% endif %}
+                                            {% endif %}
+                                        </td>
+                                    </tr>
+                                {% endfor  %}
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- pagination -->
+                    {% include '_pagination.html' %}
+                    {% endif %}
+                </div>
+            </div>
+        {% endif %}
+    {% endwith %}
+</div>
+
+{% endblock app_content %}

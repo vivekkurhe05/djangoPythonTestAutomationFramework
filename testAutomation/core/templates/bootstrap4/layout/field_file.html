@@ -1,0 +1,18 @@
+{% load crispy_forms_field %}
+
+<{% if tag %}{{ tag }}{% else %}div{% endif %} id="div_{{ field.auto_id }}" class="form-group{% if wrapper_class %} {{ wrapper_class }}{% endif %}{% if field.css_classes %} {{ field.css_classes }}{% endif %}">
+
+    {% if field.label and not field|is_checkbox and form_show_labels %}
+        <label for="{{ field.id_for_label }}" class="col-form-label {{ label_class }}{% if field.field.required %} requiredField{% endif %}">
+            {{ field.label|safe }}{% if field.field.required %}<span class="asteriskField">*</span>{% endif %}
+        </label>
+    {% endif %}
+
+    <div id="select-file-box" class="custom-file {{ field_class }}">
+        <label class="custom-file-label" for="{{ field.id_for_label }}">
+            <span id="file-label" class="placeholder">{{ field.field.widget.attrs.placeholder|default:'Choose file' }}</span>
+            <span id="file-info"><span id="file-name"></span></span>
+        </label>
+        {% crispy_field field 'class' 'custom-file-input' %}
+    </div>
+</{% if tag %}{{ tag }}{% else %}div{% endif %}>

@@ -1,0 +1,12 @@
+{% load i18n %}{% blocktrans %}
+Dear {{ user_name }},
+
+Your order {{ order_number }} has been cancelled.
+
+If you believe the order should not have been cancelled or you would like to discuss the matter further please contact our finance team.
+{% endblocktrans %}
+{% blocktrans %}
+Kind regards,
+
+The {{ site_name }} Team
+{% endblocktrans %}

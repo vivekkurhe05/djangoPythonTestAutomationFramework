@@ -1,0 +1,14 @@
+{% extends "surveys/base-report.html" %}
+
+{% load level_display %}
+
+
+{% block report_summary %}
+    You have completed <span class="number _700 primary-font-color">{{ progress.percentage }}%</span>
+    of the {{ object.level|level_display:'align-text-top' }} tier
+{% endblock %}
+
+{% block report_info %}
+    <p class="mb-0">This report details your completion at your target tier.</p>
+    <p>Changing your target tier will adjust the statistics to reflect the new target.</p>
+{% endblock %}

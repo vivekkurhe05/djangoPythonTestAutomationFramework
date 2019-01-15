@@ -1,0 +1,179 @@
+{% extends "app_base.html" %}
+{% block app_content %}
+{% load level_display %}
+{% load custom_filter %}
+{% load html_time %}
+<div>
+    <div class="box mb-5">
+        {% if not user.organisation.active_subscription %}
+            <div class="d-flex px-4 align-items-center justify-content-between flex-xs-sm-down-wrap">
+                <div class="mr-1 my-1 text-md text-bold">Subscribe to invite grantees to submit assessments</div>
+                <a href="{% url 'subscription' %}" class="btn white btn-fw my-1">Subscribe</a>
+            </div>
+        {% else %}
+            <div class="box-header d-flex pb-0 justify-content-between flex-xs-sm-down-wrap">
+                <h2 class="mr-1">Make invitation</h2>
+                {% if not user.organisation.latest_subscription.get_is_expired and user.organisation.remaining_invites  %}
+                    <div>
+                        You have
+                        <span class="badge badge-pill bg-crystal-blue _700 number mx-1">{{user.organisation.remaining_invites}}</span>invitations (<a href="{% url 'subscription' %}" class="link text-u-l text-nowrap">buy more</a>)
+                    </div>
+                {% endif %}
+            </div>
+            <div class="box-body px-4 d-flex align-items-center justify-content-between flex-xs-sm-down-wrap">
+                {% if user.organisation.active_subscription %}
+                    <div class="mr-1 mb-2 text-bold">
+                        Invite a grantees to submit an assessment
+                    </div>
+                {% if user.organisation.remaining_invites > 0 %}
+                    <a href="{% url 'survey-invite-create' %}" class="btn is-primary btn-fw">Make invitation</a>
+                {% endif %}
+                {% else %}
+                    <div class="mr-1 mb-2">
+                        <label class="text-bold has-pastel-red-color d-flex mt-3 align-items-center">
+                            <i class="fa fa-2x fa-warning mr-2"></i>
+                            <div class="vr-middle max-w-350">You must have a valid subscription to make invitations</div>
+                        </label>
+                    </div>
+                    <a href="{% url 'subscription' %}" class="btn is-primary">Renew subscription</a>
+                {% endif %}
+            </div>
+        {% endif %}
+    </div>
+    <!-- condition:box is shown only when user has active subscription -->
+    {% if user.organisation.active_subscription %}
+    <div class="box mb-5">
+        <div class="box-header pb-0">
+            <h2>Invitations sent</h2>
+        </div>
+        <div class="box-body px-0">
+            {% if not sent_invites %}
+                <div class="px-4 d-flex align-items-center">
+                    <i class="fa fa-plus-circle fa-5x color-light-silver mr-3"></i>
+                    <p class="m-0 sec-font-color max-w-350 text-bold flex">You can invite grantees to submit an assessment, and choose the minimum tier you'd like them to submit</p>
+                </div>
+            {% else %}
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th class="pl-4">To:</th>
+                                <th>Requested assessment:</th>
+                                <th>Status:</th>
+                                <th class="w-sm pr-4"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for invite in sent_invites %}
+                            <tr>
+                                <td class="pl-4">
+                                    {% if invite.grantee %}
+                                        <div class="text-bold">{{ invite.grantee }}</div>
+                                    {% else %}
+                                        <div class="text-bold">{{ invite.grantee_email | format_email }}</div>
+                                    {% endif %}
+                                    <small class="sec-font-color text-nowrap number">
+                                       Sent: {% html_time invite.last_sent %}
+                                    </small>
+                                </td>
+                                <td>
+                                 {{ invite.survey }} {{ invite.level | level_display  }}
+                                    {% if invite.due_date %}
+                                    <div class="{% if invite.highlight_due_date %} due-date-error-color {% else %} sec-font-color  {% endif %}">
+                                        Due: {{ invite.due_date | date }}
+                                    </div>
+                                    {% endif %}
+
+                                </td>
+                                {{ invite.status | invite_status_display  }}
+
+                                {% if not invite.accepted  %}
+                                    <td class="pr-4">
+                                        <form method="POST" action="{% url 'invite-resend' pk=invite.id %}">
+                                            {% csrf_token %}
+                                            <button type="submit" class="btn w-xs white resend-invite-btn">
+                                                Resend
+                                            </button>
+                                        </form>
+                                    </td>
+                                {% elif invite.response_id %}
+                                    <td class="pr-4">
+                                        <a class="btn w-xs white" href="{% url 'survey-report' pk=invite.response_id %}">View</a>
+                                    </td>
+                                {% else %}
+                                    <td class="pr-4"></td>
+                                {% endif %}
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                <!-- pagination -->
+                {% include '_pagination.html' %}
+
+            {% endif %}
+        </div>
+    </div>
+    {% endif %}
+    <div class="box">
+        <div class="box-header pb-0">
+            <h2>
+                Invitations received {% if pending_invites_count %}
+                    <span class="badge badge-pill danger vr-text-bottom ml-1 text-s-md">{{ pending_invites_count }}</span>
+                {% endif %}
+            </h2>
+        </div>
+        <div class="box-body px-0">
+            {% if not received_invites %}
+                <div class="d-flex align-items-center px-4">
+                    <i class="fa fa-plus-circle fa-5x color-light-silver mr-3"></i>
+                    <p class="my-0 max-w-350 sec-font-color text-bold flex">If a grantor invites you to complete an assessment, it will be displayed here.</p>
+                </div>
+            {% else %}
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th class="pl-4">From:</th>
+                                <th>Requested assessment:</th>
+                                <th class="w-sm pr-4"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for invite in received_invites %}
+                            <tr>
+                                <td class="pl-4">
+                                    <div class="text-bold">{{ invite.grantor }}</div>
+                                    <small class="sec-font-color text-nowrap number">
+                                       Received: {% html_time invite.last_sent %}
+                                    </small>
+                                </td>
+                                <td>
+                                  {{ invite.survey }}  {{ invite.level | level_display  }}
+                                    {% if invite.due_date %}
+                                    <div class="{% if invite.highlight_due_date %} due-date-error-color {% else %} sec-font-color  {% endif %}">
+                                        Due: {{ invite.due_date | date }}
+                                    </div>
+                                    {% endif %}
+                                </td>
+                                <td class="pr-4 text-center text-bold">
+                                    {% if invite.accepted %}
+                                    Accepted
+                                    {% else %}
+                                    <button data-id="{{invite.id}}" class="btn is-sec-action w-xs accept-invite-btn" onclick="app.acceptInvite('{% url 'invite-accept' pk=invite.id %}')" >Accept</button>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                {% include '_pagination.html' %}
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+{% include 'surveys/_accept_invite_modal.html' %}
+
+{% endblock app_content %}

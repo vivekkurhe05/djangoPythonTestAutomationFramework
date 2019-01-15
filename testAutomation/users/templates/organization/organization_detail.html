@@ -1,0 +1,56 @@
+{% extends "app_base.html" %}
+{% block  app_content_main_class %}{{ block.super }} d-flex flex{% endblock %}
+{% block  app_content_main_inner_class %}d-flex flex{% endblock %}
+
+{% block app_content %}
+
+{% include 'organization/_organization_type.html' %}
+<div class="d-flex flex" id="content-body">
+    <div class="d-flex flex-column flex">
+        <div class="navbar white no-radius box-shadow pos-rlt">
+            <span class="text-md">{{ organisation.legal_name }}</span>
+            <a data-toggle="modal" data-target="#content-aside" data-modal class="ml-auto d-md-none">
+                <span class="btn btn-sm btn-icon bg-is-primary">
+                    <i class="fa fa-th"></i>
+                </span>
+            </a>
+        </div>
+        <div class="flex white scroll-y b-b">
+            <div class="scroll-y">
+                <div>
+                    <div class="box-header pb-0">
+                        <h2>{{ organisation.legal_name }}</h2>
+                    </div>
+                    {% include 'organization/_organization_detail.html' %}
+                </div>
+                {% if responses %}
+                    <div>
+                        <div class="box-body px-4">
+                            <div class="table-responsive">
+                                <table class="table table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th>Assessments</th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for response in responses %}
+                                            <tr>
+                                                <td>{{ response.survey.name }}</td>
+                                                <td class="text-right">
+                                                    <span class="badge bg-level-{{response.level}} ">{{ response.get_level_display }}</span> tier
+                                                </td>
+                                            </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock app_content %}

@@ -1,0 +1,40 @@
+{% load humanize %}
+<div class="row px-4 mb-2 mt-5">
+    <div class="col-sm-6 text-bold text-md">Invitation package</div>
+</div>
+<div class="table-responsive">
+    <table class="table" id="package-list">
+        <thead>
+            <tr>
+                <th class="pl-4">Package:</th>
+                <th class="pr-4 text-right">Price: (USD)</th>
+            </tr>
+        </thead>
+        
+        <tbody>
+            <tr> 
+                <td class="pl-4"> 
+                    <label class="ui-check mb-0" for="id_package_0_0"> 
+                    <input id="id_package_0_0" type="radio" name="package" value="" data-value="0" {% if not field.value %} checked="checked" {% endif %}>
+                    <i class="mx-1"></i><span class="mx-1">{{ field.field.empty_label }}</span> </label> 
+                </td>
+                <td class="pr-4 text-right number">0</td> 
+            </tr>
+            {% for choice in field.field.queryset %}
+            <tr {% if choice.pk|stringformat:"s" == field.value|default_if_none:""|stringformat:"s" %}  class="text-bold _700" {% endif %}>
+                <td class="pl-4">
+                    <label class="ui-check mb-0" for="{{ field.id_for_label }}_{{ forloop.counter }}">
+                        <input id="{{ field.id_for_label }}_{{ forloop.counter }}" type="radio" name="{{ field.html_name }}"  value="{{ choice.pk }}" data-value="{{ choice.price }}" {% if choice.pk|stringformat:"s" == field.value|default_if_none:""|stringformat:"s" %} checked="checked"{% endif %} >
+                        <i class="mx-1"></i><span class="mx-1">{{ choice.name }}
+                        </span>
+                    </label>
+                </td>
+                <td class="pr-4 text-right number">${{ choice.price | intcomma }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+<div class="px-4">
+    Require more than 100 assessments? <a href="mailto:{{subscription_default_email}}" class="link text-u-l text-nowrap">Contact us</a>
+</div>

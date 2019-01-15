@@ -1,0 +1,34 @@
+.btn {
+    height: 33px;
+    @extend .text-bold;
+    font-weight: normal;
+
+    &.is-regular {
+        font-family: $font-family-1;
+    }
+
+    &.is-primary {
+        @include color-variant(#91B04D, white);
+        &:hover {
+            @include color-variant(#7F9A43, white);
+        }
+    }
+    &.is-sec-action {
+        @include color-variant(#FF6161, white);
+        &:hover {
+            @include color-variant(#FE6060, white);
+        }
+    }
+    &.is-harvest-gold {
+        @include color-variant(#D28E00, white);
+        &:hover {
+            @include color-variant(#C38503, white);
+        }
+    }
+    &.is-cultured {
+        @include color-variant(#F7F6F0, black);
+        &:hover {
+            @include color-variant(#F5F3ED, black);
+        }
+    }
+}

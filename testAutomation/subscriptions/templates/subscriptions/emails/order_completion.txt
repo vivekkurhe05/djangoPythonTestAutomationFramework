@@ -1,0 +1,11 @@
+{% load i18n %}{% blocktrans %}
+Dear {{ user_name }},
+
+We have received payment for the order {{ order_number }}. Thank you.
+The order is now complete and all items have been credited to your account and can be accessed by logging into the GCC website https://{{ site_domain }}
+{% endblocktrans %}
+{% blocktrans %}
+Kind regards,
+
+The {{ site_name }} Team
+{% endblocktrans %}

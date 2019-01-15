@@ -1,0 +1,24 @@
+{% if can_delete %}
+    <form class="submit-form" method="post" action="{% url 'survey-document-delete' pk=object.pk %}">
+        {% csrf_token %}
+        <p class="mt-2">
+            Are you sure you want to remove the '{{ object.document.name }}' document from the {{ object.answer.response.survey.name }} question?
+        </p>
+
+        <div class="highlighted-sec my-3">
+            The document will be removed form this question, however it will remain in the document library.
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn white p-x-md" data-dismiss="modal">Cancel</button>
+            <button type="submit" class="btn is-sec-action p-x-md" data-dismiss="modal" data-submit-and-load-answer="{{ object.answer.question.pk }}">Confirm</button>
+        </div>
+    </form>
+{% else %}
+    <div class="highlighted-sec my-3">
+        {{ can_not_delete_msg }}
+    </div>
+
+    <div class="modal-footer">
+        <button type="button" class="btn white p-x-md" data-dismiss="modal">OK</button>
+    </div>
+{% endif %}

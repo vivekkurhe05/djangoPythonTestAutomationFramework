@@ -1,0 +1,114 @@
+{% extends "surveys/base-report.html" %}
+{% load static from staticfiles %}
+{% load level_display %}
+{% load html_time %}
+
+{% block report_by_section %}Answers{% endblock %}
+{% block report_summary %}
+    <div class="w-md">GFGP Standard {{ object.level|level_display:'align-text-top' }} tier <span class="number _700 primary-font-color">{{ compliance.percentage }}%</span>
+    Overall compliance</div>
+{% endblock %}
+
+{% block report_info %}
+    <p class="mb-0">This report shows responses to all question up to the target tier.</p>
+{% endblock %}
+
+{% block report_total_progress %}
+    <div>Compliance</div>
+    <div class="progress progress-vertical progress-vertical-lg fa-rotate-180 my-1">
+        <div class="progress-bar is-level-{{ object.level }}" style="height: {{ compliance.percentage }}%"></div>
+    </div>
+    <div><span class="number">{{ compliance.percentage }}</span>%</div>
+{% endblock %}
+
+{% block report_table %}
+    <table class="table table-bordered v-top">
+        <tbody>
+            {% for step in compliance.sections %}
+                {% with section=step.section %}
+                    {% ifchanged section.area.number %}
+                        <tr>
+                            <td class="px-4 b-b-3x text-s-md" colspan="4">
+                                <span class="number _700">{{ section.area.number }}</span>
+                                <span class="text-bold">{{ section.area.name }}</span>
+                            </td>
+                        </tr>
+                    {% endifchanged %}
+                    <tr>
+                        <td class="pl-4 number _700 w-xs no-b-r">{{ section.get_code }}</td>
+                        <td class="pr-4 no-b-l" colspan="3">
+                            <div class="d-flex align-items-center">
+                                <span class="text-bold text-nowrap">{{ section.name }}</span>
+                                {% if step.slug == 'no-question' %}
+                                    <span class="ml-2">
+                                        There are no {{ object.get_level_display|lower }} tier questions for this section
+                                    </span>
+                                {% else %}
+                                    <div class="progress my-1 ml-2 w-128">
+                                        <div class="progress-bar is-level-{{ object.level }}" style="width: {{ step.percentage }}%"></div>
+                                    </div>
+                                    <div class="number mx-1">{{ step.percentage }}%</div>
+                                {% endif %}
+                            </div>
+                        </td>
+                    </tr>
+                {% endwith %}
+
+                {% for question in step.questions %}
+                    {% with answer=question.answer %}
+                        <tr>
+                            <td class="number pl-4">{{ question.get_code }}</td>
+                            <td>
+                                {{ question.name|safe }}
+
+                                {% with options=question.options.all %}
+                                    {% if options|length %}
+                                        <ol type="a" class="mt-2">
+                                            {% for option in options %}
+                                                <li class="my-1 min-h-25">
+                                                    {{ option.name }}
+                                                    {% if option in answer.options.all %}
+                                                        <i class="fa fa-2x fa-check has-primary-highlight align-middle"></i>
+                                                    {% endif %}
+                                                </li>
+                                            {% endfor %}
+                                        </ol>
+                                    {% endif %}
+                                {% endwith %}
+                            </td>
+                            <td class="w-sm">
+                                <span class="badge badge-pill bg-option-{{ answer.value }}">{{ answer.get_value_display }}</span>
+                            </td>
+                            <td class="pr-4">
+                                {% if answer.due_date %}
+                                    <span class="text-bold">Due: </span><span class="number text-nowrap">{{ answer.due_date|date }}</span>
+                                {% endif %}
+                                {% if answer.explanation %}
+                                    <div>{{ answer.explanation|linebreaks }}</div>
+                                {% endif %}
+                                {% with documents=answer.documents.all %}
+                                    {% if documents %}
+                                        <span class="text-bold">Supporting documents ({{ documents|length }})</span>
+                                        {% for document in documents %}
+                                            <div class="mt-2">
+                                                <a href="{{ document.document.file.url }}" target="_blank" class="d-flex" download>
+                                                    <i class="fa fa-arrow-circle-o-down fa-2x sec-font-color mr-2"></i>
+                                                    <span class="link text-u-l">{{ document.document.name }}</span>
+                                                </a>
+                                                {{ document.explanation|linebreaks }}
+                                                {% if document.document.expiry %}
+                                                    <span class="text-bold">Expires: </span><span class="number text-nowrap">{{ document.document.expiry|date }}</span>
+                                                {% endif %}
+                                            </div>
+                                        {% endfor %}
+                                    {% endif %}
+                                {% endwith %}
+
+                            </td>
+                        </tr>
+                    {% endwith %}
+                {% endfor %}
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

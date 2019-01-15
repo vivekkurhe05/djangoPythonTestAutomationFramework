@@ -1,0 +1,41 @@
+language: python
+python: "3.5"
+cache:
+  directories:
+    - $HOME/web/.npm
+    - ~/.cache/pip
+env:
+  global:
+    - PIP_WHEEL_DIR=$HOME/.cache/pip/wheels
+    - PIP_FIND_LINKS=file://$HOME/.cache/pip/wheels
+before_install:
+   - nvm install 6
+   - nvm use 6
+   - node --version
+   - npm --version
+   - npm install -g bower grunt-cli
+install:
+    - pip install -r requirements.txt
+    - make install-frontend
+before_script:
+    - make install-db
+    - make install-django
+script:
+    - make test
+    - make test-backend
+notifications:
+    email: false
+addons:
+    postgresql: "9.5"
+sudo: required
+
+# Push builds only on master, develop, and feature branches.
+branches:
+  only:
+    - master
+    # Version branches: 1.x, 1.2, 1.2.x, 1.x.x, 1.2.3, 11.22.33, but not 1, x.1
+    - /^\d+(\.(x|\d+)){1,2}$/
+    # Develop and feature branches: develop, developfoo, develop-1, feature-foo,
+    # but not feature, feature-
+    - /^develop/
+    - /^feature-.+/

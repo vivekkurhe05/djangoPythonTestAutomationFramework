@@ -1,0 +1,29 @@
+{% load i18n %}
+<p>
+{% blocktrans with name=site.name %}
+You are receiving this email because your email address has been used to
+register an account at {{ name }}.
+{% endblocktrans %}
+</p>
+<p>
+{% blocktrans %}
+Please click the following link to complete your registration:
+{% endblocktrans %}
+<p>
+    {% url 'registration-verify' token=token as verify_url %} 
+    <a href="{{ protocol }}://{{ site.domain }}{{ verify_url }}">Confirm email address</a>
+</p>
+
+{% filter linebreaks %}{% blocktrans %}
+BETA Privacy Policy statement on General Data Protection Regulation (GDPR)
+
+The portal and all your data will be hosted on the Amazon Web Services servers located in Eire.We are working hard to ensure we shall be compliant with the requirements of GDPR when the production version goes live in Mid’18.
+
+African Academy of Sciences has not been assessed for compliance to GDPR. The beta portal has been developed to test and refine the production / launch version of the portal. The security and privacy of your data has been a core requirement throughout the development process.
+{% endblocktrans %}{% endfilter %}
+
+<p>
+{% blocktrans with name=site.name %}
+The {{ name }} team.
+{% endblocktrans %}
+</p>

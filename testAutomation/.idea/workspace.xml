@@ -1,0 +1,1195 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="094b8590-b7e4-48ae-b7cf-4b0ee56ec089" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/drivers_linux/geckodriver" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.travis.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.travis.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/Makefile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/tests/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/tests/utils.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manage.py" beforeDir="false" afterPath="$PROJECT_DIR$/manage.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/subscriptions/tests/test_live.py" beforeDir="false" afterPath="$PROJECT_DIR$/subscriptions/tests/test_live.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/surveys/tests/test_live.py" beforeDir="false" afterPath="$PROJECT_DIR$/surveys/tests/test_live.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/users/tests/test_live.py" beforeDir="false" afterPath="$PROJECT_DIR$/users/tests/test_live.py" afterDir="false" />
+    </list>
+    <ignored path="$PROJECT_DIR$/.idea/shelf/" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FavoritesManager">
+    <favorites_list name="gfgp-website" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/users/tests/test_live.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="238">
+              <caret line="295" column="9" selection-start-line="295" selection-start-column="9" selection-end-line="295" selection-end-column="9" />
+              <folding>
+                <element signature="e#0#11#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>context</find>
+      <find>active_subscription</find>
+      <find>refresh_from_db</find>
+      <find>get_permission_required</find>
+      <find>test_file</find>
+      <find>form_class</find>
+      <find>Sign</find>
+      <find>Signin</find>
+      <find>login</find>
+      <find>ReCaptchaField</find>
+      <find>RECAPTCHA_TESTING</find>
+      <find>RECAPTCHA</find>
+      <find>re</find>
+      <find>Test</find>
+      <find>recaptcha=False</find>
+      <find>RECA</find>
+      <find>test</find>
+      <find>create</find>
+      <find>create(</find>
+      <find>DATA</find>
+      <find>email</find>
+      <find>Orga</find>
+      <find>Organisation</find>
+      <find>User</find>
+      <find>User(</find>
+      <find>Or</find>
+      <find>users.User</find>
+      <find>SurveyRe</find>
+      <find>survey</find>
+      <find>surveyResponse</find>
+    </findStrings>
+    <replaceStrings>
+      <replace />
+      <replace>self.selenium</replace>
+      <replace>self.populate_element_by_id</replace>
+      <replace>self.browser</replace>
+      <replace># pdb.set_trace()</replace>
+      <replace>@tag('notlive')</replace>
+      <replace>browser</replace>
+      <replace>//@sreenshotOnFail()</replace>
+      <replace>#@sreenshotOnFail()</replace>
+      <replace># @sreenshotOnFail()</replace>
+      <replace>notlive</replace>
+      <replace>&quot;</replace>
+      <replace>set_preference</replace>
+      <replace>next_section</replace>
+      <replace>'notlive'</replace>
+      <replace>&quot;notlive&quot;</replace>
+      <replace>@tag(&quot;notlive&quot;)</replace>
+      <replace>@tag(&quot;live&quot;)</replace>
+    </replaceStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/core/tests/specs/requirements.txt" />
+        <option value="$PROJECT_DIR$/core/tests/specs/test_organisation_register.py" />
+        <option value="$PROJECT_DIR$/core/tests/specs/test_organisation_login.py" />
+        <option value="$PROJECT_DIR$/core/tests/specs/test_organisation_a_user_register.py" />
+        <option value="$PROJECT_DIR$/core/tests/specs/test_invitation.py" />
+        <option value="$PROJECT_DIR$/core/tests/specs/conftest.py" />
+        <option value="$PROJECT_DIR$/core/tests/test_live.py" />
+        <option value="$PROJECT_DIR$/core/tests/specs/GFGP-Automation_Setup_Readme" />
+        <option value="$PROJECT_DIR$/core/tests/specs/config.py" />
+        <option value="$PROJECT_DIR$/core/tests/specs/test_organisation_user_assessments.py" />
+        <option value="$PROJECT_DIR$/core/tests/specs/test_organisation_invitation.py" />
+        <option value="$PROJECT_DIR$/users/models.py" />
+        <option value="$PROJECT_DIR$/distelli-manifest.yml" />
+        <option value="$PROJECT_DIR$/users/tests/user_fixture.json" />
+        <option value="$PROJECT_DIR$/users/forms.py" />
+        <option value="$PROJECT_DIR$/core/tests/__init__.py" />
+        <option value="$PROJECT_DIR$/users/tests/__init__.py" />
+        <option value="$PROJECT_DIR$/node_modules/node-gyp/gyp/gyptest.py" />
+        <option value="$PROJECT_DIR$/client_media/test_file.txt" />
+        <option value="$PROJECT_DIR$/core/roles.py" />
+        <option value="$PROJECT_DIR$/requirements.txt" />
+        <option value="$PROJECT_DIR$/gfgp1/lib/python3.5/site-packages/selenium/webdriver/firefox/webdriver.py" />
+        <option value="$PROJECT_DIR$/gfgp1/lib/python3.5/site-packages/selenium/webdriver/common/service.py" />
+        <option value="$PROJECT_DIR$/geckodriver.log" />
+        <option value="$PROJECT_DIR$/users/tests/test_urls.py" />
+        <option value="$PROJECT_DIR$/gfgp1/lib/python3.5/site-packages/rolepermissions/roles.py" />
+        <option value="$PROJECT_DIR$/gfgp1/lib/python3.5/site-packages/selenium/webdriver/common/by.py" />
+        <option value="$PROJECT_DIR$/documents/tests/test_live.py" />
+        <option value="$PROJECT_DIR$/PageObjects/Pages/registration_page.py" />
+        <option value="$PROJECT_DIR$/PageObjects/Locators.py" />
+        <option value="$PROJECT_DIR$/PageObjects/Pages/login_page.py" />
+        <option value="$PROJECT_DIR$/surveys/tests/test_live.py" />
+        <option value="$PROJECT_DIR$/subscriptions/tests/test_live.py" />
+        <option value="$PROJECT_DIR$/documents/views.py" />
+        <option value="$PROJECT_DIR$/core/urls.py" />
+        <option value="$PROJECT_DIR$/documents/templates/documents/document_expiry_email.txt" />
+        <option value="$PROJECT_DIR$/manage.py" />
+        <option value="$PROJECT_DIR$/PageObjects/locators.py" />
+        <option value="$PROJECT_DIR$/gfgp1/lib/python3.5/site-packages/django/test/testcases.py" />
+        <option value="$PROJECT_DIR$/core/views.py" />
+        <option value="$PROJECT_DIR$/core/templates/_subscription_renewal_msg.html" />
+        <option value="$PROJECT_DIR$/users/views.py" />
+        <option value="$PROJECT_DIR$/users/tests/test_views.py" />
+        <option value="$PROJECT_DIR$/core/settings.py" />
+        <option value="$PROJECT_DIR$/users/tests/factories.py" />
+        <option value="$PROJECT_DIR$/Makefile" />
+        <option value="$PROJECT_DIR$/core/tests/utils.py" />
+        <option value="$PROJECT_DIR$/users/tests/test_sample.py" />
+        <option value="$PROJECT_DIR$/users/tests/test_live.py" />
+        <option value="$PROJECT_DIR$/users/tests/my_factories.py" />
+        <option value="$PROJECT_DIR$/surveys/models.py" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="67" />
+    <option name="y" value="25" />
+    <option name="width" value="1853" />
+    <option name="height" value="1055" />
+  </component>
+  <component name="ProjectInspectionProfilesVisibleTreeState">
+    <entry key="Project Default">
+      <profile-state>
+        <expanded-state>
+          <State>
+            <id />
+          </State>
+          <State>
+            <id>Python</id>
+          </State>
+        </expanded-state>
+        <selected-state>
+          <State>
+            <id>PyPackageRequirementsInspection</id>
+          </State>
+        </selected-state>
+      </profile-state>
+    </entry>
+  </component>
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <autoscrollToSource ProjectPane="true" />
+      <autoscrollFromSource ProjectPane="true" />
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="gfgp-website" type="b2602c69:ProjectViewProjectNode" />
+              <item name="gfgp-website" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="gfgp-website" type="b2602c69:ProjectViewProjectNode" />
+              <item name="gfgp-website" type="462c0819:PsiDirectoryNode" />
+              <item name="users" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="gfgp-website" type="b2602c69:ProjectViewProjectNode" />
+              <item name="gfgp-website" type="462c0819:PsiDirectoryNode" />
+              <item name="users" type="462c0819:PsiDirectoryNode" />
+              <item name="tests" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="SearchEverywhereHistoryKey" value="SECRET_KEY&#9;null&#9;null&#10;self.live_server_url&#9;null&#9;null&#10;mail&#9;FILE&#9;file:///home/vivek/workspace/gfgp-website/gfgp/local/lib/python2.7/site-packages/django/core/management/commands/sendtestemail.py&#10;page.json&#9;FILE&#9;file:///home/vivek/workspace/gfgp-website/core/fixtures/page.json&#10;NOCAPTCHA&#9;FILE&#9;file:///home/vivek/workspace/gfgp-website/gfgp/lib/python2.7/site-packages/captcha/templates/captcha/widget_nocaptcha.html&#10;DISABLE_RECAPTCHA&#9;null&#9;null&#10;organisationtypes.json&#9;FILE&#9;file:///home/vivek/workspace/gfgp-website/users/fixtures/organisationtypes.json&#10;send&#9;FILE&#9;file:///home/vivek/workspace/gfgp-website/gfgp/local/lib/python2.7/site-packages/django/core/management/commands/sendtestemail.py&#10;smtp&#9;FILE&#9;file:///home/vivek/workspace/gfgp-website/gfgp/local/lib/python2.7/site-packages/django/core/mail/backends/smtp.py&#10;SMTP&#9;FILE&#9;file:///usr/lib/python3.5/smtplib.py&#10;smtpli&#9;null&#9;null&#10;colo&#9;null&#9;null&#10;helper&#9;null&#9;null&#10;fixtures&#9;null&#9;null&#10;Captcha&#9;null&#9;null&#10;StaticFilesSt&#9;null&#9;null&#10;default_countries.json&#9;FILE&#9;file:///home/vivek/workspace/gfgp-website/gfgp/lib/python2.7/site-packages/countries/fixtures/default_countries.json&#10;test_start_edit_assessment_from_assessments_shared_with_platinum_tier.pn&#9;FILE&#9;file:///home/pavan/gfgp/gfgp-website/client_media/tests/screenshot-AssessmentTests.test_start_edit_assessment_from_assessments_shared_with_platinum_tier.png&#10;test_user_cannot_send_invitation_where_there_are_no_credits_left_Jp8PZBz.png&#9;FILE&#9;file:///home/pavan/gfgp/gfgp-website/client_media/tests/screenshot-SubscriptionTests.test_user_cannot_send_invitation_where_there_are_no_credits_left_Jp8PZBz.png&#10;Orga&#9;null&#9;null&#10;Order&#9;null&#9;null&#10;User&#9;null&#9;null&#10;Role&#9;null&#9;null&#10;Make&#9;FILE&#9;file:///home/pavan/gfgp/gfgp-website/Makefile&#10;test_live&#9;FILE&#9;file:///home/pavan/gfgp/gfgp-website/users/tests/test_live.py&#10;screenshot-AssessmentTests.test_attach_document_for_assessment_survey_with_bronze_tier_25sgmqM.png&#9;FILE&#9;file:///home/pavan/gfgp/gfgp-website/client_media/tests/screenshot-AssessmentTests.test_attach_document_for_assessment_survey_with_bronze_tier_25sgmqM.png&#10;AssessmentTests.test_attach_document_for_assessment_survey_with_bronze_tier&#9;FILE&#9;file:///home/pavan/gfgp/gfgp-website/client_media/tests/screenshot-AssessmentTests.test_attach_document_for_assessment_survey_with_bronze_tier_frznuWt.png&#10;Subs&#9;null&#9;null&#10;sett&#9;FILE&#9;file:///home/pavan/gfgp/gfgp-website/core/settings.py&#10;mana&#9;null&#9;null&#10;live&#9;FILE&#9;file:///home/pavan/gfgp/gfgp-website/surveys/tests/test_live.py&#10;util&#9;null&#9;null&#10;tesli&#9;FILE&#9;file:///home/pavan/gfgp/gfgp-website/users/tests/test_live.py&#10;ReCap&#9;null&#9;null&#10;RECa&#9;null&#9;null&#10;test_attach_document_for_assessment_survey_with_bronze_tier_ufmidaK.png&#9;FILE&#9;file:///home/pavan/gfgp/gfgp-website/client_media/tests/screenshot-AssessmentTests.test_attach_document_for_assessment_survey_with_bronze_tier_ufmidaK.png&#10;test&#9;FILE&#9;file:///home/pavan/gfgp/gfgp-website/users/tests/test_live.py&#10;test_user_can_edit_the_name_of_uploaded_in_library_L6vfGQd.png&#9;FILE&#9;file:///home/pavan/gfgp/gfgp-website/client_media/tests/screenshot-DocumentLibraryTests.test_user_can_edit_the_name_of_uploaded_in_library_L6vfGQd.png&#10;test_user_can_edit_the_name_of_uploaded_in_library_YVAnGO4.png&#9;FILE&#9;file:///home/pavan/gfgp/gfgp-website/client_media/tests/screenshot-DocumentLibraryTests.test_user_can_edit_the_name_of_uploaded_in_library_YVAnGO4.png&#10;test_user_can_edit_the_name_of_uploaded_in_library_Qx8qKk0.png&#9;FILE&#9;file:///home/pavan/gfgp/gfgp-website/client_media/tests/screenshot-DocumentLibraryTests.test_user_can_edit_the_name_of_uploaded_in_library_Qx8qKk0.png&#10;test_user_can_edit_the_name_of_uploaded_in_library.png&#9;FILE&#9;file:///home/pavan/gfgp/gfgp-website/client_media/tests/screenshot-DocumentLibraryTests.test_user_can_edit_the_name_of_uploaded_in_library.png&#10;test_invite_unregistered_grantee_from_assessments_shared_tier_bronze_SuovdJN.png&#9;FILE&#9;file:///home/pavan/gfgp/gfgp-website/client_media/tests/screenshot-AssessmentTests.test_invite_unregistered_grantee_from_assessments_shared_tier_bronze_SuovdJN.png&#10;test_invite_registered_grantee_from_assessments_shared_tier_gold_LKFLGRH.png&#9;FILE&#9;file:///home/pavan/gfgp/gfgp-website/client_media/tests/screenshot-AssessmentTests.test_invite_registered_grantee_from_assessments_shared_tier_gold_LKFLGRH.png&#10;test_check_assessment_compliance_report_with_bronze_tier_e11OiXm.png&#9;FILE&#9;file:///home/pavan/gfgp/gfgp-website/client_media/tests/screenshot-AssessmentTests.test_check_assessment_compliance_report_with_bronze_tier_e11OiXm.png&#10;test_forgot_password_for_organisation&#9;FILE&#9;file:///home/pavan/gfgp/gfgp-website/client_media/tests/screenshot-LoginTests.test_forgot_password_for_organisation.png&#10;test_login_as_registered_user_iGMqxNr.png&#9;FILE&#9;file:///home/pavan/gfgp/gfgp-website/client_media/tests/screenshot-LoginTests.test_login_as_registered_user_iGMqxNr.png&#10;.test_forgot_password_for_organisation.png&#9;FILE&#9;file:///home/pavan/gfgp/gfgp-website/client_media/tests/screenshot-LoginTests.test_forgot_password_for_organisation.png&#10;test_start_edit_assessment_from_assessments_shared_with_platinum_tier_i9pJuXl.png&#9;FILE&#9;file:///home/pavan/gfgp/gfgp-website/client_media/tests/screenshot-AssessmentTests.test_start_edit_assessment_from_assessments_shared_with_platinum_tier_i9pJuXl.png&#10;test_start_edit_assessment_from_assessments_shared_with_platinum_tier_NFBfujj.png&#9;FILE&#9;file:///home/pavan/gfgp/gfgp-website/client_media/tests/screenshot-AssessmentTests.test_start_edit_assessment_from_assessments_shared_with_platinum_tier_NFBfujj.png&#10;test_start_edit_assessment_from_assessments_shared_with_platinum_tier_VWI0oQx.png&#9;FILE&#9;file:///home/pavan/gfgp/gfgp-website/client_media/tests/screenshot-AssessmentTests.test_start_edit_assessment_from_assessments_shared_with_platinum_tier_VWI0oQx.png" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="preferences.sourceCode" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/LoginTestData" />
+      <recent name="$PROJECT_DIR$/drivers" />
+      <recent name="$PROJECT_DIR$/surveys/tests" />
+      <recent name="$PROJECT_DIR$/core/tests/specs" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="Python tests.selenium debugger">
+    <configuration name="0042_add_default_types" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="gfgp-website" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/users/migrations" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/users/migrations/0042_add_default_types.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="manage" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="gfgp-website" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/manage.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="test_organisation_register" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="gfgp-website" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/core/tests/specs" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/core/tests/specs/test_organisation_a_user_register.py" />
+      <option name="PARAMETERS" value="py.test" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Unittests for test_live.AssessmentTests.test_start_edit_assessment_from_assessments_shared_with_platinum_tier" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+      <module name="gfgp-website" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/surveys/tests" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;test_live.AssessmentTests.test_start_edit_assessment_from_assessments_shared_with_platinum_tier&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Unittests in tests.test_live.LoginTests" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+      <module name="gfgp-website" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/users" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="_new_pattern" value="&quot;&quot;" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;tests.test_live.LoginTests&quot;" />
+      <option name="_new_targetType" value="&quot;PATH&quot;" />
+      <method v="2" />
+    </configuration>
+    <configuration name="pytest for test_organisation_invitation.py" type="tests" factoryName="py.test" nameIsGenerated="true">
+      <module name="gfgp-website" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="_new_keywords" value="&quot;&quot;" />
+      <option name="_new_additionalArguments" value="&quot;--pdb&quot;" />
+      <option name="_new_target" value="&quot;test_organisation_invitation.py&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+      <method v="2" />
+    </configuration>
+    <configuration name="selenium debugger" type="tests" factoryName="py.test">
+      <module name="gfgp-website" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="_new_keywords" value="&quot;&quot;" />
+      <option name="_new_additionalArguments" value="&quot;-v --html\u003dreport.html --self-contained-html&quot;" />
+      <option name="_new_target" value="&quot;$PROJECT_DIR$/core/tests/specs&quot;" />
+      <option name="_new_targetType" value="&quot;PATH&quot;" />
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Python.0042_add_default_types" />
+      <item itemvalue="Python.manage" />
+      <item itemvalue="Python.test_organisation_register" />
+      <item itemvalue="Python tests.pytest for test_organisation_invitation.py" />
+      <item itemvalue="Python tests.selenium debugger" />
+      <item itemvalue="Python tests.Unittests for test_live.AssessmentTests.test_start_edit_assessment_from_assessments_shared_with_platinum_tier" />
+      <item itemvalue="Python tests.Unittests in tests.test_live.LoginTests" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.0042_add_default_types" />
+        <item itemvalue="Python tests.Unittests for test_live.AssessmentTests.test_start_edit_assessment_from_assessments_shared_with_platinum_tier" />
+        <item itemvalue="Python tests.Unittests in tests.test_live.LoginTests" />
+        <item itemvalue="Python.manage" />
+        <item itemvalue="Python.test_organisation_register" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="StructureViewFactory">
+    <option name="ACTIVE_ACTIONS" value=",SHOW_INHERITED" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="094b8590-b7e4-48ae-b7cf-4b0ee56ec089" name="Default" comment="" />
+      <created>1522928340952</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1522928340952</updated>
+    </task>
+    <task id="LOCAL-00001" summary="- pytest selenium initial setup with config">
+      <created>1523528148963</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1523528148963</updated>
+    </task>
+    <task id="LOCAL-00002" summary="- added test cases for user login">
+      <created>1523531427201</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1523531427201</updated>
+    </task>
+    <task id="LOCAL-00003" summary="moved selenium requirements to project root requirements file">
+      <created>1523537373930</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1523537373930</updated>
+    </task>
+    <task id="LOCAL-00004" summary="- refactorings as per the flake8 options">
+      <created>1523616375115</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1523616375115</updated>
+    </task>
+    <task id="LOCAL-00005" summary="- refactorings as per the flake8 options">
+      <created>1523616386934</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1523616386934</updated>
+    </task>
+    <task id="LOCAL-00006" summary="- pytest selenium initial setup with config">
+      <created>1523854970849</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1523854970849</updated>
+    </task>
+    <task id="LOCAL-00007" summary="- script for running selenium pytest with make command">
+      <created>1523870673248</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1523870673248</updated>
+    </task>
+    <task id="LOCAL-00008" summary="- added automation test cases for user Registration">
+      <created>1523870722796</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1523870722796</updated>
+    </task>
+    <task id="LOCAL-00009" summary="selenium test cases for user Registration with Django Live Server Test">
+      <created>1524225864688</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1524225864688</updated>
+    </task>
+    <task id="LOCAL-00010" summary="selenium test cases for user Invitation and registration">
+      <created>1524483667894</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1524483667894</updated>
+    </task>
+    <task id="LOCAL-00011" summary="selenium test cases for user Assessments and dashboard">
+      <created>1524659962107</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1524659962107</updated>
+    </task>
+    <task id="LOCAL-00012" summary="- updated selenium Login, Register tests as per the PR comments&#10;- Extracted method into Mixin class">
+      <created>1524661653782</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1524661653782</updated>
+    </task>
+    <task id="LOCAL-00013" summary="- updated selenium Invitation and Assessments tests as per the PR comments">
+      <created>1524667216496</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1524667216496</updated>
+    </task>
+    <task id="LOCAL-00014" summary="- added selenium tests for Survey Reports">
+      <created>1524747160803</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1524747160803</updated>
+    </task>
+    <task id="LOCAL-00015" summary="few refactorings as per the comments on PR">
+      <created>1525359844550</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1525359844552</updated>
+    </task>
+    <task id="LOCAL-00016" summary="added Web driver wait to check failing automation tests">
+      <created>1526031690132</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1526031690132</updated>
+    </task>
+    <task id="LOCAL-00017" summary="added browser wait on failing elem for testing">
+      <created>1526280251848</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1526280251848</updated>
+    </task>
+    <task id="LOCAL-00018" summary="modified distelli-manifest `make test-backend` to `make test`">
+      <created>1526627525035</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1526627525035</updated>
+    </task>
+    <task id="LOCAL-00019" summary="- removed sleeps for user tests&#10;- updated tests with registration catpcha">
+      <created>1527159395272</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1527159395272</updated>
+    </task>
+    <task id="LOCAL-00020" summary="- updated and fixed invitation tests&#10;- registration tests pending recaptcha">
+      <created>1527580374729</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1527580374729</updated>
+    </task>
+    <task id="LOCAL-00021" summary="update and fixed assessments tests">
+      <created>1527580402839</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1527580402839</updated>
+    </task>
+    <task id="LOCAL-00022" summary="updated and fixed invitation,assessments tests">
+      <created>1527684886594</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1527684886594</updated>
+    </task>
+    <task id="LOCAL-00023" summary="- updated and fixed Registration automation tests with new changes">
+      <created>1527756740106</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1527756740106</updated>
+    </task>
+    <task id="LOCAL-00024" summary="updated forgot pass automation test">
+      <created>1527860467404</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1527860467404</updated>
+    </task>
+    <task id="LOCAL-00025" summary="- invitation tests with the new changes&#10;- negative test scenarios for user invitations">
+      <created>1528122761091</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1528122761091</updated>
+    </task>
+    <task id="LOCAL-00026" summary="- added assessments automation test with new changes">
+      <created>1528724108581</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1528724108581</updated>
+    </task>
+    <task id="LOCAL-00027" summary="- added user dashboard automation tests for verifying permissions">
+      <created>1528724145556</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1528724145556</updated>
+    </task>
+    <task id="LOCAL-00028" summary="added profile automation tests for user">
+      <created>1528807355453</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1528807355454</updated>
+    </task>
+    <task id="LOCAL-00029" summary="added document library automation tests for user">
+      <created>1529318833552</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1529318833552</updated>
+    </task>
+    <task id="LOCAL-00030" summary="added organisation and users automation tests">
+      <created>1529498665463</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1529498665464</updated>
+    </task>
+    <task id="LOCAL-00031" summary="added automation tests for reports and landing page">
+      <created>1530180182019</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1530180182019</updated>
+    </task>
+    <task id="LOCAL-00032" summary="workign with docker files">
+      <created>1532337524846</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1532337524846</updated>
+    </task>
+    <task id="LOCAL-00033" summary="fixed invitations and assessments test for subscription feature">
+      <created>1532692591959</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1532692591959</updated>
+    </task>
+    <task id="LOCAL-00034" summary="fixed invitations and assessments test with addition of subscription feature">
+      <created>1532694763642</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1532694763642</updated>
+    </task>
+    <task id="LOCAL-00035" summary="added automation tests for Subscription fixed assessments test">
+      <created>1533289588929</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1533289588929</updated>
+    </task>
+    <task id="LOCAL-00036" summary="fixed subscription automation tests">
+      <created>1533295042975</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1533295042975</updated>
+    </task>
+    <option name="localTasksCounter" value="37" />
+    <servers />
+  </component>
+  <component name="TestHistory">
+    <history-entry file="Unittests_for_tests_test_live_LoginTests - 2018.04.19 at 14h 34m 01s.xml">
+      <configuration name="Unittests for tests.test_live.LoginTests" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittests_in_tests_test_live_LoginTests - 2018.04.19 at 14h 34m 35s.xml">
+      <configuration name="Unittests in tests.test_live.LoginTests" configurationId="tests" />
+    </history-entry>
+    <history-entry file="py_test_for_test_organisation_register - 2018.04.12 at 18h 39m 34s.xml">
+      <configuration name="py.test for test_organisation_register" configurationId="tests" />
+    </history-entry>
+    <history-entry file="py_test_for_test_organisation_register - 2018.04.12 at 18h 41m 38s.xml">
+      <configuration name="py.test for test_organisation_register" configurationId="tests" />
+    </history-entry>
+    <history-entry file="py_test_for_test_organisation_register - 2018.04.12 at 18h 42m 33s.xml">
+      <configuration name="py.test for test_organisation_register" configurationId="tests" />
+    </history-entry>
+    <history-entry file="py_test_for_test_organisation_register - 2018.04.12 at 18h 44m 59s.xml">
+      <configuration name="py.test for test_organisation_register" configurationId="tests" />
+    </history-entry>
+    <history-entry file="py_test_for_test_organisation_register - 2018.04.12 at 18h 47m 03s.xml">
+      <configuration name="py.test for test_organisation_register" configurationId="tests" />
+    </history-entry>
+    <history-entry file="py_test_for_test_organisation_register - 2018.04.12 at 18h 47m 17s.xml">
+      <configuration name="py.test for test_organisation_register" configurationId="tests" />
+    </history-entry>
+    <history-entry file="selenium_debugger - 2018.10.03 at 14h 05m 15s.xml">
+      <configuration name="selenium debugger" configurationId="tests" />
+    </history-entry>
+    <history-entry file="selenium_debugger - 2018.10.03 at 14h 05m 28s.xml">
+      <configuration name="selenium debugger" configurationId="tests" />
+    </history-entry>
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="67" y="25" width="1853" height="1055" extended-state="6" />
+    <layout>
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.487055" visible="true" weight="0.1704918" />
+      <window_info id="Structure" order="1" weight="0.24972677" />
+      <window_info id="Favorites" order="2" sideWeight="0.512945" side_tool="true" weight="0.23131393" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32777777" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.21359223" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.36666667" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.32777777" />
+      <window_info anchor="bottom" auto_hide="true" id="Version Control" order="7" weight="0.42556635" />
+      <window_info anchor="bottom" id="Python Console" order="8" weight="0.32847896" />
+      <window_info anchor="bottom" id="Messages" order="9" weight="0.32847896" />
+      <window_info anchor="bottom" id="Terminal" order="10" weight="0.3529412" />
+      <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
+      <window_info anchor="right" id="Commander" order="0" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Data View" order="3" weight="0.3296617" />
+    </layout>
+  </component>
+  <component name="Vcs.Log.History.Properties">
+    <option name="COLUMN_ORDER">
+      <list>
+        <option value="0" />
+        <option value="2" />
+        <option value="3" />
+        <option value="1" />
+      </list>
+    </option>
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="RECENTLY_FILTERED_USER_GROUPS">
+                <collection />
+              </option>
+              <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+                <collection />
+              </option>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="GBL-85_user_registration_automation" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+              <option name="COLUMN_ORDER">
+                <list>
+                  <option value="0" />
+                  <option value="1" />
+                  <option value="2" />
+                  <option value="3" />
+                </list>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="RECENT_FILTERS">
+      <map>
+        <entry key="Branch">
+          <value>
+            <list />
+          </value>
+        </entry>
+        <entry key="User">
+          <value>
+            <list />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="- updated selenium Login, Register tests as per the PR comments&#10;- Extracted method into Mixin class" />
+    <MESSAGE value="- updated selenium Invitation and Assessments tests as per the PR comments" />
+    <MESSAGE value="- added selenium tests for Survey Reports" />
+    <MESSAGE value="few refactorings as per the comments on PR" />
+    <MESSAGE value="added Web driver wait to check failing automation tests" />
+    <MESSAGE value="added browser wait on failing elem for testing" />
+    <MESSAGE value="modified distelli-manifest `make test-backend` to `make test`" />
+    <MESSAGE value="- removed sleeps for user tests&#10;- updated tests with registration catpcha" />
+    <MESSAGE value="- updated and fixed invitation tests&#10;- registration tests pending recaptcha" />
+    <MESSAGE value="update and fixed assessments tests" />
+    <MESSAGE value="updated and fixed invitation,assessments tests" />
+    <MESSAGE value="- updated and fixed Registration automation tests with new changes" />
+    <MESSAGE value="updated forgot pass automation test" />
+    <MESSAGE value="- invitation tests with the new changes&#10;- negative test scenarios for user invitations" />
+    <MESSAGE value="- added assessments automation test with new changes" />
+    <MESSAGE value="- added user dashboard automation tests for verifying permissions" />
+    <MESSAGE value="added profile automation tests for user" />
+    <MESSAGE value="added document library automation tests for user" />
+    <MESSAGE value="added organisation and users automation tests" />
+    <MESSAGE value="added automation tests for reports and landing page" />
+    <MESSAGE value="workign with docker files" />
+    <MESSAGE value="fixed invitations and assessments test for subscription feature" />
+    <MESSAGE value="fixed invitations and assessments test with addition of subscription feature" />
+    <MESSAGE value="added automation tests for Subscription fixed assessments test" />
+    <MESSAGE value="fixed subscription automation tests" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixed subscription automation tests" />
+    <option name="PRESELECT_EXISTING_CHANGELIST" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/gfgp1/lib/python3.5/site-packages/selenium/webdriver/remote/webdriver.py</url>
+          <line>19</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/surveys/tests/test_live.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/users/tests/test_forms.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/gfgp1/lib/python3.5/site-packages/django/utils/translation/trans_real.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-714" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/gfgp1/lib/python3.5/site-packages/django/contrib/staticfiles/testing.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="4" column="6" selection-start-line="4" selection-start-column="6" selection-end-line="4" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/package.json">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/manage.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/users/fixtures/organisationtypes.json">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor />
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/users/admin.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#0#25#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Gruntfile.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="19" column="64" lean-forward="true" selection-start-line="19" selection-start-column="64" selection-end-line="19" selection-end-column="64" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/users/tests/user_fixture.json">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/gfgp1/lib/python3.5/site-packages/factory/declarations.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="109">
+          <caret line="626" column="30" selection-start-line="626" selection-start-column="6" selection-end-line="626" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/gfgp1/lib/python3.5/site-packages/factory/django.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="273">
+          <caret line="180" column="30" selection-start-line="180" selection-start-column="23" selection-end-line="180" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/gfgp1/lib/python3.5/site-packages/rolepermissions/roles.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="288">
+          <caret line="99" column="63" selection-start-line="99" selection-start-column="63" selection-end-line="99" selection-end-column="63" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/roles.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="20" column="34" selection-start-line="20" selection-start-column="34" selection-end-line="20" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tmp/20181001-094242-140044340710256.log">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/gfgp1/lib/python3.5/site-packages/factory/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="510">
+          <caret line="96" selection-start-line="96" selection-end-line="96" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/gfgp1/lib/python3.5/site-packages/user_management/models/mixins.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1837">
+          <caret line="59" column="4" selection-start-line="59" selection-start-column="4" selection-end-line="59" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/surveys/tests/factories.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="101">
+          <caret line="39" column="29" selection-start-line="39" selection-start-column="29" selection-end-line="39" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/documents/tests/factories.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
+          <folding>
+            <element signature="e#0#14#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/subscriptions/tests/factories.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="24" column="22" selection-start-line="24" selection-start-column="16" selection-end-line="24" selection-end-column="22" />
+          <folding>
+            <element signature="e#0#14#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/gfgp1/lib/python3.5/site-packages/django/contrib/auth/base_user.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="291">
+          <caret line="51" column="6" selection-start-line="51" selection-start-column="6" selection-end-line="51" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/users/tests/test_sample.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="21" selection-start-line="21" selection-end-line="21" />
+          <folding>
+            <element signature="e#0#42#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/tests/utils.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="12" column="45" selection-start-line="12" selection-start-column="34" selection-end-line="12" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/users/tests/factories.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="4" selection-start-line="4" selection-end-line="4" />
+          <folding>
+            <element signature="e#0#14#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/gfgp1/lib/python3.5/site-packages/django/contrib/auth/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3944">
+          <caret line="247" column="46" selection-start-line="247" selection-start-column="46" selection-end-line="247" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/subscriptions/tests/test_live.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#0#25#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/users/tests/my_factories.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="22" selection-start-line="22" selection-end-line="22" />
+          <folding>
+            <element signature="e#0#14#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/gfgp1/lib/python3.5/site-packages/user_management/__init__.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/gfgp1/lib/python3.5/site-packages/django/contrib/sites/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="291">
+          <caret line="83" column="6" selection-start-line="83" selection-start-column="6" selection-end-line="83" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/gfgp1/lib/python3.5/site-packages/orderable/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="6" selection-start-line="6" selection-start-column="6" selection-end-line="6" selection-end-column="6" />
+          <folding>
+            <element signature="e#0#53#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="13" column="34" selection-start-line="13" selection-start-column="34" selection-end-line="13" selection-end-column="34" />
+          <folding>
+            <element signature="e#0#32#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/utils.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#0#35#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/requirements.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="230">
+          <caret line="23" column="27" lean-forward="true" selection-start-line="23" selection-start-column="27" selection-end-line="23" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/gfgp1/lib/python3.5/site-packages/django/db/models/query.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="291">
+          <caret line="174" column="8" selection-start-line="174" selection-start-column="8" selection-end-line="174" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/gfgp1/lib/python3.5/site-packages/django/utils/translation/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="291">
+          <caret line="104" selection-start-line="104" selection-end-line="104" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/surveys/querysets.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="5" column="6" selection-start-line="5" selection-start-column="6" selection-end-line="5" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/gfgp1/lib/python3.5/site-packages/django/db/models/deletion.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="21" column="4" selection-start-line="21" selection-start-column="4" selection-end-line="21" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/gfgp1/lib/python3.5/site-packages/django/contrib/postgres/fields/citext.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" column="6" selection-start-line="14" selection-start-column="6" selection-end-line="14" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/subscriptions/querysets.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="5" column="6" selection-start-line="5" selection-start-column="6" selection-end-line="5" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/gfgp1/lib/python3.5/site-packages/django/conf/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1673">
+          <caret line="200" selection-start-line="200" selection-end-line="200" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/documents/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="12" column="50" lean-forward="true" selection-start-line="12" selection-start-column="50" selection-end-line="12" selection-end-column="50" />
+          <folding>
+            <element signature="e#0#28#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/users/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="339">
+          <caret line="162" column="33" selection-start-line="162" selection-start-column="33" selection-end-line="162" selection-end-column="33" />
+          <folding>
+            <element signature="e#0#36#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/users/forms.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#0#55#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="22" selection-start-line="22" selection-end-line="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Makefile">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="160">
+          <caret line="31" lean-forward="true" selection-start-line="31" selection-end-line="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/subscriptions/admin.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="697">
+          <caret line="51" column="23" selection-start-line="51" selection-start-column="23" selection-end-line="51" selection-end-column="23" />
+          <folding>
+            <element signature="e#0#32#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/surveys/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" column="27" selection-start-line="14" selection-start-column="26" selection-end-line="14" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/subscriptions/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="19" selection-start-line="19" selection-end-line="19" />
+          <folding>
+            <element signature="e#0#25#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/users/tests/test_live.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="295" column="9" selection-start-line="295" selection-start-column="9" selection-end-line="295" selection-end-column="9" />
+          <folding>
+            <element signature="e#0#11#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>

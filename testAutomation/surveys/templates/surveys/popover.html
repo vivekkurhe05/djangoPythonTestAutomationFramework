@@ -1,0 +1,21 @@
+<div class='popover' role='tooltip'>
+    <div class='arrow'></div>
+    <div class='d-flex align-items-start px-3 py-2 b-b text-bold'>
+        <div class='number _700'>{{ step.section.area.number }}</div>
+        <h4 class='popover-header py-0 pl-1 border-0'>{{ step.section.area.name }}</h4>
+    </div>
+    <div class='pop-body px-3'>
+        <a class='link text-u-l' href='{% url 'survey-section' pk=object.pk section=step.section.pk %}'>
+            <span class='number _700'>{{ step.section.get_code }}</span> {{ step.section.name }}
+        </a>
+        <div class='my-2'>
+            <span class='number'>{{ step.count }} / {{ step.total }} </span>
+            <span class='text-bold has-color-level-{{ object.level }}'>{{ object.get_level_display }}</span>
+            question{{ step.total|pluralize }} complete
+        </div>
+        <div class='d-flex mt-4'>
+            <div class='status-dot {{ step.slug }}'></div>
+            <div class='mx-2'>{{ step.label }}</div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,98 @@
+<div class="box-body px-4">
+    <div class="row">
+        <div class="col-sm-6 mb-2">
+            <div>{{ organisation.legal_name }}</div>
+            <div>{{ organisation.acronym }}</div>
+            <div>{{ organisation.known_as }}</div>
+            <div>{{ organisation.parent_organisation }}</div>
+            <div>{{ organisation.types.all|join:', ' }}</div>
+
+            <div class="mt-4">
+                <h6>Registration information</h6>
+                <dl class="row">
+                    {% if organisation.registration_number %}
+                        <dt class="col-sm-4">Registration number</dt>
+                        <dd class="col-sm-8">{{ organisation.registration_number }}</dd>
+                    {% endif %}
+                    {% if organisation.supporting_file %}
+                        <dt class="col-sm-4">Supporting document</dt>
+                        <dd class="col-sm-8">
+                            <a class="link has-primary-highlight text-u-l" href="{{ organisation.supporting_file.url }}">Supporting document</a>
+                        </dd>
+                    {% endif %}
+                    {% if organisation.iati_uid %}
+                        <dt class="col-sm-4">IATI UID</dt>
+                        <dd class="col-sm-8">{{ organisation.iati_uid }}</dd>
+                    {% endif %}
+                    {% if organisation.last_updated %}
+                        <dt class="col-sm-4">Last Updated</dt>
+                        <dd class="col-sm-8">{{ organisation.last_updated | date }}</dd>
+                    {% endif %}
+                </dl>
+            </div>
+        </div>
+
+        <div class="col-sm-6 text-sm-right mb-2">
+            <div>{{ organisation.address_1 }}</div>
+            <div>{{ organisation.address_2 }}</div>
+            <div>{{ organisation.city }}</div>
+            <div>{{ organisation.province }}</div>
+            <div>{{ organisation.zip }}</div>
+            {% if organisation.annual_expenditure %}
+                <div>PO Box {{ organisation.po_box }}</div>
+            {% endif %}
+            <div>{{ organisation.country|default:'' }}</div>
+            <div>{{ organisation.phone_number }}</div>
+        </div>
+    </div>
+
+    <div class="row">
+        {% if organisation.size or organisation.annual_expenditure %}
+            <div class="col-sm-6 mb-2">
+                <h6>Other details</h6>
+                <dl class="row">
+                    {% if organisation.size %}
+                        <dt class="col-sm-4">Size</dt>
+                        <dd class="col-sm-8">{{ organisation.get_size_display }}</dd>
+                    {% endif %}
+                    {% if organisation.annual_expenditure %}
+                        <dt class="col-sm-4">Annual expenditure</dt>
+                        <dd class="col-sm-8">{{ organisation.get_annual_expenditure_display }}</dd>
+                    {% endif %}
+                    {% if organisation.landmark %}
+                        <dt class="col-sm-4">Landmark</dt>
+                        <dd class="col-sm-8">{{ organisation.landmark }}</dd>
+                    {% endif %}
+                </dl>
+            </div>
+        {% endif %}
+
+        {% if organisation.website or organisation.social_media or organisation.other_social_media %}
+            <div class="col-sm-6 text-sm-right mb-2">
+                <h6>Online</h6>
+                {% if organisation.website %}
+                    <div>
+                        <a href="{{ organisation.website }}" target="_blank" class="link has-primary-highlight text-u-l">{{ organisation.website }}</a>
+                    </div>
+                {% endif %}
+                {% if organisation.social_media %}
+                    <div>
+                        <a href="{{ organisation.social_media }}" target="_blank" class="link has-primary-highlight text-u-l">{{ organisation.social_media }}</a>
+                    </div>
+                {% endif %}
+                {% if organisation.other_social_media %}
+                    <div>
+                        <a href="{{ organisation.other_social_media }}" target="_blank" class="link has-primary-highlight text-u-l">{{ organisation.other_social_media }}</a>
+                    </div>
+                {% endif %}
+            </div>
+        {% endif %}
+
+        {% if organisation.biography %}
+            <div class="col-sm-12 mt-2">
+                <h6>Biography</h6>
+                {{ organisation.biography|linebreaks }}
+            </div>
+        {% endif %}
+    </div>
+</div>

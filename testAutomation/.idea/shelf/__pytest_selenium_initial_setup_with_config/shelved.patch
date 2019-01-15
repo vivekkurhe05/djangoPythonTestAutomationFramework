@@ -1,0 +1,142 @@
+Index: core/settings.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import os\n\nimport dj_database_url\nimport django_cache_url\n\n\nBASE_DIR = os.path.dirname(os.path.dirname(__file__))\nCONF_DIR = os.path.abspath(os.path.join(BASE_DIR, 'conf'))\n\nSECRET_KEY = os.environ.get('SECRET_KEY', 'replace_me_please')\n\nDEBUG = bool(os.environ.get('DEBUG', False))\n\nAUTH_USER_MODEL = 'users.User'\nLOGIN_REDIRECT_URL = 'home'\nLOGOUT_REDIRECT_URL = 'landing'\nLOGIN_URL = 'login'\nLOGOUT_URL = 'logout'\nINCUNA_AUTH_LOGIN_FORM = 'users.forms.SignInForm'\nINCUNA_PASSWORD_RESET_FORM = 'users.forms.PasswordResetForm'\n\nCSRF_COOKIE_SECURE = bool(os.environ.get('CSRF_COOKIE_SECURE', not DEBUG))\n\nALLOWED_HOSTS = [host for host in os.environ.get('ALLOWED_HOSTS', '').split(',') if host]\n\nDATABASES = {'default': dj_database_url.config(default='postgres://localhost/gfgp')}\nDATABASES['default']['ATOMIC_REQUESTS'] = True\n\nCACHES = {'default': django_cache_url.config()}\n\nEMAIL_BACKEND = os.environ.get(\n    'EMAIL_BACKEND',\n    'django.core.mail.backends.smtp.EmailBackend',\n)\nEMAIL_FILE_PATH = os.environ.get('EMAIL_FILE_PATH', 'tmp')\n\nCOMPRESS_ENABLED = bool(os.environ.get('COMPRESS_ENABLED', not DEBUG))\n\nDEFAULT_FROM_EMAIL = os.environ.get('DEFAULT_FROM_EMAIL', 'admin@incuna.com')\nSERVER_EMAIL = os.environ.get('SERVER_EMAIL', DEFAULT_FROM_EMAIL)\nMANAGERS = ADMINS = (('Incuna error reporting', 'bugs+gfgp@incuna.com'),)\n\nEMAIL_SUBJECT_PREFIX = os.environ.get('EMAIL_SUBJECT_PREFIX', '')\nEMAIL_HOST = os.environ.get('EMAIL_HOST', 'localhost')\n\nSECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTOCOL', 'https')\nSESSION_COOKIE_SECURE = os.environ.get('SESSION_COOKIE_SECURE')\n\nSITE_ID = 1\n\nINSTALLED_APPS = (\n    # Core project app\n    'core',\n    'surveys',\n    'users',\n    'documents',\n\n    # Third party\n    'bleach',\n    'compressor',\n    'crispy_forms',\n    'django_extensions',\n    'feincms',\n    'feincms.module.medialibrary',\n    'feincms.module.page',\n    'feincms_extensions',\n    'incuna_auth',\n    'mptt',\n    'opbeat.contrib.django',\n    'orderable',\n    'rest_framework',\n    'rolepermissions',\n    # 'rewrite_external_links',\n    'tinymce',\n    'user_management.ui',\n\n    'django.contrib.admin',\n    'django.contrib.auth',\n    'django.contrib.contenttypes',\n    'django.contrib.sessions',\n    'django.contrib.sites',\n    'django.contrib.messages',\n    'django.contrib.staticfiles',\n\n    # `debug_toolbar` expect to be loaded after `django.contrib.staticfiles`\n    'debug_toolbar',\n)\n\nif os.environ.get('DISABLE_TOOLBAR'):\n    INTERNAL_IPS = ['']\nelse:\n    INTERNAL_IPS = ['127.0.0.1']\n\nMIGRATION_MODULES = {\n    'page': 'core.projectmigrations.page',\n    'medialibrary': 'core.projectmigrations.medialibrary',\n}\n\nMIDDLEWARE_CLASSES = (\n    'opbeat.contrib.django.middleware.OpbeatAPMMiddleware',\n    'django.contrib.sessions.middleware.SessionMiddleware',\n    'django.middleware.locale.LocaleMiddleware',\n    'django.middleware.common.CommonMiddleware',\n    'django.middleware.csrf.CsrfViewMiddleware',\n    'django.contrib.auth.middleware.AuthenticationMiddleware',\n    'django.contrib.auth.middleware.SessionAuthenticationMiddleware',\n    'django.contrib.messages.middleware.MessageMiddleware',\n    'django.middleware.clickjacking.XFrameOptionsMiddleware',\n    'django.middleware.security.SecurityMiddleware',\n    # 'rewrite_external_links.middleware.RewriteExternalLinksMiddleware',\n    'debug_toolbar.middleware.DebugToolbarMiddleware',\n\n)\n\nAUTHENTICATION_BACKENDS = (\n    'django.contrib.auth.backends.ModelBackend',\n)\n\nDEFAULT_AUTHENTICATION_CLASSES = os.environ.get(\n    'DEFAULT_AUTHENTICATION_CLASSES',\n    'rest_framework.authentication.SessionAuthentication',\n).split(',')\n\nDEFAULT_RENDERER_CLASSES = os.environ.get(\n    'DEFAULT_RENDERER_CLASSES',\n    'rest_framework.renderers.JSONRenderer',\n).split(',')\n\nREST_FRAMEWORK = {\n    'DEFAULT_RENDERER_CLASSES': DEFAULT_RENDERER_CLASSES,\n    'DEFAULT_PERMISSION_CLASSES': (\n        'rest_framework.permissions.IsAuthenticated',\n    ),\n    'DEFAULT_AUTHENTICATION_CLASSES': DEFAULT_AUTHENTICATION_CLASSES,\n    'DEFAULT_PARSER_CLASSES': (\n        'rest_framework.parsers.JSONParser',\n    ),\n    'DEFAULT_THROTTLE_RATES': {\n        'logins': os.environ.get('LOGIN_RATE_LIMIT', '10/hour',),\n        'passwords': os.environ.get('PASSWORD_RATE_LIMIT', '10/hour',),\n    },\n}\nif DEBUG:\n    REST_FRAMEWORK['DEFAULT_RENDERER_CLASSES'] += (\n        'rest_framework.renderers.BrowsableAPIRenderer',\n    )\n\nROOT_URLCONF = 'core.urls'\n\nTEMPLATES = [\n    {\n        'BACKEND': 'django.template.backends.django.DjangoTemplates',\n        'APP_DIRS': True,\n        'OPTIONS': {\n            'context_processors': [\n                'django.template.context_processors.debug',\n                'django.template.context_processors.media',\n                'django.template.context_processors.request',\n                'django.contrib.auth.context_processors.auth',\n                'django.contrib.messages.context_processors.messages',\n                'feincms.context_processors.add_page_if_missing',\n            ],\n            'debug': bool(os.environ.get('TEMPLATE_DEBUG', DEBUG)),\n        },\n    },\n]\n\nSTATICFILES_FINDERS = (\n    'django.contrib.staticfiles.finders.FileSystemFinder',\n    'django.contrib.staticfiles.finders.AppDirectoriesFinder',\n)\n\nWSGI_APPLICATION = 'core.wsgi.application'\n\nTIME_ZONE = 'UTC'\nLANGUAGES = (('en-gb', 'English'),)\nLANGUAGE_CODE = 'en-gb'\nUSE_I18N = True\nUSE_L10N = True\nUSE_TZ = True\nLOCALE_PATHS = (\n    os.path.join(BASE_DIR, 'locale'),\n)\n\nAWS_SES_ACCESS_KEY_ID = os.environ.get('AWS_SES_ACCESS_KEY_ID')\nAWS_SES_SECRET_ACCESS_KEY = os.environ.get('AWS_SES_SECRET_ACCESS_KEY')\n\nAWS_SES_REGION_NAME = os.environ.get('AWS_SES_REGION_NAME')\nAWS_SES_REGION_ENDPOINT = os.environ.get('AWS_SES_REGION_ENDPOINT')\n\n# Static / client media settings for  for `django-storages` support\nAWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')\nAWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')\nAWS_STORAGE_BUCKET_NAME = os.environ.get('AWS_STORAGE_BUCKET_NAME')\nAWS_LOCATION = os.environ.get('AWS_LOCATION')\nDEFAULT_FILE_STORAGE = os.environ.get(\n    'DEFAULT_FILE_STORAGE',\n    'django.core.files.storage.FileSystemStorage',\n)\nSTATICFILES_STORAGE = os.environ.get(\n    'STATICFILES_STORAGE',\n    'django.contrib.staticfiles.storage.StaticFilesStorage',\n)\n\nSTATIC_ROOT_DEFAULT = os.path.join(BASE_DIR, 'static_media')\nSTATIC_ROOT = os.environ.get('STATIC_ROOT', STATIC_ROOT_DEFAULT)\n\nSTATIC_URL = os.environ.get('STATIC_URL', '/static/')\n\nMEDIA_ROOT_DEFAULT = os.path.join(BASE_DIR, 'client_media')\nMEDIA_ROOT = os.environ.get('MEDIA_ROOT', MEDIA_ROOT_DEFAULT)\nMEDIA_URL = os.environ.get('MEDIA_URL', '/client/')\n\nTEST_RUNNER = 'core.runner.TestRunner'\n\n# Used by frontend in development mode\nFEATURE_STYLE_GUIDE = os.environ.get('FEATURE_STYLE_GUIDE', DEBUG)\nFEATURE_MORE_INFORMATION = bool(os.environ.get('FEATURE_MORE_INFORMATION', False))\n\n# Bleach\nBLEACH_ALLOWED_TAGS = [\n    'p', 'b', 'i', 'u', 'em', 'strike', 'strong', 'a', 'ul', 'li', 'ol', 'sup',\n    'sub', 'div', 'pre', 'blockquote', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6',\n]\nBLEACH_STRIP_TAGS = True\n\n\nTINYMCE_TOOLBAR = (\n    'insertfile undo redo | styleselect | bold italic | ' +\n    'alignleft aligncenter alignright alignjustify | ' +\n    'bullist numlist outdent indent | link | media'\n)\nTINYMCE_JS_URL = '//cdn.tinymce.com/4/tinymce.min.js'\nTINYMCE_DEFAULT_CONFIG = {\n    'height': '300',\n    'plugins': 'fullscreen paste link media',\n    'paste_auto_cleanup_on_paste': True,\n    'relative_urls': False,\n    'invalid_elements': 'script',\n    'statusbar': False,\n    'menubar': False,\n    'toolbar': TINYMCE_TOOLBAR,\n}\n\nOPBEAT = {\n    'ORGANIZATION_ID': os.environ.get('OPBEAT_ORGANIZATION_ID'),\n    'APP_ID': os.environ.get('OPBEAT_APP_ID'),\n    'SECRET_TOKEN': os.environ.get('OPBEAT_SECRET_TOKEN'),\n}\n\n\nCRISPY_TEMPLATE_PACK = 'bootstrap4'\nROLEPERMISSIONS_MODULE = 'core.roles'\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- core/settings.py	(date 1523618104000)
++++ core/settings.py	(revision )
+@@ -23,7 +23,8 @@
+ 
+ ALLOWED_HOSTS = [host for host in os.environ.get('ALLOWED_HOSTS', '').split(',') if host]
+ 
+-DATABASES = {'default': dj_database_url.config(default='postgres://localhost/gfgp')}
++DATABASES = {'default': dj_database_url.config(default='postgres://'
++                                               'pavan:psql@localhost/gfgp')}
+ DATABASES['default']['ATOMIC_REQUESTS'] = True
+ 
+ CACHES = {'default': django_cache_url.config()}
+Index: core/tests/specs/config.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import os\n\nif os.environ.get(\"TEST_ENV\") == 'dev':\n    BASE_URL = \"http://localhost:8000\"\n    ORGANISATION = {'username': 'pavan.mansukhani@theredpandas.com', 'password': 'pavan'}\n    USER = {'username': 'vijay@vmio.in', 'password': 'pass'}\n    ADMIN = {'username': 'vijay@mail.com', 'password': 'admin'}\n    DB_URL = 'postgres://pavan:psql@localhost/gfgp'  # change to test db url\n\nelse:\n    BASE_URL = \"http://localhost:8000\"\n    ORGANISATION = {'username': 'pavan.mansukhani@theredpandas.com', 'password': 'pavan'}\n    USER = {'username': 'vijay@vmio.in', 'password': 'pass'}\n    ADMIN = {'username': 'vijay@mail.com', 'password': 'admin'}\n    DB_URL = 'postgres://pavan:psql@localhost/gfgp'  # change to test db url\n\n\nREGISTER_DATA = {'name': 'pavan', 'emailAddress': 'pavan.mansukhani@theredpandas.com',\n                 'password': 'admin', 'mobile': '8879237340', 'location': 'Mumbai',\n                 'role': 'dev', 'legalName': 'Red Panda', 'optionalName': 'The RedPanda',\n                 'parentOrg': 'RedPanda', 'regNumber': '123456',\n                 'orgIdentifier': 'redpanda', 'address1': '6th floor, Cerebrum',\n                 'address2': 'Kalyani Nagar', 'city': 'Pune',\n                 'province': 'Pune', 'country': 'India', 'postalCode': '400007',\n                 'offPhone': '1231231234', 'website': 'https://theredpandas.com'}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- core/tests/specs/config.py	(date 1523618104000)
++++ core/tests/specs/config.py	(revision )
+@@ -1,3 +1,4 @@
++
+ import os
+ 
+ if os.environ.get("TEST_ENV") == 'dev':
+@@ -5,14 +6,14 @@
+     ORGANISATION = {'username': 'pavan.mansukhani@theredpandas.com', 'password': 'pavan'}
+     USER = {'username': 'vijay@vmio.in', 'password': 'pass'}
+     ADMIN = {'username': 'vijay@mail.com', 'password': 'admin'}
+-    DB_URL = 'postgres://pavan:psql@localhost/gfgp'  # change to test db url
++    DB_URL = 'postgres://pavan:psql@localhost/gfgp_pytest'  # change to test db url
+ 
+ else:
+     BASE_URL = "http://localhost:8000"
+     ORGANISATION = {'username': 'pavan.mansukhani@theredpandas.com', 'password': 'pavan'}
+     USER = {'username': 'vijay@vmio.in', 'password': 'pass'}
+     ADMIN = {'username': 'vijay@mail.com', 'password': 'admin'}
+-    DB_URL = 'postgres://pavan:psql@localhost/gfgp'  # change to test db url
++    DB_URL = 'postgres://pavan:psql@localhost/gfgp_pytest'  # change to test db url
+ 
+ 
+ REGISTER_DATA = {'name': 'pavan', 'emailAddress': 'pavan.mansukhani@theredpandas.com',
+@@ -22,4 +23,4 @@
+                  'orgIdentifier': 'redpanda', 'address1': '6th floor, Cerebrum',
+                  'address2': 'Kalyani Nagar', 'city': 'Pune',
+                  'province': 'Pune', 'country': 'India', 'postalCode': '400007',
+-                 'offPhone': '1231231234', 'website': 'https://theredpandas.com'}
++                 'offPhone': '1231231234', 'website': 'https://theredpandas.com'}
+\ No newline at end of file
+Index: core/tests/specs/test_organisation_login.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import time\n\nfrom core.tests.specs import config\n\nGFGP_ASSESSMENT_SYSTEM = \"GFGP Assessment System\"\n\n\ndef test_login_as_registered_user(driver, logout):\n\n    assert GFGP_ASSESSMENT_SYSTEM in driver.title\n\n    login_link = driver.find_elements_by_link_text(\"Login\")[1]\n    driver.execute_script(\"return arguments[0].scrollIntoView();\", login_link)\n    login_link.click()\n    time.sleep(0.5)\n    assert \"login\" in driver.current_url\n    driver.find_element_by_id(\"id_username\").send_keys(config.USER[\"username\"])\n    driver.find_element_by_id(\"id_password\").send_keys(config.USER[\"password\"])\n    login_button = driver.find_element_by_css_selector(\"button[type='submit']\")\n    login_button.click()\n    assert \"Dashboard\" == driver.find_element_by_id(\"pageTitle\").text\n    print(driver.current_url)\n    assert \"home\" in driver.current_url\n    logout()\n\n\ndef test_login_as_unregistered_user(driver):\n    driver.get(config.BASE_URL)\n\n    assert GFGP_ASSESSMENT_SYSTEM in driver.title\n\n    driver.implicitly_wait(0.5)\n    # time.sleep(0.5)\n    login_link = driver.find_elements_by_link_text(\"Login\")[1]\n    driver.execute_script(\"return arguments[0].scrollIntoView();\", login_link)\n    login_link.click()\n    time.sleep(0.5)\n    assert \"login\" in driver.current_url\n    driver.find_element_by_id(\"id_username\").send_keys(\"randomusername\")\n    driver.find_element_by_id(\"id_password\").send_keys(\"randompassword\")\n    login_button = driver.find_element_by_css_selector(\"button[type='submit']\")\n    login_button.click()\n    expected_message = \"Please enter a correct Email address and password. \" \\\n                       \"Note that both fields may be case-sensitive.\"\n    assert \"login\" in driver.current_url\n    error_text = driver.find_element_by_id(\"error_notification\").text\n    print(error_text)\n    assert expected_message == error_text\n\n\ndef test_login_as_registered_user_with_incorrect_password(driver):\n    assert GFGP_ASSESSMENT_SYSTEM in driver.title\n    driver.get(config.BASE_URL)\n\n    login_link = driver.find_elements_by_link_text(\"Login\")[1]\n    driver.execute_script(\"return arguments[0].scrollIntoView();\", login_link)\n    login_link.click()\n    time.sleep(0.5)\n    assert \"login\" in driver.current_url\n    driver.find_element_by_id(\"id_username\").send_keys(config.USER[\"username\"])\n    driver.find_element_by_id(\"id_password\").send_keys(\"randompassword\")\n    login_button = driver.find_element_by_css_selector(\"button[type='submit']\")\n    login_button.click()\n    expected_message = \"Please enter a correct Email address and password. \" \\\n                       \"Note that both fields may be case-sensitive.\"\n    assert \"login\" in driver.current_url\n    error_text = driver.find_element_by_id(\"error_notification\").text\n    print(error_text)\n    assert expected_message == error_text\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- core/tests/specs/test_organisation_login.py	(date 1523618104000)
++++ core/tests/specs/test_organisation_login.py	(revision )
+@@ -14,8 +14,9 @@
+     login_link.click()
+     time.sleep(0.5)
+     assert "login" in driver.current_url
+-    driver.find_element_by_id("id_username").send_keys(config.USER["username"])
+-    driver.find_element_by_id("id_password").send_keys(config.USER["password"])
++    db_user = config.REGISTER_DATA
++    driver.find_element_by_id("id_username").send_keys(db_user.get("emailAddress"))
++    driver.find_element_by_id("id_password").send_keys(db_user.get("password"))
+     login_button = driver.find_element_by_css_selector("button[type='submit']")
+     login_button.click()
+     assert "Dashboard" == driver.find_element_by_id("pageTitle").text
+Index: Makefile
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>verbosity=1\nlanguage='en-gb'\nEMAIL_BACKEND=django.core.mail.backends.console.EmailBackend\nLANGUAGES =\n\nhelp:\n\t@echo \"Usage:\"\n\t@echo \" make help                   -- display this help\"\n\t@echo \" make install                -- install backend\"\n\t@echo \" make runserver              -- run site\"\n\ninstall-pip:\n\tpip install -r requirements.txt\n\ninstall-db:\n\tif [ `psql -t -c \"SELECT COUNT(1) FROM pg_catalog.pg_database WHERE datname = 'gfgp'\"` -eq 0 ]; then \\\n\t\tpsql  -c \"CREATE DATABASE gfgp\"; \\\n\tfi\n\ninstall-django:\n\t@python manage.py migrate\n\t$(MAKE) loaddata\n\ninstall-frontend:\n\tnpm install\n\ninstall: install-pip\ninstall: install-db\ninstall: install-django\ninstall: install-frontend\n\nloaddata:\n\tpython manage.py loaddata page.json\n\nrunserver:\n\t@DEBUG=1 \\\n\t\tEMAIL_BACKEND=$(EMAIL_BACKEND) \\\n\t\tpython manage.py runserver_plus\n\ntest-backend:\n\t@EMAIL_BACKEND=django.core.mail.backends.console.EmailBackend \\\n\t\tOPBEAT_DISABLE_SEND=1 \\\n\t\tcoverage run manage.py test --keepdb --verbosity=$(verbosity)\n\t@coverage report -m\n\t@flake8 .\n\ntest-frontend:\n\t@grunt test\n\ntest: test-backend\ntest: test-frontend\n\ntranslations: site_packages = $(shell python -c \"import distutils; print(distutils.sysconfig.get_python_lib())\")\ntranslations:\n\t@mkdir -p locale\n\t@ln -s $(site_packages)/user_management .\n\t@python manage.py makemessages --locale=$(language) -s --no-wrap --ignore='*node_modules*' --ignore=\"user_management/api*\"\n\t@rm user_management\n\t@python manage.py compilemessages --locale=$(language)\n\ntranslations-all:\n\tfor language in $(LANGUAGES) ; do \\\n\t\techo $$language ; \\\n\t\t$(MAKE) translations language=$$language ; \\\n\tdone\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- Makefile	(date 1523618104000)
++++ Makefile	(revision )
+@@ -63,3 +63,19 @@
+ 		echo $$language ; \
+ 		$(MAKE) translations language=$$language ; \
+ 	done
++
++runpytest:
++	pip install -r requirements.txt
++	if [ `psql -d $(defaultdb) -t -c "SELECT COUNT(1) FROM pg_catalog.pg_database WHERE datname = 'gfgp_pytest'"` -eq 1 ]; then \
++	    psql -U $(user) -d $(defaultdb)  -c "DROP DATABASE gfgp_pytest"; \
++	fi
++	if [ `psql -d $(defaultdb) -t -c "SELECT COUNT(1) FROM pg_catalog.pg_database WHERE datname = 'gfgp_pytest'"` -eq 0 ]; then \
++		psql -U $(user) -d $(defaultdb)  -c "CREATE DATABASE gfgp_pytest"; \
++	fi
++	@python manage.py migrate
++	@echo "Starting server....."
++	@make runserver &
++	@py.test core/tests/specs/
++	@kill $(ps aux | grep 'python manage.py runserver_plus' | grep -v 'grep' | awk '{print $2}')
++	@echo "killing server....."
++	@psql -U $(user) -d $(defaultdb)  -c "DROP DATABASE gfgp_pytest";
+Index: core/tests/specs/GFGP-Automation_Setup_Readme
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+># GFGP Test Automation Steps:\n\n# Run server on local\n$ cd gfgp-website\n$ workon gfgp\n$ make runserver\n\n# new terminal\n$ workon gfgp\n$ cd core/tests/specs\n\n# To run all tests:\n$ py.test\n\n# To run single test: \n$ py.test test_login.py\n\n# To run multiple test files:\n$ py.test test_login.py test_register.py\n\n# To generate report html\n$ pytest --html=reports/report.html --self-contained-html\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- core/tests/specs/GFGP-Automation_Setup_Readme	(date 1523618104000)
++++ core/tests/specs/GFGP-Automation_Setup_Readme	(revision )
+@@ -20,3 +20,7 @@
+ 
+ # To generate report html
+ $ pytest --html=reports/report.html --self-contained-html
++
++
++#  @kill $(ps -C "python manage.py runserver_plus" -o ppid)
++#  @kill $(ps aux | grep 'python manage.py runserver_plus' | grep -v 'grep' | awk '{print $2}')
+\ No newline at end of file
+Index: core/tests/specs/conftest.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import random\n\nimport psycopg2\n\nimport pytest\nfrom selenium import webdriver\n\nfrom core.tests.specs import config\n\n\n@pytest.fixture(scope='module')\ndef driver(request):\n    driver = webdriver.Chrome()\n    driver.get(config.BASE_URL)\n\n    def close_browser():\n        print(\"Closing Chrome Driver \")\n        driver.quit()\n    request.addfinalizer(close_browser)\n    driver.maximize_window()\n    return driver\n\n\n@pytest.fixture\ndef logout(driver):\n    return lambda: driver.find_element_by_link_text(\"Logout\").click()\n\n\ndef gfgp_db_cursor_factory():\n    db_url = config.DB_URL\n\n    def cursor(arg):\n        with psycopg2.connect(db_url) as conn:\n            with conn.cursor() as curs:\n                print(arg)\n                curs.execute(arg)\n                return curs.fetchall()\n        conn.close()\n\n    return cursor\n\n\ndef gfgp_db_update_factory():\n    db_url = config.DB_URL\n\n    def cursor(arg):\n        with psycopg2.connect(db_url) as conn:\n            with conn.cursor() as curs:\n                print(arg)\n                curs.execute(arg)\n        conn.commit()\n        conn.close()\n\n    return cursor\n\n\n@pytest.fixture\ndef gfgp_db_cursor():\n    return gfgp_db_cursor_factory()\n\n\n@pytest.fixture\ndef gfgp_db_update():\n    return gfgp_db_update_factory()\n\n\n@pytest.fixture(scope=\"function\", name=\"modify_registered_user_email\")\ndef modify_registered_user_email():\n    random_id = random.randint(1, 21) * 6\n    print(gfgp_db_update()(\"update users_user set email='pavan3\" + str(random_id) +\n                           \"@theredpandas.com' where email='\"\n                           + config.REGISTER_DATA.get(\"emailAddress\") + \"' \"))\n\n\n@pytest.fixture(scope=\"function\", name=\"login_user_with\")\ndef login_user_with(driver):\n    return lambda user_email_address, user_password: login(user_email_address,\n                                                           user_password, driver)\n\n\ndef login(user_email_address, user_password, driver):\n    driver.get(config.BASE_URL + \"/login\")\n    driver.find_element_by_id(\"id_username\").send_keys(user_email_address)\n    driver.find_element_by_id(\"id_password\").send_keys(user_password)\n    login_button = driver.find_element_by_css_selector(\"button[type='submit']\")\n    login_button.click()\n\n\n@pytest.fixture\ndef validate_user_email_address():\n    return lambda email_address: gfgp_db_update()(\"update users_user set is_active=True \"\n                                                  \"where email='\" + email_address + \"' \")\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- core/tests/specs/conftest.py	(date 1523618104000)
++++ core/tests/specs/conftest.py	(revision )
+@@ -67,6 +67,7 @@
+ @pytest.fixture(scope="function", name="modify_registered_user_email")
+ def modify_registered_user_email():
+     random_id = random.randint(1, 21) * 6
++    # print(gfgp_db_cursor()("select * from users_user "))
+     print(gfgp_db_update()("update users_user set email='pavan3" + str(random_id) +
+                            "@theredpandas.com' where email='"
+                            + config.REGISTER_DATA.get("emailAddress") + "' "))

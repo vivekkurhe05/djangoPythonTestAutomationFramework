@@ -1,0 +1,43 @@
+.progress {
+    height: 6px;
+
+    &-bar {
+        background-color: $progress-color;
+        width: 0;
+        -webkit-transition: all 0.6s ease;
+        transition: all 0.6s ease;
+    }
+    &-vertical{
+        width: 40px;
+        min-height: 100px;
+        border-radius: 0;
+
+        .progress-bar {
+            width: 100%;
+            height: 0;
+            border-radius: 0;
+        }
+
+        &-lg {
+            width: 80px;
+        }
+        &-sm {
+            width: 20px;
+        }
+    }
+
+    .is-level {
+        &-1 {
+            @extend .bg-level-1;
+        }
+        &-2 {
+            @extend .bg-level-2;
+        }
+        &-3 {
+            @extend .bg-level-3;
+        }
+        &-4 {
+            @extend .bg-level-4;
+        }
+    }
+}

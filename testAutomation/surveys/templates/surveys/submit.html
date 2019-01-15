@@ -1,0 +1,11 @@
+{% load crispy_forms_tags %}
+
+<div class="highlighted-sec">
+    Submitting will make this assessment and all of the documents associated with it available to any organizations that
+    you have shared it with as well as any organizations you share it with in the future.
+</div>
+<div class="modal-footer">
+    <form class="submit-form" method="post" action="{% url 'survey-submit' pk=object.pk %}">
+        {% crispy form %}
+    </form>
+</div>

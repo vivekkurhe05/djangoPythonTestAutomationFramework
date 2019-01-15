@@ -1,0 +1,14 @@
+{% if messages %} {% block messages %} {% for message in messages %}
+<div id="alert" class="alert alert-{{ message.level_tag }} alert-dismissible"
+    role="alert">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <i class="fa fa-times-circle" aria-hidden="true"></i>
+    </button>
+    <div class="min-h-25 {% if message.extra_tags == 'show-icon' %}d-flex flex-column flex-sm-row align-items-center{%endif%}">
+        {% if message.extra_tags == "show-icon" %}
+        <i class="fa fa-{{ message.level_tag }} fa-2x" aria-hidden="true"></i>
+        {% endif %}
+        <div class="px-2">{{ message }}</div>
+    </div>
+</div>
+{% endfor %} {% endblock messages %} {% endif %}

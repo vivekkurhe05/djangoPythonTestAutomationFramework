@@ -1,0 +1,19 @@
+{% load i18n %} {% url 'subscription' as subscription_url %} {% blocktrans %}
+Dear {{ user_name }},
+
+Your Global Grant Community subscription {{ renewal_message }}. 
+
+An active subscription is required to retain access to the following features:
+- View any assessments that have been previously shared with you.
+- View assessment reports.
+- Purchase invitation packages.
+- Invite grantees to submit new assessments.
+
+Visit https://{{ site_domain }}{{ subscription_url }} to renew your subscription and retain access to these features.
+{% endblocktrans %}
+
+{% blocktrans %}
+Kind regards,
+
+The {{ site_name }} Team
+{% endblocktrans %}

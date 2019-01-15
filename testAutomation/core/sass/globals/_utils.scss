@@ -1,0 +1,371 @@
+//labels
+// w: width, h : sm: small , md: medium, vr: vertical
+
+//font
+.font-2 {
+    font-family: $font-family-2;
+}
+
+.font-3 {
+    font-family: $font-family-3;
+}
+
+.primary-font-color {
+    color: $primary-font-color;
+}
+.sec-font-color {
+    color: $sec-font-color;
+}
+
+a.sec-font-color:hover {
+    color: $sec-font-hover-color;
+}
+
+.font-size-4 {
+    font-size: 4rem;
+}
+
+//heading
+.heading {
+    @extend .text-bold;
+}
+
+//text
+.text-s-md {
+    font-size: .9rem;
+}
+.text-muted-md {
+    color: inherit;
+    opacity: 0.65;
+}
+.text-bold {
+    @extend .font-3;
+}
+
+//link
+.link {
+    @extend .text-bold;
+    color: $link-color;
+    cursor: pointer;
+    &:hover, &:focus {
+        color: $link-color;
+    }
+}
+
+//width
+.w-125 {
+    width: 125px;
+}
+.container-1400 {
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+@include media-breakpoint-down($sm) {
+    .w-sm-down-full {
+        width: 100%;
+    }
+}
+
+.max {
+    &-w {
+        &-1000 {
+            max-width: 1000px;
+        }
+        &-800 {
+            max-width: 800px;
+        }
+        &-600 {
+            max-width: 600px;
+        }
+        &-400 {
+            max-width: 400px;
+        }
+        &-350 {
+            max-width: 350px;
+        }
+        &-240 {
+            max-width: 240px;
+        }
+        &-full {
+            max-width: 100%;
+        }
+    }
+}
+
+//height
+.min {
+    &-h {
+        &-25 {
+            min-height: 25px;
+        }
+        &-inherit {
+            min-height: inherit;
+        }
+    }
+}
+
+//top
+.full {
+    @include size(100%, 100%);
+}
+
+//position
+.top-0 {
+    top: 0;
+}
+.left-0 {
+    left: 0;
+}
+
+//line-height
+.l-h-1_2 {
+    line-height: 1.2;
+}
+
+.hidden {
+    &-sm-down {
+        @include media-breakpoint-down($sm) {display: none;}
+    }
+    &-md {
+        &-down {
+            @include media-breakpoint-down($md) {display: none;}
+        }
+        &-up {
+            @include media-breakpoint-up($md) {display: none;}
+        }
+    }
+}
+
+//flex
+@include media-breakpoint-up($sm) {
+    .flex-sm {
+          -ms-flex: 1;
+          flex: 1;
+          flex-grow: 1;
+          flex-shrink: 1;
+          flex-basis: auto;
+    }
+}
+@include media-breakpoint-up($md) {
+    .flex-md {
+          -ms-flex: 1;
+          flex: 1;
+          flex-grow: 1;
+          flex-shrink: 1;
+          flex-basis: auto;
+    }
+}
+@include media-breakpoint-down($xs-sm){
+    .flex-xs-sm-down-wrap {
+        -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    }
+}
+@include media-breakpoint-up($xs-sm){
+    .text-xs-sm-right {
+        text-align: right;
+    }
+}
+//align
+.vr {
+    &-middle {
+        vertical-align: middle;
+    }
+    &-text-bottom {
+        vertical-align: text-bottom;
+    }
+}
+
+//text-colors
+.text {
+    &-moss-green {
+        color: #91B04D;
+    }
+    &-copper {
+        color: #BC7B38;
+    }
+    &-black-olive {
+        color: #404040;
+    }
+    &-outer-space {
+        color: #464646;
+    }
+    &-old-lavender {
+        color: #7C6D7A;
+    }
+    &-gray-x11 {
+        color: #BCBCBC;
+    }
+    &-quick-silver {
+        color: #A6A6A6;
+    }
+    &-chinese-silver {
+        color: #CFCECB;
+    }
+}
+
+//background-colors
+.bg {
+    &-is-primary {
+        @include color-variant($primary-highlight-color, white);
+    }
+    &-english-violet {
+        background-color: #5A4659;
+    }
+    &-bright-gray {
+        background-color: #EDEDED;
+    }
+    &-black {
+        background-color: black;
+    }
+    &-level-3 {
+        color: white;
+        background-color: $level-3-color;
+    }
+    &-level-2 {
+        color: white;
+        background-color: $level-2-color;
+    }
+    &-level-1 {
+        color: white;
+        background-color: $level-1-color;
+    }
+    &-level-4 {
+        background-color: $level-4-color;
+        color: #252525;
+    }
+    &-crayola {
+        background-color: #FFFAA0;
+    }
+    &-option-yes {
+        background-color: #B8E986;
+    }
+    &-option-in-progress {
+        background-color: #FAF285;
+    }
+    &-option-no {
+        background-color: #F3B3B3;
+    }
+    &-option-not-applicable {
+        background-color: #ECECEC;
+    }
+    &-md-champagne {
+        background-color: #F8ED9F;
+    }
+    &-crystal-blue {
+        background-color: #68ADB6;
+        color: white;
+    }
+}
+
+//numbers
+.number {
+    font-family: $font-family-4;
+}
+
+//font-awesome
+.fa-7x {
+    font-size: 7em;
+}
+
+//color
+.has{
+    &-primary-highlight {
+        color: $primary-highlight-color;
+        &:hover, &:focus {
+            color: $primary-highlight-color;
+        }
+    }
+    &-cbronze-color {
+        color: #D28C00;
+        &:hover, &:focus {
+            color: #D28C00;
+        }
+    }
+    &-violet-color {
+        color: #5A4659;
+    }
+    &-pastel-red-color {
+        color: #FF6161;
+    }
+}
+
+.has-color-level {
+    &-1 {
+        color: $level-1-color;
+    }
+    &-2 {
+        color: $level-2-color;
+    }
+    &-3 {
+        color: $level-3-color;
+    }
+    &-4 {
+        color: $level-4-color;
+    }
+}
+
+//border
+.b {
+    &-is-primary {
+        border-color: $primary-highlight-color;
+    }
+    &-is-cbronze {
+        border-color: #D28C00;
+    }
+    &-is-gray {
+        border-color: #979797;
+    }
+}
+
+//padding-main
+.padding-main {
+    padding: 4rem 2rem;
+    @include media-breakpoint-bw($md, $lg) {
+        padding: 2.5rem 1.5rem;
+    }
+    @include media-breakpoint-down($md) {
+        padding: 1rem;
+    }
+}
+
+.section-hr-p {
+    padding-right: 60px;
+    padding-left: 60px;
+    @include media-breakpoint-bw($md, $lg) {
+        padding-right: 25px;
+        padding-left: 25px;
+    }
+    @include media-breakpoint-down($md) {
+        padding-right: 10px;
+        padding-left: 10px;
+    }
+}
+
+//margin
+.margin-hr-auto {
+    margin: 0 auto;
+}
+
+//size
+.size {
+    &-25 {
+        @include size(25px);
+    }
+    &-30 {
+        @include size(30px);
+    }
+}
+.min-size {
+    &-25 {
+        @include min-size(25px);
+    }
+    &-30 {
+        @include min-size(30px);
+    }
+}
+
+input[type="checkbox"][readonly] {
+    pointer-events: none;
+}

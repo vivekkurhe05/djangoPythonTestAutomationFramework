@@ -1,0 +1,96 @@
+label,
+legend
+    font:
+        weight: 800
+    color: $paragraph-color
+
+legend
+    font:
+        size: 22px
+
+fieldset
+    margin:
+        bottom: 1.3em
+    border:
+        color: $grey-2
+        style: solid
+        image: none
+        width: 1px
+    &:last-of-type
+        margin:
+            bottom: 0
+
+.textinput,
+.emailinput,
+select
+    padding: 0.4em 0.5em
+    width: $form-input-width
+    border: 1px solid $grey-2
+        radius: 4px
+    color: $grey-3
+    font:
+        size: 14px
+
+// Padding alone won't style selects so
+// we need to set a height
+select
+    height: $form-input-height
+
+.control-group
+    padding: 0.5em 0
+
+.control-label
+    display: block
+    margin:
+        bottom: $paragraph-margin / 2
+
+.radio,
+.checkbox
+    display: inline-block
+    padding: 0.3em 0.5em
+    background: $grey-1
+    border: 1px solid $btn-border-color
+        radius: 4px
+    cursor: pointer
+    margin:
+        right: 0.2em
+    font:
+        weight: normal
+    input
+        margin:
+            right: 5px
+    #{$hover-states}
+        background: $btn-hover-color
+
+.checkbox
+    display: block
+    width: $form-input-width
+    margin:
+        bottom: 0.2em
+
+.form-actions
+    padding: 1em 0
+
+// Survey-specific form styles
+.survey-form
+    .controls
+        padding:
+            left: 45px
+    .control-group
+        padding: 1em 0
+        border:
+            bottom: 1px solid $grey-1
+        &:last-child
+            border-bottom: 0
+
+// Help and error styles
+.help-block
+    display: block
+    margin: 0.8em 0
+    color: $paragraph-color
+
+.error
+    .help-block
+        color: $error-red
+    .radio
+        border-color: $error-red

@@ -1,0 +1,10 @@
+{% load i18n %}{% blocktrans %}
+Dear {{ user_name }},
+
+Your document "{{document}}" expires {{ expires_in_message }} (on: {{ document_expiry }}). 
+Please keep all documents used in your assessments up-to-date to ensure that your assessments remain valid.
+{% endblocktrans %}
+{% blocktrans %}
+Regards,
+The {{ site_name }} Team
+{% endblocktrans %}

@@ -1,0 +1,186 @@
+[
+{
+  "model": "users.organisationtype",
+  "pk": 1,
+  "fields": {
+    "sort_order": 1,
+    "name": "Academic"
+  }
+},
+{
+  "model": "users.organisationtype",
+  "pk": 2,
+  "fields": {
+    "sort_order": 2,
+    "name": "Charitable/Foundation"
+  }
+},
+{
+  "model": "users.organisationtype",
+  "pk": 3,
+  "fields": {
+    "sort_order": 3,
+    "name": "Charitable/other"
+  }
+},
+{
+  "model": "users.organisationtype",
+  "pk": 4,
+  "fields": {
+    "sort_order": 4,
+    "name": "Community Based"
+  }
+},
+{
+  "model": "users.organisationtype",
+  "pk": 5,
+  "fields": {
+    "sort_order": 5,
+    "name": "Community Societal"
+  }
+},
+{
+  "model": "users.organisationtype",
+  "pk": 6,
+  "fields": {
+    "sort_order": 6,
+    "name": "Foundation"
+  }
+},
+{
+  "model": "users.organisationtype",
+  "pk": 7,
+  "fields": {
+    "sort_order": 7,
+    "name": "Government"
+  }
+},
+{
+  "model": "users.organisationtype",
+  "pk": 8,
+  "fields": {
+    "sort_order": 8,
+    "name": "Independent"
+  }
+},
+{
+  "model": "users.organisationtype",
+  "pk": 9,
+  "fields": {
+    "sort_order": 9,
+    "name": "International NGO"
+  }
+},
+{
+  "model": "users.organisationtype",
+  "pk": 10,
+  "fields": {
+    "sort_order": 10,
+    "name": "National NGO"
+  }
+},
+{
+  "model": "users.organisationtype",
+  "pk": 11,
+  "fields": {
+    "sort_order": 11,
+    "name": "Non Government"
+  }
+},
+{
+  "model": "users.organisationtype",
+  "pk": 12,
+  "fields": {
+    "sort_order": 12,
+    "name": "Not for profit"
+  }
+},
+{
+  "model": "users.organisationtype",
+  "pk": 13,
+  "fields": {
+    "sort_order": 13,
+    "name": "Other Public Sector"
+  }
+},
+{
+  "model": "users.organisationtype",
+  "pk": 14,
+  "fields": {
+    "sort_order": 14,
+    "name": "Paristatol"
+  }
+},
+{
+  "model": "users.organisationtype",
+  "pk": 15,
+  "fields": {
+    "sort_order": 15,
+    "name": "Private Sector"
+  }
+},
+{
+  "model": "users.organisationtype",
+  "pk": 16,
+  "fields": {
+    "sort_order": 16,
+    "name": "Public Sector"
+  }
+},
+{
+  "model": "users.organisationtype",
+  "pk": 17,
+  "fields": {
+    "sort_order": 17,
+    "name": "Private Partnership"
+  }
+},
+{
+  "model": "users.organisationtype",
+  "pk": 18,
+  "fields": {
+    "sort_order": 18,
+    "name": "Regional NGO"
+  }
+},
+{
+  "model": "users.organisationtype",
+  "pk": 19,
+  "fields": {
+    "sort_order": 19,
+    "name": "Research"
+  }
+},
+{
+  "model": "users.organisationtype",
+  "pk": 20,
+  "fields": {
+    "sort_order": 20,
+    "name": "State owned enterprises"
+  }
+},
+{
+  "model": "users.organisationtype",
+  "pk": 21,
+  "fields": {
+    "sort_order": 21,
+    "name": "Training Trust"
+  }
+},
+{
+  "model": "users.organisationtype",
+  "pk": 22,
+  "fields": {
+    "sort_order": 22,
+    "name": "Universities"
+  }
+},
+{
+  "model": "users.organisationtype",
+  "pk": 23,
+  "fields": {
+    "sort_order": 23,
+    "name": "Other"
+  }
+}
+]

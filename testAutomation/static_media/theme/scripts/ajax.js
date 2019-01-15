@@ -1,0 +1,88 @@
+(function ($) {
+	'use strict';
+
+    var TRANSITION_DURATION = 600;
+
+    $(document).on('pjax:send', function() {
+      $(document).trigger('pjaxSend');
+    });
+
+    $(document).on('pjaxSend', function(){
+		$('#alert').remove()
+		$('.popover').remove()
+      // close the aside on mobile
+      $('#aside').modal('hide');
+      $('body').removeClass('modal-open').find('.modal-backdrop').remove();
+      // remove the tags created by plugins
+      $('.jqvmap-label, .note-popover, .dz-hidden-input').remove();
+    });
+
+    $(document).on('refresh', function() {
+      main_pjax && main_pjax.refresh();
+      sub_pjax && sub_pjax.refresh();
+    });
+
+    $(document).on('pjax:success', function() {
+      if(bootstrap && bootstrap.Util){
+        $(document).one(bootstrap.Util.TRANSITION_END, function(){
+          $('.js-Pjax-onswitch').removeClass('js-Pjax-onswitch');
+          $(document).trigger('pjaxEnd');
+        }).emulateTransitionEnd(TRANSITION_DURATION);
+      }else{
+        $(document).trigger('pjaxEnd');
+      }
+    });
+
+    if( app.setting.ajax ){
+      var switch_h_option = {
+        classNames: {
+          // class added on the element that will be removed
+          remove: 'animate animate-reverse animate-fast animate-no-delay',
+          // class added on the element that will be added
+          add: 'animate',
+          // class added on the element when it go backward
+          backward: 'fadeInRight',
+          // class added on the element when it go forward (used for new page too)
+          forward: 'fadeInLeft'
+        },
+        callbacks: {
+          addElement: function(el){
+            $(el).parent().addClass('js-Pjax-onswitch');
+          },
+          removeElement: function(el) {
+            $(el).css( 'width', $(el).parent().width() );
+          }
+        }
+      };
+
+      var main_pjax = new Pjax({
+        cacheBust: false,
+        elements: '#aside a:not(.no-ajax), #content-header a, #nav a, .app-header a, #content-main a:not(.no-ajax)',
+        selectors: ['title', '#content-header', '#content-footer', '#content-main', '#aside .modal-dialog #sidenav-list'],
+        switches: {
+          '#content-main': function(oldEl, newEl, options, switchOptions){
+            this.switches.sideBySide.bind(this)(oldEl, newEl, options, switchOptions);
+          }
+        },
+        switchesOptions: {
+          '#content-main': switch_h_option
+        }
+      });
+
+      var sub_pjax = new Pjax({
+        cacheBust: false,
+        elements: '#content-aside a, #content-body a, #header a, #content-footer a',
+        selectors: ['#content-body', '#content-footer'],
+        switches: {
+          '#content-body': function(oldEl, newEl, options, switchOptions){
+            this.switches.sideBySide.bind(this)(oldEl, newEl, options, switchOptions);
+          }
+        },
+        switchesOptions: {
+          '#content-body': switch_h_option
+        }
+      });
+
+    }
+
+})(jQuery);

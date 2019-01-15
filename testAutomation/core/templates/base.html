@@ -1,0 +1,120 @@
+{% load feincms_tags %} {% load static from staticfiles %} {% load i18n %} {% load compress %}
+
+<!doctype html>
+<!--[if lt IE 8]>      <html class="no-js ie7 lt-ie10 lt-ie9 lt-ie8" lang="{{ language }}"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js ie8 lt-ie10 lt-ie9" lang="{{ language }}"> <![endif]-->
+<!--[if IE 9]>         <html class="ie9 lt-ie10" lang="{{ language }}"> <![endif]-->
+<!--[if gt IE 9]>-->
+<html lang="{{ language }}" class="no-js">
+<!--<![endif]-->
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>{% trans "GFGP Assessment System - Specification Testing" %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"> {% block base_style %}
+    <link rel="stylesheet" href="{% static 'css/lib.css' %}">
+    <link rel="stylesheet" href="{% static 'css/app.css' %}"> {% endblock base_style %} {% block extra_style %}{% endblock extra_style %} {% block extra_head %}{% endblock extra_head %} {% if NOINDEX %}
+    <meta name="robots" content="noindex, nofollow">{% endif %}
+
+    <!-- favicons -->
+    <link rel="shortcut icon" type="image/x-icon" href="{% static 'img/favicons/favicon.ico' %}">
+
+    <!-- Generated using https://realfavicongenerator.net -->
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'img/favicons/apple-touch-icon.png' %}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'img/favicons/favicon-32x32.png' %}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'img/favicons/favicon-16x16.png' %}">
+    <link rel="manifest" href="{% static 'img/favicons/site.webmanifest' %}">
+    <link rel="mask-icon" href="{% static 'img/favicons/safari-pinned-tab.svg' %}" color="#5bbad5">
+    <link rel="shortcut icon" href="{% static 'img/favicons/favicon.ico' %}">
+    <meta name="msapplication-TileColor" content="#00aba9">
+    <meta name="msapplication-config" content="{% static 'img/favicons/browserconfig.xml' %}">
+    <meta name="theme-color" content="#ffffff">
+
+    <!-- Bugherd -->
+    <script type='text/javascript'>
+        (function(d, t) {
+            var bh = d.createElement(t),
+                s = d.getElementsByTagName(t)[0];
+            bh.type = 'text/javascript';
+            bh.src = 'https://www.bugherd.com/sidebarv2.js?apikey=xedksqls717mjzp5byx3bg';
+            s.parentNode.insertBefore(bh, s);
+        })(document, 'script');
+    </script>
+</head>
+
+{% block body %}
+
+<body class="{% if not user.is_authenticated %}logged-out{% else %}logged-in{% endif %} {% block body_class %}{% endblock body_class %}">
+    {% block pre_wrap %}{% endblock pre_wrap %}
+    {% block wrap %}
+    <div class="{% block site_class %}site-wrap{% endblock %}">
+        {% block wrap_content %}
+            {% block content %}
+                {% block main %}
+                    <div class="d-flex flex flex-column min-h-inherit">
+                        <div class="box-shadow white" id="header">
+                            <div class="navbar section-hr-p container-1400">
+                                <div class="flex">
+                                    <a  href="/" class="ggc-logo"><img src="{% static 'img/ggc-logo.png' %}" alt="GGC logo"></a>
+                                </div>
+                                <div>
+                                    <a  href="/" class="aas-logo"><img src="{% static 'img/aas-logo.png' %}" alt="AAS logo"></a>
+                                </div>
+                            </div>
+                        </div>
+                        {% block alert %}
+                            {% include "alert.html" %}
+                        {% endblock alert %}
+                        <div id="content-body">
+                            {% block main_content %}
+                            {% endblock main_content %}
+                        </div>
+                        <div id="content-footer" class="content-footer">
+                            <div class="{% block footer_container_class %}{% endblock %}">
+                                {% block main_footer %}
+                                    <div>{% feincms_render_region feincms_page 'footer' request %}</div>
+                                {% endblock main_footer %}
+                            </div>
+                        </div>
+                    </div>
+                {% endblock main %}
+            {% endblock content %}
+        {% endblock wrap_content %}
+    </div>
+    {% endblock wrap %}
+    {% block post_wrap %}{% endblock post_wrap %}
+    {% block load_modal %}
+        <div id="load-modal" class="modal fade">
+            <div class="modal-dialog modal-custom">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title text-bold">
+                            <!-- data is filled here by loadModal call -->
+                        </h5>
+                    </div>
+                    <div class="modal-body">
+                        <!-- data is filled here by the ajax call -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endblock load_modal %}
+    {% if debug %}
+    <script src="//localhost:35729/livereload.js"></script>
+    {% endif %}
+
+    <script>
+        ! function() {
+            var e = document.createElement("script"),
+                t = document.getElementsByTagName("script")[0];
+            e.async = 1, e.src = "https://inlinemanual.com/embed/player.b0e923e38eaa904d0b0a75edaf41fec2.js", e.charset = "UTF-8", t.parentNode.insertBefore(e, t)
+        }();
+    </script>
+    <script src="{% static 'js/lib.js' %}"></script>
+    <script src="{% static 'js/app.js' %}"></script>
+
+</body>
+{% endblock %}
+
+</html>

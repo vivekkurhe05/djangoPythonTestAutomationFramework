@@ -1,0 +1,53 @@
+{% load crispy_forms_field %}
+{% load crispy_forms_filters %}
+{% load l10n %}
+
+{% if field.is_hidden %}
+    {{ field }}
+{% else %}
+
+    <div id="div_{{ field.auto_id }}" class="control-group{% if wrapper_class %} {{ wrapper_class }}{% endif %}{% if form_show_errors and field.errors %} error{% endif %}{% if field.css_classes %} {{ field.css_classes }}{% endif %}">
+
+        {% if field.label and form_show_labels %}
+            <label for="{{ field.id_for_label }}" class="control-label {% if field.field.required %}requiredField{% endif %}">
+                {{ field.label|linebreaksbr }}
+            </label>
+        {% endif %}
+
+        {# This block is inlined from layout/help_text.html, and trimmed down. #}
+        {# We're using help_text to carry the reference URL. #}
+        {% if field.help_text %}
+            <p id="hint_{{ field.auto_id }}" class="help-block">
+                Reference: <a href="{{ field.help_text }}" target="blank">{{ field.help_text|safe }}</a>
+            </p>
+        {% endif %}
+
+        {# This div is inlined from layout/radioselect.html #}
+        <div class="controls"{% if flat_attrs %} {{ flat_attrs|safe }}{% endif %}>
+
+            {# This if block is inlined from layout/field_errors_block.html #}
+            {% if form_show_errors and field.errors %}
+                {% for error in field.errors %}
+                    <p id="error_{{ forloop.counter }}_{{ field.auto_id }}" class="help-block"><strong>{{ error }}</strong></p>
+                {% endfor %}
+            {% endif %}
+
+            {% if field.field.choices %}
+                {% for choice in field.field.choices %}
+                    <label class="radio{% if inline_class %} {{ inline_class }}{% endif %}">
+                        <input type="radio"
+                                {% if choice.0|stringformat:"s" == field.value|default_if_none:""|stringformat:"s" %} checked="checked"{% endif %}
+                               name="{{ field.html_name }}"
+                               id="id_{{ field.html_name }}_{{ forloop.counter }}"
+                               value="{{ choice.0|unlocalize }}"
+                               {{ field.field.widget.attrs|flatatt }}
+                        >
+                        {{ choice.1|unlocalize }}
+                    </label>
+                {% endfor %}
+            {% else %}
+                {% crispy_field field %}
+            {% endif %}
+        </div>
+    </div>
+{% endif %}

@@ -1,0 +1,54 @@
+{% extends "app_base.html" %}
+{% block app_content_main_class %}{{ block.super }} d-flex flex{% endblock %}
+{% block app_content_main_inner_class %}d-flex flex{% endblock %}
+
+{% block app_content %}
+{% include 'organization/_organization_type.html' %}
+<div class="d-flex flex" id="content-body">
+    <div class="d-flex flex-column flex" id="user-list">
+        <div class="navbar white no-radius box-shadow pos-rlt">
+            <form class="flex">
+                <div class="input-group">
+                    <input type="text" class="form-control form-control-sm search h-auto" placeholder="Search organisation name, country, province or state" required>
+                    <span class="input-group-btn">
+		                <button class="btn btn-default btn-sm no-shadow sec-font-color" type="button">
+                            <i class="fa fa-search"></i>
+                        </button>
+		            </span>
+                </div>
+            </form>
+            <button class="btn btn-sm white ml-1 sort sec-font-color" data-sort="item-title" data-toggle="tooltip" title="Sort">
+		        <i class="fa fa-sort"></i>
+		    </button>
+            <a data-toggle="modal" data-target="#content-aside" data-modal class="ml-1 d-md-none">
+				<span class="btn btn-sm btn-icon bg-is-primary">
+                    <i class="fa fa-th"></i>
+		        </span>
+		    </a>
+        </div>
+        <div class="d-flex flex scroll-y">
+            <div class="d-flex flex-column flex white lt b-b">
+                <div class="scroll-y">
+                    <div class="list hide">
+                        {% for org in organisation_list %}
+                        <div class="list-item">
+                            <div class="list-body">
+                                <a href="{% url 'organization-detail' pk=org.id %}" class="no-ajax item-title text-bold">{{ org.legal_name }}</a>
+                                <div class="item-except text-sm text-muted h-1x">{{ org.types.all|join:', ' }}</div>
+                                <div class="item-tag tag hide">{{ org.types.all|join:', ' }} {{ org.city}} {% if org.country %} {{ org.country }} {% endif %}  {% if org.province %} {{ org.province }} {% endif %}</div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    <div class="no-result hide">
+                        <div class="p-4 text-center">
+                            No Results
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% include 'organization/_organization_filter.html' %}
+        </div>
+    </div>
+</div>
+{% endblock app_content %}

@@ -1,0 +1,52 @@
+{% extends "app_base.html" %}
+{% load static from staticfiles %}
+{% load crispy_forms_tags %}
+{% load html_time %}
+{% block app_content %}
+<div class="box mb-5">
+    <div class="box-header pb-0">
+        <h2>Add a new document</h2>
+        <small>Please remove all personal data from document</small>
+    </div>
+    <div class="box-body px-4">
+        <form id="abcd" action="/document/" method="post" enctype="multipart/form-data">
+            {% crispy form %}
+        </form>
+    </div>
+</div>
+<div class="box">
+    <div class="box-header pb-0">
+        <h2>My organization's documents</h2>
+    </div>
+    <div class="box-body px-0">
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th class="pl-4 w-xs"></th>
+                    <th>Document name:</th>
+                    <th>Expires:</th>
+                    <th class="pr-4 text-right"></th>
+                </tr>
+                </thead>
+                <tbody>
+                    {% for document in document_list %}
+                    <tr>
+                        <td class="pl-4">
+                            <a href="{{ document.file.url }}" target="_blank" class="btn white" download>
+                                <i class="fa fa-arrow-circle-o-down fa-2x sec-font-color"></i>
+                            </a>
+                        </td>
+                        <td>{{ document.name }}</td>
+                        <td> <div class="number">{{ document.expiry|date }}</div> </td>
+                        <td class="pr-4 text-right">
+                        <a href="{% url 'document-edit' pk=document.id %}" class="btn white w-xs">Edit</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock app_content %}

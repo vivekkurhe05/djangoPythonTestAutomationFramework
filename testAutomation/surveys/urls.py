@@ -1,0 +1,89 @@
+from django.conf.urls import include, url
+
+from . import views
+
+
+urlpatterns = [
+    url(
+        r'^start/(?P<pk>\d+)/?$',
+        views.SurveyStartView.as_view(),
+        name='survey-start',
+    ),
+    url(r'^(?P<pk>\d+)/', include([
+        url(
+            r'^(?P<section>\d+)/?$',
+            views.SurveySectionView.as_view(),
+            name='survey-section',
+        ),
+        url(
+            r'^start/?$',
+            views.SurveySectionView.as_view(),
+            name='survey-section-start',
+        ),
+        url(
+            r'^question/(?P<question>\d+)/?$',
+            views.SurveyAnswerView.as_view(),
+            name='survey-answer'
+        ),
+        url(
+            r'^progress/?$',
+            views.SurveyProgresssReport.as_view(),
+            name='survey-progress',
+        ),
+        url(
+            r'^compliance/?$',
+            views.SurveyComplianceReport.as_view(),
+            name='survey-compliance',
+        ),
+        url(
+            r'^report/?$',
+            views.SurveyFullReport.as_view(),
+            name='survey-report',
+        ),
+        url(
+            r'^submit/?$',
+            views.SubmitSurveyResponse.as_view(),
+            name='survey-submit',
+        ),
+    ])),
+    url(
+        r'^invite/?$',
+        views.InviteListView.as_view(),
+        name='survey-invite',
+    ),
+    url(
+        r'^invitation/?$',
+        views.CreateInviteView.as_view(),
+        name='survey-invite-create',
+    ),
+    url(
+        r'^accept/(?P<pk>\d+)$',
+        views.InviteAcceptView.as_view(),
+        name='invite-accept',
+    ),
+    url(
+        r'^view/assessment/?$',
+        views.ViewAssessmentList.as_view(),
+        name='view-assessment',
+    ),
+    url(
+        r'^remove-document/(?P<pk>\d+)$',
+        views.SurveyAnswerDocumentDelete.as_view(),
+        name='survey-document-delete',
+    ),
+    url(
+        r'^resend/(?P<pk>\d+)$',
+        views.ResendInviteView.as_view(),
+        name="invite-resend"
+    ),
+    url(
+        r'^remove-answer/(?P<pk>\d+)$',
+        views.SurveyAnswerDeleteView.as_view(),
+        name='survey-answer-delete',
+    ),
+    url(
+        r'^export/(?P<pk>\d+)$',
+        views.ExportSurveyQuestionView.as_view(),
+        name='survey-export',
+    ),
+]

@@ -1,0 +1,25 @@
+<div class="fade aside aside-sm b-r" id="content-aside" data-plugin="user">
+    <div class="modal-dialog user-sidenav d-flex flex-column w-xl lt" id="user-nav">
+        <div class="navbar white no-radius box-shadow pos-rlt">
+            <span class="text-md">Organization type</span>
+        </div>
+        <div class="scrollable">
+            <div class="sidenav text-muted text-capitalize text-bold mt-2">
+                <nav class="nav-border b-primary" data-nav>
+                    <ul class="nav">
+                        {% for key, item in directory_sidebar.items %}
+                            <li>
+                                <a href="{% url 'directory' %}#{{ key }}" class="no-ajax">
+                                    <span class="nav-badge">
+                                        <span class="number _700">{{ item.value|default:0 }}</span>
+                                    </span>
+                                    <span class="nav-text">{{ item.name }}</span>
+                                </a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>

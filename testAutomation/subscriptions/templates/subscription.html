@@ -1,0 +1,241 @@
+{% extends "app_base.html" %}
+{% load humanize %}
+
+{% block app_content %}
+<div class="mx-auto w-auto-xs max-w-1000">
+    {% if show_order_history %}
+        <div class="text-right mb-4">
+            <a href="{% url 'order-history' %}" class="btn is-primary btn-fw">Order history</a>
+        </div>
+    {% endif %}
+    <div class="text-center">
+        <h5 class="heading mb-4">            
+            {% if latest_subscription %}
+                Your subscription and invitations
+            {% else %}
+                Subscribe to the Global Grant Community
+            {%endif%}
+        </h5>
+        <p class="max-w-400 margin-hr-auto text-s-md">
+            {% if latest_subscription %}
+                Manage your subsciption and purchase invitation packages to invite grantees to submit assessments.
+            {% else %}
+                By subscribing you can request assessments from grantees and view and download reports of assessments submitted and shared with yor organisation.
+            {% endif %}
+        <p>
+
+    </div>
+
+    <!-- Start Subcription -->
+    <div class="my-5">
+        {% if latest_subscription %}
+            <div class="row">
+                <div class="col-sm-6 d-flex flex-column">
+                    <label class="text-bold text-md">Your subscription</label>
+                    <div class="box d-flex flex-column h-100 box-padding-b-none">
+                        <div class="box-body px-4">
+                            <div class="d-flex">
+
+                                {% if latest_subscription.get_is_expired %}
+                                    <!-- Expired -->
+                                    <i class="fa fa-4x fa-warning has-pastel-red-color mr-3"></i>
+                                    <div>
+                                        <h2 class="mb-0 has-pastel-red-color">Expired</h2>
+                                        <label>
+                                            <span class="text-bold">Expired:</span>
+                                            <span class="number text-nowrap">
+                                                {{ latest_subscription.end_date | date }}
+                                            </span>
+                                        </label>
+                                    </div>
+                                {% elif latest_subscription.get_is_renewal_due %}
+                                    <!-- Renewal -->
+                                    <i class="fa fa-4x fa-warning has-cbronze-color mr-3"></i>
+                                    <div>
+                                        <h2 class="mb-0 has-cbronze-color">Renewal due</h2>
+                                        <label>
+                                            <span class="text-bold">Expires:</span>
+                                            <span class="number text-nowrap">
+                                                {{ latest_subscription.end_date | date }}
+                                            </span>
+                                        </label>
+                                    </div>
+                                
+                                {% elif latest_subscription.order.get_is_awaiting_payment %}
+                                <!-- Order placed/ in Progress -->
+                                    <i class="fa fa-4x fa-info-circle has-cbronze-color mr-3"></i>
+                                    <div>
+                                        <h2 class="mb-0 has-cbronze-color">Order placed</h2>
+                                        <label>Awaiting Payment: (Order #: 
+                                            <a href="{% url 'order-details' pk=latest_subscription.order.id %}" class="link text-u-l text-nowrap">
+                                                {{latest_subscription.order.get_formatted_id}}
+                                            </a>)
+                                        </label>
+                                    </div>
+                                {% else %}
+                                    <!-- Active -->
+                                    <i class="fa fa-4x fa-check-circle-o has-primary-highlight mr-3"></i>
+                                    <div>
+                                        <h2 class="mb-0 has-primary-highlight">Active</h2>
+                                        <label>
+                                            <span class="text-bold">Expires:</span>
+                                            <span class="number text-nowrap">
+                                                {{ latest_subscription.end_date | date }}
+                                            </span>
+                                        </label>
+                                    </div>
+                                {% endif %}
+                            </div>
+                            <div>
+                                <div class="min-h-25 text-center">
+                                    <!-- Renewal or expired -->
+                                    {% if latest_subscription.get_is_renewal_due %}
+                                        <a href="{% url 'subscription-order' %}" class="btn is-sec-action btn-fw mt-3">Renew now</a>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="box-divider m-0 flex"></div>
+                        <div class="px-4 pt-2 pb-2 d-flex ">
+                            <i class="fa fa-2x fa-info-circle has-violet-color mr-2"></i>
+                            <span>
+                                {% if latest_subscription.get_is_renewal_due %}
+                                    <!-- Renewal or expired -->
+                                    An active subsciption is required to make invitations and view assessments reports.
+                                {% elif latest_subscription.order.get_is_awaiting_payment %}
+                                    <!-- Order -->
+                                    Your subsciption will be activated once payment is received.
+                                {% else  %}
+                                    <!-- Active -->
+                                    You can renew your subscription when it has less than {{subscription_defaults.renewal_reminder_days}} days remaining.
+                                {% endif %}
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6  d-flex flex-column">
+                    <label class="text-bold text-md">Your invitations</label>
+                    <div class="box d-flex flex-column h-100 box-padding-b-none">
+                        <!-- Add class for status active -->
+                        <div class="box-body px-4 {% if user.organisation.active_subscription %}py-0{% endif %}">
+
+                            {% if user.organisation.active_subscription %}
+                                You currently have:
+                                <div class="text-center py-1">
+                                    <span class="number font-size-4 l-h-1x">
+                                        {{user.organisation.remaining_invites}}
+                                    </span>
+                                    <div>Invitations</div>
+                                </div>
+                            {% elif latest_subscription.get_is_expired %}
+                                <!-- Expired -->
+                                <div class="d-flex">
+                                    <i class="fa fa-2x fa-warning has-cbronze-color mr-3 mt-2"></i>
+                                    <div class="text-bold text-md">
+                                        An active subscription is required to purchase or use assessment invitations
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="min-h-25 text-center py-3">
+                                        <span class="sec-font-color">(You have <span class="number">
+                                            {{user.organisation.remaining_invites}}
+                                        </span> unused invitations)</span>
+                                    </div>
+                                </div>
+                            <!-- Awaiting payments -->
+                            {% elif latest_subscription.order.get_is_awaiting_payment %}
+                                <div class="d-flex">
+                                    <i class="fa fa-2x fa-warning has-cbronze-color mr-3 mt-2"></i>
+                                    <div class="text-bold text-md">
+                                        An active subscription is required to purchase or use assessment invitations
+                                    </div>
+                                </div>
+                            {% endif %}
+
+                            
+                        </div>
+                        <div class="box-divider m-0 flex"></div>
+                        <div class="px-4 pt-2 pb-2 d-flex {% if pending_assessment_purchase %} bg-md-champagne {% endif %}  ">
+                            <i class="fa fa-2x fa-info-circle has-violet-color mr-2"></i>
+                            <span>
+                                <!-- Renewal or active -->
+                                {% if user.organisation.active_subscription or latest_subscription.get_is_renewal_due  %}
+                                    {% if pending_assessment_purchase %}
+                                        Your order for <span class="text-bold">{{pending_assessment_purchase}} assessment invitations</span> is currently being processed.
+                                    {% else %}
+                                        You can purchase additional assessments invitation packages at any time.
+                                    {% endif %}
+                                <!-- Ordered or expired -->
+                                {% elif latest_subscription.get_is_expired or latest_subscription.order.get_is_awaiting_payment%}
+                                    Any unsused invitation are re-enabled on subsciption renewal.
+                                {% endif %}
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% else %}
+            <div class="box">
+                <div class="box-body px-4">
+                    <div class="row">
+                        <div class="col-sm-6 col-md-4 mb-2">
+                            <div class="text-bold text-s-md mb-2 pl-sm-4">Subscribe for</div>
+                            <div class="text-center">
+                                <div>
+                                <span class="text-bold text-md">&#36;</span>
+                                <span class="number _700 text-3x l-s-1x vr-middle">{{ subscription_defaults.price | floatformat:2 | intcomma }}</span>
+                            </div>
+                                <div class="text-s-md">(Per year)</div>
+                            </div>
+                        </div>
+                        <div class="col-md-3 hidden-md-down"></div>
+                        <div class="col-sm-6 col-md-5 mb-2">
+                            <div class="text-bold text-left mb-3 text-s-md">Subscriptions allows to you:</div>
+                            <div class="mb-1 clear"><i class="fa fa-check has-primary-highlight fa-2x vr-middle mx-2 float-left"></i>Invite grantees to submit assessments</div>
+                            <div class="mb-1 clear"><i class="fa fa-check has-primary-highlight fa-2x vr-middle mx-2 float-left"></i>View all assessment shared with you</div>
+                            <div class="mb-1 clear"><i class="fa fa-check has-primary-highlight fa-2x vr-middle mx-2 float-left"></i>View and download assessment reports</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="box-divider m-0"></div>
+                <div class="text-center">
+                    <a href="{% url 'subscription-order' %}" class="btn is-sec-action btn-fw mt-3">Subscribe now</a>
+                </div>
+            </div>
+        {% endif %}
+    </div>
+
+    <!-- End Subcription -->
+
+    <!-- Invitation Packages -->
+    <div>
+        <label class="text-bold text-md mb-3">Invitation packages<span class="text-s-md">*</span></label>
+        <div class="box-shadow-4">
+            <div class="d-flex flex-wrap">
+                {% for package in packages %}
+                <div class="invitation-package col-md-4 white text-center px-3 pt-3 pb-4">
+                    <span class="text-bold text-uppercase">{{package.name}}</span>
+                    <div class="my-3 text-ellipsis">
+                        <span class="text-bold text-md">&#36;</span>
+                        <span class="number _700 text-3x l-s-1x vr-middle" title="900">{{package.price | intcomma }}</span>
+                        <div class="text-s-md min-h-25">
+                            {% if package.number_included != 1 %}
+                                (&#36;<span class="number" title="400"> {% widthratio  package.price package.number_included 1 %} </span> each)
+                            {% endif %}
+                        </div>
+                    </div>
+                    {% if latest_subscription and latest_subscription.order.get_is_approved %}
+                        <a href="{% url 'subscription-order' %}?id={{package.pk}}" class="btn is-primary btn-fw">Buy</a>
+                    {% endif %}
+                </div>
+                {% endfor %}
+            </div>
+            <div class="box-divider m-0"></div>
+            <div class="white p-3">
+                Require more than 100 assessments? <a href="mailto:{{subscription_default_email}}" class="link text-u-l text-nowrap">Contact us</a>
+            </div>
+        </div>
+        <label class="mt-5"><span class="text-s-md">*</span> Note: An active subscription is required to purchase invitation packages.</label>
+    </div>
+</div>
+{% endblock app_content %}

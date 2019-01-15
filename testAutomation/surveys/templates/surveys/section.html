@@ -1,0 +1,93 @@
+{% extends "app_base.html" %}
+
+{% load crispy_forms_tags %}
+
+{% block app_content %}
+        <div class="d-flex">
+            <h5 class="heading mr-2 mb-0">Section <span class="number _700">{{section.area.number}}</span>: {{section.area}}
+            </h5>
+            <div class="d-flex align-items-center justify-content-center info-circle pointer b-is-gray has-cbronze-color size-30 min-size-30 text-md" data-trigger="hover" data-toggle="popover"  data-placement="top" data-title="This section covers" data-template="{% include 'surveys/_section_info_popover.html' %}">
+                <i class="fa fa-question"></i>
+            </div>
+        </div>
+        <div class="box my-5">
+            <div class="box-header pb-4">
+                <h2><span class="number _700">{{ section.get_code }}</span> {{ section.name }}</h2>
+            </div>
+            <div class="box-divider m-0"></div>
+            <div class="box-body px-4">
+                <form method="post" action="{% url 'survey-section' pk=object.pk section=section.pk %}">
+                    <div class="mb-3 d-flex align-items-center flex-column flex-sm-row">
+                        <div class="flex-sm my-1">
+                            <div class="d-flex">
+                                <span class="text-bold align-self-center mr-2">{{ form.level.label }}:</span>
+                                {% include 'surveys/_change_level.html' %}
+                            </div>
+                        </div>
+                        <div class="my-1">
+                            <div class="d-flex align-items-center">
+                                <div class="mx-1 number">{{ progress.percentage }}% complete: </div>
+                                <div class="progress w-sm">
+                                    <div class="progress-bar" style="width: {{ progress.percentage }}%"></div>
+                                </div>
+                            </div>
+                            <div class="d-flex align-items-center">
+                                <div class="mx-1 number">{{ progress.compliance.percentage }}% compliant: </div>
+                                <div class="progress w-sm">
+                                    <div class="bg-level-{{object.level}}" style="width: {{ progress.compliance.percentage }}%"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </form>
+                <div id="progress" class="d-flex py-4 status-container">
+                    {% for step in progress.sections %}
+                        <a href="{% url 'survey-section' pk=object.pk section=step.section.pk %}" class="status-dot pointer {{ step.slug }} {% if section.pk == step.section.pk %} selected {% endif %}" data-trigger="hover" data-boundary="window" data-container="body" data-toggle="popover"  data-placement="top" data-title="{{ step.section.area }}" data-template="{% include 'surveys/popover.html' %}">
+                            {% ifchanged step.section.area.number %}
+                                <label class="status-code-label">{{ step.section.area.number }}</label>
+                            {% endifchanged %}
+                            {% if section.pk == step.section.pk %}
+                                <div class="status-selected-bar {{ step.slug }}"></div>
+                                <div class="status-selected-text {{ step.slug }}"> {{ step.section.area.number }}.{{ step.section.number }} </div>
+                            {% endif %}
+                        </a>
+                        {% if not forloop.last %}<div class="status-bar flex"></div>{%endif%}
+                    {% endfor %}
+                </div>
+                <div class="d-flex align-items-center flex-column flex-sm-row  mt-3">
+                    {% include 'surveys/_section_nav.html' %}
+                </div>
+            </div>
+        </div>
+        {% for formset in levels %}
+        <div class="mb-5">
+            <div class="d-flex align-items-center my-2">
+                <i id="level_icon_{{ formset.level }}" class="fa fa-play text-quick-silver {% if not formset.hide %}fa-rotate-90{% endif %}" aria-hidden="true"></i>
+                <span class="text-md mx-3">{{ formset.label }}</span>
+                <div class="flex divider-hr"></div>
+                <input type="button" name="toggleSection" class="btn white ml-3 w-xs {% if not formset.hide %} collapse{% endif %}"
+                    id="level_toggle_{{ formset.level }}" class="btn white" data-val="{{ formset.level }}" value="Show">
+            </div>
+            <div class="box{% if formset.hide %} collapse{% endif %}" id="level_{{ formset.level }}">
+                <div class="box-body px-0">
+                    {% for form in formset.forms %}
+                        {%if forloop.counter is not 1%}<div class="box-divider mx-0 mt-2 mb-4"></div>{%endif%}
+                        <div class="js-answer-form" data-question="{{ form.instance.question.pk }}">
+                            {% include 'surveys/_answer_form.html' %}
+                        </div>
+                    {% empty %}
+                        <div class="mx-4">
+                            There are no {{ formset.label|lower }} tier questions for this section.
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+        <div class="box">
+            <div class="box-body d-flex align-items-center flex-column flex-sm-row px-4">
+                {% include 'surveys/_section_nav.html' %}
+            </div>
+        </div>
+{% endblock app_content %}

@@ -1,0 +1,48 @@
+{% load i18n %}{% url 'survey-invite' as survey_url %}
+{% blocktrans %}
+Dear {{ user_name }}
+ 
+{{ grantor_name }} is requesting your organization to share a previously completed self-assessment against the Good Financial Grant Practice standard ("GFGP") to at least the {{ survey_level }} level.
+
+If your organization has registered but NOT previously completed a self-assessment for GFGP, you may want to read the background information below, in particular, noting the tiered structure of the standard and self-assessment of bronze, silver, gold and platinum.
+
+If your organization agrees to undertake or share your self-assessment, please accept the invitation by going to the following page and logging in using your email address
+
+{{email}}:
+https://{{ site_domain }}{{ survey_url }}
+
+Your ogranization should self-assess to at least the level requested by the grantor but may also self-assess to a higher level of your own choosing.
+
+If you prefer to update your previous self-assessment before giving the grantor permission to access your information, please log in and update as you require.
+
+Once completed, please give the grantor permission by accepting the invitation. If your organization has previously completed it to a lower tier than the grantor has requested, you should update the self-assessment to the new level before sharing it with the grantor.
+
+If you have any problems or need any guidance or advice please do not hesitate to contact the GFGP team at the African Academy of Sciences at gfgpcommunityportal@aasciences.ac.ke
+
+Kind regards
+{% endblocktrans %}
+{% blocktrans with name=site.name %}
+The {{ name }} team.
+{% endblocktrans %}
+{% blocktrans %}
+BETA Privacy Policy statement on General Data Protection Regulation (GDPR)
+
+The portal and all your data will be hosted on the Amazon Web Services servers located in Eire.We are working hard to ensure we shall be compliant with the requirements of GDPR when the production version goes live in Mid'18.
+
+African Academy of Sciences has not been assessed for compliance to GDPR. The beta portal has been developed to test and refine the production / launch version of the portal. The security and privacy of your data has been a core requirement throughout the development process.
+{% endblocktrans %}
+{% blocktrans %}
+Background information to the Good Financial Grant Practice standard and the global grant community.
+
+The Global Grant Community aims to standardize, simplify and strengthen financial governance of grants. The benefits will be to increase direct funding, reduce administration costs and time for grantors to undertake due diligence and assurance activities and provide an aspirational pathway for organizations to develop their financial governance of grants. It will help to 'level the playing field' and 'democratize' grant funding as good financial grant practice will be accessible to and utilized by all. This initiative has been developed by the African Academy of Sciences (AAS) under its Alliance for Accelerating Excellence in Science in Africa (AESA) platform and a consortium of grantees and grantors. At its heart, is the Good Financial Grant Practice Standard ("GFGP") - The draft quality standard was submitted to the African Organization for Standardization in May'17 and will be formally adopted by ARSO as a new international standard in June'18. Following adoption by ARSO, this new standard is applicable in all countries - globally.
+
+To accommodate different sizes and complexity of awards the standard has 4 tiers: 
+- Bronze
+- Silver
+- Gold
+- Platinum
+
+The standard is cumulative and so to be compliant to the requirements of, for example, the gold tier you must also be compliant to the requirements of both the bronze and silver tiers and so forth.
+
+Grantees will be able to self-assess against this standard via an on-line portal which will store their self-assessment and supporting documentation. Further information on how the assessment portal works is provided in a short video which can be viewed at www.goodfinancialgrantpractice.org
+{% endblocktrans %}

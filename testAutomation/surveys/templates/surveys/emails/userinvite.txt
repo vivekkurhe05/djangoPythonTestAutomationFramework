@@ -1,0 +1,36 @@
+{% load i18n %}
+{% blocktrans %}
+Dear {{user_email}},
+
+{{ grantor_name }} is requesting your organization complete a due diligence self-assessment against the Good Financial Grant Practice standard ("GFGP") to at least the {{ survey_level }} level.
+
+You may want to read the background information below, in particular, noting the tiered structure of the standard and self-assessment of bronze, silver, gold and platinum. If your organization agrees to undertake the self-assessment, please use the link to register your organization on the Global Grant Community 
+{% endblocktrans %}
+{% block register_link %}
+https://{{ site_domain }}{% url 'register' %}?token={{token}}
+{% endblock %}
+{% blocktrans %}
+Your ogranization should self-assess to at least the level requested by the grantor but may also self-assess to a higher level of your own choosing.
+If you have any problems or need any guidance or advice please do not hesitate to contact the GFGP team at the African Academy of Sciences at gfgpcommunityportal@aasciences.ac.ke
+
+{% endblocktrans %}
+{% blocktrans with name=site.name %}
+Kind regards
+The {{ name }} team.
+{% endblocktrans %}
+{% blocktrans %}
+
+Background information to the Good Financial Grant Practice standard and the global grant community.
+
+The Global Grant Community aims to standardize, simplify and strengthen financial governance of grants. The benefits will be to increase direct funding, reduce administration costs and time for grantors to undertake due diligence and assurance activities and provide an aspirational pathway for organizations to develop their financial governance of grants. It will help to 'level the playing field' and 'democratize' grant funding as good financial grant practice will be accessible to and utilized by all.   This initiative has been developed by the African Academy of Sciences (AAS) under its Alliance for Accelerating Excellence in Science in Africa (AESA) platform and a consortium of grantees and grantors.   At its heart, is the Good Financial Grant Practice Standard ("GFGP") - The draft quality standard was submitted to the African Organization for Standardization in May'17 and will be formally adopted by ARSO as a new international standard in June'18. Following adoption by ARSO, this new standard is applicable in all countries - globally.
+
+To accommodate different sizes and complexity of awards the standard has 4 tiers:
+- Bronze
+- Silver
+- Gold
+- Platinum
+
+The standard is cumulative and so to be compliant to the requirements of, for example, the gold tier you must also be compliant to the requirements of both the bronze and silver tiers and so forth.
+
+Grantees will be able to self-assess against this standard via an on-line portal which will store their self-assessment and supporting documentation. Further information on how the assessment portal works is provided in a short video which can be viewed at www.goodfinancialgrantpractice.org
+{% endblocktrans %}

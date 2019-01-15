@@ -1,0 +1,23 @@
+[
+{
+  "model": "page.page",
+  "pk": 1,
+  "fields": {
+    "active": true,
+    "title": "Home",
+    "slug": "home",
+    "parent": null,
+    "in_navigation": false,
+    "override_url": "/",
+    "redirect_to": "",
+    "_cached_url": "/",
+    "lft": 1,
+    "rght": 2,
+    "tree_id": 1,
+    "level": 0,
+    "template_key": "1col",
+    "language": "af",
+    "translation_of": null
+  }
+}
+]

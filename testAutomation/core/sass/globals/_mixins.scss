@@ -1,0 +1,66 @@
+//color
+@mixin color-variant($bg, $color) {
+    color: $color;
+    background-color: $bg;
+}
+
+//size
+@mixin size($width, $height:$width)  {
+    width: #{$width};
+    height: #{$height};
+}
+@mixin min-size($width, $height:$width)  {
+    min-width: #{$width};
+    min-height: #{$height};
+}
+
+//font-face
+@function font-format($font-type){
+    @if($font-type == eot) {@return 'embedded-opentype';}
+    @else if($font-type == ttf) {@return 'truetype';}
+    @else if($font-type == woff) {@return 'woff';}
+    @else if($font-type == svg) {@return 'svg';}
+}
+
+@function font-url($name, $types){
+    $fonts-base-URL: '../fonts/';$url-seperator: 'comma';$result: ();
+    @each $type in $types {
+        $format: font-format(#{$type});
+        $result: append($result, url('#{$fonts-base-URL}#{$name}.#{$type}') format($format), $url-seperator)
+    }
+    @return $result;
+}
+
+@mixin font-face($name, $types, $weight, $style) {
+    font-family: #{$name};
+    src: font-url($name, $types);
+    font-weight: #{$weight};
+    font-style: #{$style};
+}
+
+//breakpoints
+@mixin media-breakpoint-down($breakpoint: null) {
+    @if($breakpoint) {
+        $max: $breakpoint - .01px;
+        @media (max-width: $max) {
+            @content;
+        }
+    }
+}
+
+@mixin media-breakpoint-up($breakpoint: null) {
+    $min: $breakpoint;
+    @if($min) {
+        @media (min-width: $min) {
+            @content;
+        }
+    }
+}
+
+@mixin media-breakpoint-bw($min: null, $max: null) {
+    @if($min and $max) {
+        @media (min-width: $min) and  (max-width: $max - .01px){
+            @content;
+        }
+    }
+}

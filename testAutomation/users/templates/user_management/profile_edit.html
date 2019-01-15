@@ -1,0 +1,17 @@
+{% extends "app_base.html" %}
+{% load crispy_forms_tags %}
+{% block app_content %}
+<div class="mx-auto w-auto-xs max-w-1000">
+    <h6 class="heading text-md mb-4">Edit my profile </h6>
+    <form method="POST">
+        {% crispy form %}
+        {% block form_actions %}
+        <div class="text-center text-sm-right mt-3">
+            <a href="{% url 'home' %}" class="btn white w-xs my-1 mr-1">Cancel</a>
+            <button type="submit" class="btn is-primary w-xs my-1 ml-1">Save</button>
+        </div>
+        {% endblock form_actions %}
+    </form>
+</div>
+
+{% endblock app_content %}

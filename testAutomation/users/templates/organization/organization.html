@@ -1,0 +1,55 @@
+{% extends "app_base.html" %}
+{% load custom_filter %}
+{% load html_time %}
+
+{% block app_content %}
+<div class="box mb-5">
+    <div class="box-header d-flex pb-0 justify-content-between flex-xs-sm-down-wrap">
+        <h2 class="mr-1 mb-2">{{ organisation.legal_name }}</h2>
+        <a href="{% url 'edit-organization' %}" class="btn is-primary w-xs">Edit</a>
+    </div>
+    {% include 'organization/_organization_detail.html' %}
+</div>
+<div class="box">
+    <div class="box-header d-flex pb-0">
+        <h2 class="flex">Users</h2>
+        <a href="{% url 'add-user' %}" class="btn is-primary btn-fw ml-1">Add user</a>
+    </div>
+    <div class="box-body px-0">
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th class="pl-4">Name:</th>
+                        <th>Role:</th>
+                        <th>Last login:</th>
+                        <th class="w-sm pr-4"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for user in user_list %}
+                    <tr>
+                        <td class="pl-4"> {{ user.name }} </td>
+                        <td>
+                          {{ user | get_permission }}
+                        </td>
+                        <td class="text-nowrap">
+                        {% if user.last_login%}
+                          {{ user.last_login }}
+                        {% else %}
+                            Never
+                        {% endif %}
+                        </td>
+                        <td class="pr-4 text-center">
+                            {% if current_user.pk != user.pk %}
+                                <a class="btn white w-xs" href="{% url 'edit-user' pk=user.pk %}">Edit</button>
+                            {% endif %}
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock app_content %}

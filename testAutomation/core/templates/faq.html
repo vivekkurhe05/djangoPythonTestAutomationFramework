@@ -1,0 +1,304 @@
+{% extends "app_base.html" %} {% load static from staticfiles %}
+{% block app_content %}
+<div class="d-flex mb-2">
+    <div class="col-md-10 col-sm-4 col-xs-4 ">
+        <h4 class="heading ml-3 text-md">FAQs</h4>
+    </div>
+    <div class="col-md-2 col-sm-2 col-xs-2 text-right flex">
+        <a href="javascript:window.print();" class="btn white ml-1 d-print-none">Print FAQs</a>
+    </div>
+</div>
+<div class="mb-2 " id="accordion">
+    <div class="panel box py-0 no-border mb-2">
+        <div class="box-header">
+            <a data-toggle="collapse" data-parent="#accordion" data-target="#q_1" class="text-bold">How do I contact the Global Grant Community?</a>
+        </div>
+        <div id="q_1" class="collapse">
+            <div class="box-body px-4">
+                <p>
+                    You can contact us at gfgpcommunityportal@aasciences.ac.ke
+                </p>
+                <p>
+                    We are currently exploring options to enable member to member communication within the system with plans to acquire future funding for a fully fledged online community.
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="panel box py-0 no-border mb-2">
+        <div class="box-header">
+            <a data-toggle="collapse" data-parent="#accordion" data-target="#q_2" class="text-bold">What happens when I submit my assessment ?</a>
+        </div>
+        <div id="q_2" class="collapse">
+            <div class="box-body px-4">
+                <p>
+                    When you submit your assessment all organizations, whos invitations you have accepted, will be able to see your assessment.
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="panel box py-0 no-border mb-2">
+        <div class="box-header">
+            <a data-toggle="collapse" data-parent="#accordion" data-target="#q_3" class="text-bold">What happens if I change my tier?</a>
+        </div>
+        <div id="q_3" class="collapse">
+            <div class="box-body px-4">
+                <p>
+                    Changing your target tier will allow you to see your compliance and assessment completeness at a different target level. This change will be shown in your reports and will be visible to the organization(s) you are sharing your assessment with.
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="panel box py-0 no-border mb-2">
+        <div class="box-header">
+            <a data-toggle="collapse" data-parent="#accordion" data-target="#q_4" class="text-bold">Can I complete the assessment at any tier?</a>
+        </div>
+        <div id="q_4" class="collapse">
+            <div class="box-body px-4">
+                <p>
+                    Yes. You can expand all tiers in the assessment and complete the questions within them. Please note they will not show in your report results unless you change your target tier.
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="panel box py-0 no-border mb-2">
+        <div class="box-header">
+            <a data-toggle="collapse" data-parent="#accordion" data-target="#q_5" class="text-bold">I’ve spotted an error in the content.</a>
+        </div>
+        <div id="q_5" class="collapse">
+            <div class="box-body px-4">
+                <p>
+                    Whilst every effort has been taken to ensure the copy is correct, mistakes can happen. We appreciate all editorial comments, please submit them to us via email (see FAQ ‘how to contact the global grant community’)
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="panel box py-0 no-border mb-2">
+        <div class="box-header">
+            <a data-toggle="collapse" data-parent="#accordion" data-target="#q_6" class="text-bold">I do not understand the question</a>
+        </div>
+        <div id="q_6" class="collapse">
+            <div class="box-body px-4">
+                <p>
+                    Your opinions are important to us. If a question does not make sense and you do not know how to interpret it please let us know. (see FAQ ‘how to contact the global grant community’)
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="panel box py-0 no-border mb-2">
+        <div class="box-header">
+            <a data-toggle="collapse" data-parent="#accordion" data-target="#q_7" class="text-bold">How do I answer a question?</a>
+        </div>
+        <div id="q_7" class="collapse">
+            <div class="box-body px-4">
+                <p>
+                    Currently you can select from three response choices.
+                </p>
+                <b>
+                    Yes
+                </b>
+                <p>
+                    This means that to the best of your knowledge you do comply with the question being asked.
+                </p>
+                <b>
+                    In progress
+                </b>
+                <p>
+                    This means that you are in the progress of compliance but there are some outstanding actions that will be ready soon. You can explain these in the box provided.
+                </p>
+                <b>
+                    No / Not applicable
+                </b>
+                <p>
+                    This means your organization does not comply with this statement or that the statement is not applicable to your organisation. You can explain why your organization does not comply in the box provided.
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="panel box py-0 no-border mb-2">
+        <div class="box-header">
+            <a data-toggle="collapse" data-parent="#accordion" data-target="#q_8" class="text-bold">How can I make a change to my submitted assessment?</a>
+        </div>
+        <div id="q_8" class="collapse">
+            <div class="box-body px-4">
+                <p>
+                    In the BETA version of the portal you are working on a live version of your assessment. Any changes you make to your assessment will be visible to the organizations your assessment is shared with. You could contact the organization you are submitting your assessment to and advise them that you will be making changes.
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="panel box py-0 no-border mb-2">
+        <div class="box-header">
+            <a data-toggle="collapse" data-parent="#accordion" data-target="#q_9" class="text-bold">I want to see an earlier version of my assessment?</a>
+        </div>
+        <div id="q_9" class="collapse">
+            <div class="box-body px-4">
+                <p>
+                    Currently there is no history or versions of assessments available.
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="panel box py-0 no-border mb-2">
+        <div class="box-header">
+            <a data-toggle="collapse" data-parent="#accordion" data-target="#q_10" class="text-bold">I’ve accidentally selected an answer how do I unselect it?</a>
+        </div>
+        <div id="q_10" class="collapse">
+            <div class="box-body px-4">
+                <p>
+                    Select the 'clear' button on the question to reset your response.
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="panel box py-0 no-border mb-2">
+        <div class="box-header">
+            <a data-toggle="collapse" data-parent="#accordion" data-target="#q_11" class="text-bold">I can’t submit my assessment</a>
+        </div>
+        <div id="q_11" class="collapse">
+            <div class="box-body px-4">
+                <p>
+                    In BETA you are unable to select the submit button more than once. When you accept more than one invitation you automatically share your assessment data with those new organisations.
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="panel box py-0 no-border mb-2">
+        <div class="box-header">
+            <a data-toggle="collapse" data-parent="#accordion" data-target="#q_12" class="text-bold">What happens when I accept an invitation?</a>
+        </div>
+        <div id="q_12" class="collapse">
+            <div class="box-body px-4">
+                <p>
+                    If you’ve not completed an assessment previously you will be able to complete an assessment and submit it to the inviting organization.
+                </p>
+                <p>
+                    If you have already completed an assessment and have selected the submit button your assessment will be visible to any organizations that invite you to complete an assessment.
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="panel box py-0 no-border mb-2">
+        <div class="box-header">
+            <a data-toggle="collapse" data-parent="#accordion" data-target="#q_13" class="text-bold">Do I have to complete a new assessment everytime I get a new invitation?</a>
+        </div>
+        <div id="q_13" class="collapse">
+            <div class="box-body px-4">
+                <p>
+                    No. The system is designed to have one assessment per organization. Every time another organization wishes to view your assessment report you will be asked whether you wish to give your permission to the requesting organization.
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="panel box py-0 no-border mb-2">
+        <div class="box-header">
+            <a data-toggle="collapse" data-parent="#accordion" data-target="#q_14" class="text-bold">Why can’t I view invitations?</a>
+        </div>
+        <div id="q_14" class="collapse">
+            <div class="box-body px-4">
+                <p>
+                    Different users have different permissions. Please speak to the administrator for your organisation to update your permissions to enable you to to make and accept invitations.
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="panel box py-0 no-border mb-2">
+        <div class="box-header">
+            <a data-toggle="collapse" data-parent="#accordion" data-target="#q_15" class="text-bold">How do I save my assessment?</a>
+        </div>
+        <div id="q_15" class="collapse">
+            <div class="box-body px-4">
+                <p>
+                    Your assessment responses are automatically saved.
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="panel box py-0 no-border mb-2">
+        <div class="box-header">
+            <a data-toggle="collapse" data-parent="#accordion" data-target="#q_16" class="text-bold">How can I view another organization’s assessment report?</a>
+        </div>
+        <div id="q_16" class="collapse">
+            <div class="box-body px-4">
+                <p>
+                    If you have invited an organization to complete an assessment you will need to wait for them to accept your invitation and ‘submit’ their assessment before you can view their report. If their report is already in the system, they will have to give their approval for you to view their report.
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="panel box py-0 no-border mb-2">
+        <div class="box-header">
+            <a data-toggle="collapse" data-parent="#accordion" data-target="#q_17" class="text-bold">I have a poor internet connection will I lose my assessment data?</a>
+        </div>
+        <div id="q_17" class="collapse">
+            <div class="box-body px-4">
+                <p>
+                    All responses are saved automatically as you answer them so if you do lose your connection your data should be up to date when you next connect.
+                </p>
+                <p>
+                    A poor internet connection can be frustrating. We are doing everything we can to limit this, soon you will be able to print your assessment to complete offline while you wait for a good connection. We recommend waiting until you have a good internet connection to upload your documents.
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="panel box py-0 no-border mb-2">
+        <div class="box-header">
+            <a data-toggle="collapse" data-parent="#accordion" data-target="#q_18" class="text-bold">How long will it take me to complete the assessment?</a>
+        </div>
+        <div id="q_18" class="collapse">
+            <div class="box-body px-4">
+                <p>
+                    We have preliminary data which indicates it takes less than 1 hour to complete all the assessment questions at the Bronze tier. Our prediction is that to complete the assessment at the Silver tier should take a total of 2.5h, Gold 4.5 and Platinum 5h.
+                </p>
+                <p>
+                    These estimates do not include the time required to source, upload and cross reference your process, procedure or policy documents.
+                </p>
+                <p>
+                    To streamline the process, we recommend you have all your documents on file and ready to upload when requested.
+                </p>
+                <p>
+                    Remember, you will only have to do this once!
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="panel box py-0 no-border mb-2">
+        <div class="box-header">
+            <a data-toggle="collapse" data-parent="#accordion" data-target="#q_19" class="text-bold">What browsers does the system Support?</a>
+        </div>
+        <div id="q_19" class="collapse">
+            <div class="box-body px-4">
+                <p>
+                    Internet explorer 11 and Microsoft Edge
+                </p>
+                <p>
+                    Firefox, Safari, Chrome - The latest releases
+                </p>
+                <p>
+                    Last 3 major iOS releases (iPhone and iPad)
+                </p>
+                <p>
+                    Last 3 major Android releases
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="panel box py-0 no-border mb-2">
+        <div class="box-header">
+            <a data-toggle="collapse" data-parent="#accordion" data-target="#q_20" class="text-bold">How safe are my data and what about the new General Data Protection Regulation (GDPR)?</a>
+        </div>
+        <div id="q_20" class="collapse">
+            <div class="box-body px-4">
+                <p>
+                    The portal and all your data will be hosted on the Amazon Web Services servers located in Eire.
+                </p>
+                <p>
+                    We are working hard to ensure we shall be compliant with the requirements of GDPR when the production version goes live in Mid’18.
+                </p>
+                <p>
+                    African Academy of Sciences has not been assessed for compliance to GDPR. The beta portal has been developed to test and refine the production / launch version of the portal. The security and privacy of your data has been a core requirement throughout the development process
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock app_content %}

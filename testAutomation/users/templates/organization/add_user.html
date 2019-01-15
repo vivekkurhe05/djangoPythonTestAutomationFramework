@@ -1,0 +1,28 @@
+{% extends "app_base.html" %}
+{% load crispy_forms_tags %}
+{% block app_content %}
+<div class="mx-auto w-auto-xs max-w-1000">
+    <h6 class="heading text-md mb-4">Add new user</h6>
+    {% block form %}
+    <form method="POST">
+        {% block form_inner %}
+            {% crispy form %}
+        {% endblock %}
+
+        {% block static_content %}
+            {% include "organization/_user_type_info.html" %}
+        {% endblock %}
+
+        {% block form_actions %}
+            <div class="d-flex align-items-center flex-column flex-md-row pt-3">
+                <div class="flex-md my-1 max-w-full">The new user will be sent an email inviting them to login and set their password.</div>
+                <div>
+                    <a href="{% url 'organization' %}" class="btn white w-xs my-1 mr-1">Cancel</a>
+                    <button type="submit" class="btn is-primary w-xs my-1 ml-1">Add user</button>
+                </div>
+            </div>
+        {% endblock form_actions %}
+    </form>
+    {% endblock %}
+</div>
+{% endblock app_content %}

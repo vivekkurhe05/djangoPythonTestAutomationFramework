@@ -1,0 +1,40 @@
+{% load static from staticfiles %}
+<div id="aside" class="app-aside box-shadow-x white">
+    <div class="sidenav modal-dialog">
+        <div class="navbar pt-4">
+            <a  href="{% url 'home' %}" class="ggc-logo"><img src="{% static 'img/ggc-logo.png' %}" alt="GGC logo"></a>
+        </div>
+        <div id="sidenav-list" class="flex hide-scroll">
+            <div class="scroll">
+                <div class="nav-active-theme" data-nav>
+                    <ul class="nav">
+                        <li class="nav-header hidden-folded mt-2">
+                            <span class="text-xs">Main</span>
+                        </li>
+                        {%for key,value in sidebar_main.items %}
+                        <li {% if value.class == 'active' %} class="active" {% endif %}>
+                            <a href="{{value.link}}">
+                                <span class="nav-icon"><i class="fa fa-{{value.icon}}"></i></span>
+                                <span class="nav-text">{{value.name}}</span>
+                            </a>
+                        </li>
+                        {%endfor%}
+                    </ul>
+                    <ul class="nav">
+                        <li class="nav-header hidden-folded mt-2">
+                            <span class="text-xs">Settings</span>
+                        </li>
+                        {%for key,value in sidebar_settings.items %}
+                        <li {% if value.class == 'active' %} class="active" {% endif %}>
+                            <a href="{{value.link}}">
+                                <span class="nav-icon"><i class="fa fa-{{value.icon}}"></i></span>
+                                <span class="nav-text">{{value.name}}</span>
+                            </a>
+                        </li>
+                        {%endfor%}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

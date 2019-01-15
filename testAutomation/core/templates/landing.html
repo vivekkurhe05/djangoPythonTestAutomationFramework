@@ -1,0 +1,83 @@
+{% extends "base.html" %} {% load static from staticfiles %}
+{% block footer_container_class %}container-1400{% endblock %}
+{% block main_content %}
+<div class="container-1400">
+    <div class="bg-black section-hr-p py-2 d-flex flex-row justify-content-center justify-content-sm-end">
+        <a href="{% url 'register' %}" class="btn is-cultured btn-fw mx-1 w-128">Register</a>
+        <a href="{% url 'login' %}" class="btn is-sec-action btn-fw mx-1 w-128">Login</a>
+    </div>
+    <div class="banner-box pos-rlt">
+        <div class="hidden-md-down">
+            <img src="{% static 'img/banner-lg.png' %}" alt="gfgp banner">
+        </div>
+        <div class="hidden-md-up">
+            <img src="{% static 'img/banner-md.png' %}" alt="gfgp banner">
+        </div>
+        <div class="font-2 banner-text">Welcome to the Global Grant Community which brings grantees and grantors together to standardize, simplify and strengthen the governance of grant funding.</div>
+
+        <a href="{% url 'aboutus' %}">
+            <button class="btn banner-btn-aboutus is-harvest-gold">About us</button>
+        </a>
+        <button onclick="app.scrollTo('video-section')" class="btn btn-fw btn is-primary banner-btn">Watch the video</button>
+
+    </div>
+    <div class="bg-english-violet text-white section-hr-p py-5">
+        <div class="row pt-3">
+            <div class="col-md-5">
+                <h5 class="text-bold">For grant givers (grantors)</h5>
+                <p class="text-s-md font-2">Invite grantees to complete online assessments of their compliance to the GFGP standard, view and download assessments reports and supporting documentation submitted by grantees.</p>
+            </div>
+            <div class="col-md-2 hidden-md-down">
+                <div class="divider"></div>
+            </div>
+            <div class="col-md-5">
+                <h5 class="text-bold">For grant receivers (grantees)</h5>
+                <p class="text-s-md font-2">Complete the GFGP compliance assessments, questionnaire and give viewing permission to your current or future grantor.</p>
+            </div>
+        </div>
+        <div class="text-center pt-4">
+            <a href="{% url 'register' %}" class="btn is-cultured w m-1">Register</a>
+            <a href="{% url 'login' %}" class="btn is-sec-action m-1 w">Login</a>
+        </div>
+    </div>
+    <div id="video-section" class="white section-hr-p py-5">
+        <h4 class="text-old-lavender text-uppercase font-2">An introduction to the global grant community</h4>
+        <div class="video-box" style="padding:80% 0 0 0;position:relative;top:0;">
+            <iframe src="https://player.vimeo.com/video/263864080?color=ffffff&title=0&byline=0&portrait=0" style="position:absolute;top:0;left:0;width:100%;height:100%;" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+        </div>
+    </div>
+    <div class="bg-bright-gray section-hr-p py-5">
+        <h4 class="text-uppercase text-black-olive font-2">Contact us</h4>
+        <div class="row pt-3 text-s-md text-outer-space">
+            <div class="col-md-5">
+                <label class="text-black text-bold">Support enquires:</label>
+                <div class="mb-4">
+                    <a href="mailto:GFGPcommunityportal@aasciences.ac.ke" class="text-u-l">GFGPcommunityportal@aasciences.ac.ke</a>
+                </div>
+                <label class="text-black text-bold">Telephone:</label>
+                <div>+254 20 240 5150</div>
+                <div>+254 20 806 0674</div>
+            </div>
+            <div class="col-md-2 text-center">
+                <div class="divider border-spanish-gray"></div>
+            </div>
+            <div class="col-md-5">
+                <label class="text-black text-bold">Postal Adress:</label>
+                <address>
+                        <div>The African Academy of Sciences</div>
+                        <div>8 Miotoni Lane</div>
+                        <div>Karen</div>
+                        <div>P.O. Box 24916-00502</div>
+                        <div>Nairobi</div>
+                        <div>Kenya</div>
+                    </address>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock main_content %}
+{% block main_footer %}
+    <div class="white text-outer-space section-hr-p py-4 b-t border-spanish-gray">
+        {% include '_main_footer.html' %}
+    </div>
+{% endblock main_footer %}

@@ -1,0 +1,52 @@
+.alert {
+    color: $primary-font-color;
+    @extend .text-bold;
+    padding-top: 20px;
+    padding-bottom: 20px;
+
+    &-dismissible .close {
+        color: #A7A7A7;
+        opacity: 1;
+        padding-top: 1.25rem;
+        padding-bottom: 1.25rem;
+        &:hover {
+            color: #9B9B9B;
+        }
+    }
+
+    .close {
+        text-shadow: unset;
+    }
+
+    &-warning {
+        background-color: #f7f197;
+        border-color: #f7f197;
+    }
+    &-success {
+        background-color: #adf797;
+        border-color: #adf797;
+    }
+    &-error {
+        background-color: #f8d7da;
+        border-color: #f8d7da;
+    }
+
+    .fa {
+        &-success:before {
+            content: "\f05d";
+            color: #0b8e52;
+        }
+        &-warning:before {
+            content: "\f06a";
+            color: #E0B000;
+        }
+        &-error:before {
+            content: "\f071";
+            color: #E07400;
+        }
+        &-info:before {
+            content: "\f05a";
+            color: #0077E0;
+        }
+    }
+}

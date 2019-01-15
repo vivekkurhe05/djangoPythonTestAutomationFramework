@@ -1,0 +1,50 @@
+{% load humanize %}
+{% with latest_subscription=user.organisation.latest_subscription %}
+    <div class="table-responsive">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th class="pl-4">
+                        Subscription: 
+                        {% if latest_subscription.get_is_renewal_due %}
+                        <span class="text-danger">(Expires <span class="number _700 text-nowrap">{{latest_subscription.end_date | date }}</span>)</span>
+                        {% endif %}
+                    </th>
+                    <th class="pr-4 text-right">Price: (USD)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="pl-4">
+                        <label class="md-check {% if latest_subscription and latest_subscription.order.get_is_approved %} disabled {% endif %}" for="{{ field.id_for_label }}">
+                            <input type="checkbox" name="{{ field.html_name }}" id="{{ field.id_for_label }}" class="full left-0" {% if field.value %} checked="checked" {% endif %} >
+                            <i></i>
+                            <span class="mx-2 {% if latest_subscription %}opacity-3{% endif %}"> 
+                                {% if not latest_subscription %}
+                                    <span class="text-bold">Annual subscription</span> - {{valid_until | date }}
+                                {% elif latest_subscription.get_is_renewal_due %}
+                                    <span class="text-bold">Subscription renewal</span> - Valid until <span class="number text-nowrap">
+                                            {{ latest_subscription.end_date | date }}
+                                        </span>
+                                {% else %}
+                                    Valid until <span class="number text-nowrap">
+                                        {{ latest_subscription.end_date | date }}
+                                    </span>
+                                {% endif %}
+                            </span>
+                        </label>
+                    </td>
+                    <td class="pr-4 text-right number {% if latest_subscription %}opacity-3{% endif %}">
+                        ${{subscription_defaults.price | floatformat:2  | intcomma }}
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    {% if latest_subscription.get_is_renewal_due %}
+    <div class="px-4 d-flex">
+        <i class="fa fa-2x fa-warning has-cbronze-color mr-2"></i>
+        <span class="text-bold has-cbronze-color">You must have a valid subscription to purchase invitation packages</span>
+    </div>
+    {% endif %}
+{% endwith %}

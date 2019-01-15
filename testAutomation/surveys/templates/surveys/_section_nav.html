@@ -1,0 +1,13 @@
+<div class="flex-sm">
+    {% if previous_url %}
+        <a class="btn is-primary my-1" href="{{ previous_url }}"> <i class="fa fa-arrow-left"></i> Previous</a>
+    {% endif %}
+</div>
+<div class="text-center w-sm-down-full">
+    {% if summary_url %}
+        <a class="btn is-primary my-1 mx-2" href="{{ summary_url }}">View summary</a>
+    {% endif %}
+    {% if next_url %}
+        <a class="btn is-primary btn-fw my-1" href="{{ next_url }}">Next <i class="fa fa-arrow-right"></i></a>
+    {% endif %}
+</div>

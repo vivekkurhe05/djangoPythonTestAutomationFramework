@@ -1,0 +1,23 @@
+{% load crispy_forms_field %}
+
+<div id="select-file-box" class="select-file-box">
+    <label for="{{field.id_for_label}}" {% if field.field.required %} requiredField{% endif %}>File{% if field.field.required %}<span class="asteriskField">*</span>{% endif %}</label>
+    <div class="select-zone rounded b-dashed d-flex align-items-center justify-content-center text-center form-control{% if form_show_errors and field.errors %} is-invalid{% endif %}">
+        <label id="file-label" class="sec-font-color text-bold text-md mb-0">
+            Click here to<br>select file
+            <div class="suggest-text-upload">
+                We recommend your files are less than 10MB
+            </div>
+        </label>
+        <div id="file-info" class="collapse">
+            <i class="fa fa-file fa-5x text-moss-green" aria-hidden="true"></i>
+            <div id="file-name" class="w text-truncate text-bold mt-1"></div>
+            <div id="file-remove" class="link text-u-l file-remove-link" title="Remove file">Remove</div>
+        </div>
+        <label class="select-label mb-0" for="{{field.id_for_label}}" title='Click to select new file'>{{field}}</label>
+    </div>
+    <div class="suggest-text">
+        Suggested formats: Word, PDF, Excel or scanned images
+    </div>
+    {% include 'bootstrap4/layout/field_errors_block.html' %}
+</div>

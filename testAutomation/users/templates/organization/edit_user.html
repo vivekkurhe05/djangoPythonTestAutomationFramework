@@ -1,0 +1,26 @@
+{% extends "app_base.html" %}
+{% load crispy_forms_tags %}
+{% block app_content %}
+<div class="mx-auto w-auto-xs max-w-1000">
+    <h6 class="heading text-md mb-4">Edit User - <span class="text-capitalize"> {{ user.name }}</span></h6>
+    <form method="POST">
+        {% crispy form %}
+        {% block static_content %}
+            {% include "organization/_user_type_info.html" %}
+        {% endblock %}
+        {% block form_actions %}
+        <div class="d-flex align-items-center flex-column flex-sm-row pt-3">
+            <div class="flex-sm my-1">
+                <button type="button" data-id="{{user.id}}" class="btn is-sec-action btn-fw my-1" onclick="app.deleteUser('{% url 'delete-user' pk=user.id %}')">Delete user</button>
+            </div>
+            <div>
+                <a href="{% url 'organization' %}" class="btn white w-xs my-1 mr-1">Cancel</a>
+                <button type="submit" class="btn is-primary w-xs my-1 ml-1">Save</button>
+            </div>
+        </div>
+        {% endblock form_actions %}
+    </form>
+</div>
+
+{% include 'organization/_delete_user_modal.html' %}
+{% endblock app_content %}

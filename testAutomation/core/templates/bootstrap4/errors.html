@@ -1,0 +1,11 @@
+{% if form.non_field_errors %}
+<div class="alert alert-error alert-dismissible">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <i class="fa fa-times-circle" aria-hidden="true"></i>
+    </button>
+    <div class="min-h-25 d-flex flex-column flex-sm-row align-items-center">
+        <i class="fa fa-error fa-2x" aria-hidden="true"></i>
+        <div class="px-2" id="error_notification">{% for error in form.non_field_errors %} <div>{{ error }} </div> {% endfor %}</div>
+    </div>
+</div>
+{% endif %}

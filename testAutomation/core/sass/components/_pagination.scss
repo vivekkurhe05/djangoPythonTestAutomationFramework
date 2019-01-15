@@ -1,0 +1,58 @@
+/*
+pagination
+*/
+.pagination .page-link,
+.pagination li a {
+    color: inherit;
+    background-color: transparent;
+    border-color: rgba(120, 130, 140, 0.13);
+    display: block;
+    text-align: center;
+}
+
+.pagination .page-link:focus,
+.pagination .page-link:hover,
+.pagination li a:focus,
+.pagination li a:hover {
+    border-color: rgba(120, 130, 140, 0.13);
+    background-color: rgba(0, 0, 0, 0.05);
+    color: inherit;
+}
+
+.pagination .active .page-link,
+.pagination .active a {
+    color: black;
+    background-color: #EFEFEF;
+    border-color: rgba(120, 130, 140, 0.13);
+}
+
+.pagination {
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+
+    a {
+        padding: 0.5rem 0.75rem;
+        border: 1px solid rgba(120, 130, 140, 0.13);
+    }
+
+    li {
+        &:first-child a.page-link {
+            border-top-left-radius: 0;
+            border-bottom-left-radius: 0;
+        }
+
+        &:last-child a.page-link {
+            border-top-right-radius: 0;
+            border-bottom-right-radius: 0;
+        }
+    }
+
+    &-sm a {
+        padding: 0.2195rem 0.5rem;
+    }
+
+    &-xs a {
+        padding: 0 0.35rem;
+        line-height: 1.5;
+    }
+}

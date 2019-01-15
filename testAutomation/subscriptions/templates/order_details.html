@@ -1,0 +1,67 @@
+{% extends "app_base.html" %}
+{% load humanize %}
+{% block app_content %}
+<div class="box">
+    <div class="box-header">
+        <h2>Order #<span class="number _700 text-nowrap">{{order.get_formatted_id}}</span></h2>
+        <div class="mt-2">
+            Order date: <span class="number _700 text-nowrap">{{order.created | date}}</span>
+        </div>
+        <div class="mt-2">
+            Status: <span class="text-bold">{{ order.get_status_display }}</span>
+            <span>
+                {% if order.get_is_approved and order.paid_date %}
+                    ( on <span class="number">{{ order.paid_date | date }}</span> )
+                {% endif%}
+            </span>
+        </div>
+        <a href="{% url 'order-history' %}" class="btn is-primary w-xs mt-4">Back</a>
+    </div>
+    <div class="box-body px-0">
+        <div class="table-responsive">
+            <table class="table" id="packages-list">
+                <thead>
+                    <tr>
+                        <th class="pl-4">Items:</th>
+                        <th class="pr-4 text-right">Price (USD):</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% if order.subscription%}
+                    <tr>    
+                        <td class="pl-4 number">
+                            <span class="text-bold">Annual Subscription </span>
+                            (Valid until <span class="number text-nowrap">{{ order.subscription.end_date | date }}</span>)
+                        </td>
+                        <td class="pr-4 number text-right">
+                            ${{order.subscription.price | floatformat:2 | intcomma }}
+                        </td>
+                    </tr>
+                    {% endif %}
+                    {% if order.assessment_purchase %}
+                    <tr>
+                        <td class="pl-4 number">
+                            <span class="text-bold"> Assessment package </span>
+                            ({{order.assessment_purchase.number_included}} assessment{{ order.assessment_purchase.number_included|pluralize:"s" }})
+                        </td>
+                        <td class="pr-4 number text-right">
+                            ${{order.assessment_purchase.price | floatformat:2 | intcomma }}
+                        </td>
+                    </tr>
+                    {% endif %}
+                </tbody>
+            </table>
+        </div>
+        <div class="box-body px-4 d-flex align-items-center justify-content-between flex-xs-sm-down-wrap mt-3">
+            <div class="mr-1 mb-2 text-bold">
+                <h3>Total:</h3>
+            </div>
+            <div>
+               <h3 class="number _700">
+                   ${{order_total | floatformat:2 | intcomma }}
+               </h3>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock app_content %}

@@ -1,0 +1,14 @@
+<div class="input-group">
+    <input type="{{ widget.type }}" name="{{ widget.name }}"{% include "django/forms/widgets/attrs.html" %} />
+</div>
+{% if widget.is_initial %}
+    <div class="input-group mt-2">
+        <a class="link has-primary-highlight text-u-l" href="{{ widget.value.url }}">{{ widget.file_name }}</a>
+    {% if not widget.required %}
+        <label class="md-check ml-3" for="{{ widget.checkbox_id }}">
+            <input type="checkbox" name="{{ widget.checkbox_name }}" id="{{ widget.checkbox_id }}" /><i></i>
+            {{ widget.clear_checkbox_label }}
+        </label>
+    {% endif %} 
+    </div>
+{% endif %}

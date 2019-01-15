@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+
+{% load static from staticfiles %}
+
+{% block main %}
+    {% block app %}
+        <div id="app" class="app">
+            {% block sidebar %}
+                {% include "sidebar.html" %}
+            {% endblock sidebar %}
+            <div id="content" class="app-content box-shadow-4">
+                {% block app_header %}
+                <div id="content-header" class="content-header white box-shadow-4">
+                    <div class="navbar navbar-expand-lg">
+                        <a class="d-lg-none mx-2" data-toggle="modal" data-target="#aside">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 512 512"><path d="M80 304h352v16H80zM80 248h352v16H80zM80 192h352v16H80z"></path></svg>
+                        </a>
+                        <div class="navbar-text nav-title flex" id="pageTitle">{{page_title}}</div>
+                    </div>
+                </div>
+                {% endblock app_header %}
+                {% block app_alert %}
+                    {% include "alert.html" %}
+                {% endblock app_alert %}
+                {% if user.organisation.latest_subscription %}
+                    {% if user.organisation.active_subscription.get_is_renewal_due or  user.organisation.latest_subscription.get_is_expired %}
+                        {% block app_subscription_notification %}
+                        <div class="notification-header pjax-update {% block app_subscription_notification_class %}{% endblock %}">
+                            <div class="d-flex align-items-center justify-content-between">
+                                <div class="flex">
+                                    {% include "_subscription_renewal_msg.html" %}
+                                    <div class="mr-2">You need valid subscription to invite grantees to sumbit assessments and view assessment reports.</div>
+                                </div>
+                                <a href="{% url 'subscription' %}" class="btn white w-xs">Renew</a>
+                            </div>
+                        </div>
+                        {% endblock app_subscription_notification %}
+                    {% endif %}
+                {% endif %}
+                <div class="{% block app_content_main_class %}content-main position-relative{% endblock %}" id="content-main">
+                    <div class="{% block app_content_main_inner_class %}padding-main{% endblock %}">
+                        {% block app_content %}
+                        {% endblock app_content %}
+                    </div>
+                </div>
+                {% block app_footer %}
+                <div class="content-footer" id="content-footer">
+                    <div class="white p-3 b-b d-flex flex-column align-items-end">
+                        <div>
+                            <div class="mb-1 text-bold text-outer-space">Supported by:</div>
+                            <a  href="{% url 'home' %}" class="aas-logo"><img src="{% static 'img/aas-logo.png' %}" alt="AAS logo"></a>
+                        </div>
+                    </div>
+                    <div class="white p-3 sec-font-color">{% include '_main_footer.html' %}</div>
+                </div>
+                {% endblock app_footer %}
+            </div>
+        </div>
+    {% endblock app %}
+{% endblock main %}

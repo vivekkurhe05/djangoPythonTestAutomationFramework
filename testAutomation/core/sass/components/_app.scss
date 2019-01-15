@@ -1,0 +1,426 @@
+//labels
+// w: width, h: height, p: padding, m: margin, vr: vertical, hr: horizontal, bg: background
+
+@font-face {
+    @include font-face('Oceania-Regular', eot ttf, normal, normal);
+}
+@font-face {
+    @include font-face('Oceania-Medium', eot ttf, normal, normal);
+}
+@font-face {
+    @include font-face('Oceania-Light', eot ttf, normal, normal);
+}
+
+body {
+    font-family: $font-family-1;
+    color: $primary-font-color;
+    background-color: $body-bg;
+}
+
+input,select {
+    height: $form-input-height;
+}
+img {
+    height: 100%;
+    width: 100%;
+}
+.form-control {
+    border-color: $form-input-border-color;
+}
+
+.form-control:-ms-input-placeholder {
+    color:inherit;opacity:.8;
+}
+.form-control::-webkit-input-placeholder {
+    color:inherit;opacity:.5;
+}
+.form-control::-moz-placeholder {
+    color:inherit;opacity:.5;
+}
+
+.app, .site-wrap{
+    min-height: inherit;
+}
+
+.app-content {
+    min-width: 0;
+}
+
+.divider-hr {
+    border: 1px solid #CFCECB;
+}
+
+button[disabled], .btn.disabled {
+    cursor: not-allowed;
+}
+
+.nav-active-theme .nav-link.active,
+.nav-active-theme .nav > li.active > a,
+.btn.theme,
+.btn.b-theme:hover,
+.btn.b-theme:focus,
+.pace .pace-progress,
+.theme {
+  color: rgba(255, 255, 255, 0.85);
+  background-color: $primary-highlight-color;
+}
+
+//homepage
+.banner {
+    &-btn {
+        position: absolute;
+        bottom: 4%;
+        right: 8%;
+        width: 200px;
+        @include media-breakpoint-down($md) {
+            left: 0;
+            right: 0;
+            width: 100%;
+            max-width: 200px;
+            margin: -15px auto;
+        }
+        @include media-breakpoint-down($lg) {
+            right: 8%;
+            bottom: 4%;
+            max-width: 130px;
+        }
+        @include media-breakpoint-down($sm) {
+            right: 0;
+            max-width: 150px;
+            bottom: 5%;
+        }
+    }
+
+    &-btn-aboutus {
+        position: absolute;
+        bottom: 4%;
+        right: 20%;
+        margin-right: 8%;
+        width: 200px;
+        @include media-breakpoint-down($md) {
+            left: 0;
+            right: 0;
+            width: 100%;
+            right: 22%;
+            max-width: 150px;
+            margin: 25px auto;
+        }
+        @include media-breakpoint-down($lg) {
+            right: 18%;
+            bottom: 4%;
+            max-width: 125px;
+        }
+        @include media-breakpoint-down($sm) {
+            right: 0;
+            max-width: 150px;
+            bottom: 5%;
+        }
+    }
+
+    &-text {
+        color: #252525;
+        position: absolute;
+        top: 51%;
+        right: 9%;
+        left: 58%;
+        font-size: 21.5px;
+        font-weight: normal;
+
+        @include media-breakpoint-down($xl) {
+            font-size: 17px;
+        }
+        @include media-breakpoint-down($lg) {
+            font-size: 13px;
+        }
+        @include media-breakpoint-down($md) {
+            font-size: 27px;
+            top:47%;
+            left: 9%;
+            text-align: center;
+        }
+        @include media-breakpoint-down($sm) {
+            font-size: 20px;
+        }
+        @include media-breakpoint-down($xs-sm) {
+            font-size: 14px;
+        }
+    }
+}
+.ggc-logo {
+    display: inline-block;
+    @include size(180px, 71px);
+    @include media-breakpoint-down($sm) {
+        @include size(126px, 50px);
+    }
+}
+.aas-logo {
+    display: inline-block;
+    @include size(240px, 69px);
+    @include media-breakpoint-down($sm) {
+        @include size(165px, 48px);
+    }
+}
+.video-box {
+    height: 250px;
+    @include media-breakpoint-up($sm) {
+        height: 460px;
+    }
+    @include media-breakpoint-up($xl) {
+        height: 600px;
+    }
+}
+.color-light-silver{
+    color: #D9D9D9;
+}
+.divider {
+    width: 0;
+    border: 1px solid;
+    display: inline-block;
+    height: 100%;
+    position: absolute;
+    left: 50%;
+    margin-left: -0.5px;
+    @include media-breakpoint-down($md) {
+        width: 100%;
+        margin: 30px 0;
+        height: 0;
+        position: static;
+    }
+}
+.divider-vr {
+    border: 1px solid;
+    height: 14px;
+    vertical-align: middle;
+}
+.border-spanish-gray {
+    border-color: #9E9C9D;
+}
+
+//invites
+.status-icon{
+    border-radius: 4px;
+    padding: 4px 4px 2px 8px;
+}
+
+//survey-status
+.status {
+    &-container {
+        width: 100%;
+        overflow: hidden;
+    }
+    &-bar {
+        width: 100%;
+        min-width: 10px;
+        border: 1px solid #979797;
+        margin: 9px 2px;
+    }
+    &-dot {
+        border-radius: 100%;
+        width: 20px;
+        height: 20px;
+        border: 1px solid #979797;
+        min-width: 20px;
+        min-height: 20px;
+        position: relative;
+    }
+    &-code-label  {
+        position: absolute;
+        top: -27px;
+        font-size: 1rem;
+        left: 50%;
+        margin-left: -4px;
+        @extend .number;
+    }
+}
+
+.status-dot {
+    &.complete {
+        background-color: #90AE4F;
+        border-color: #627B2C;
+    }
+    &.in-progress {
+        background-color: #F7EBA3;
+        border-color: #D28C00;
+    }
+    &.no-question {
+        background-color: #F0F0F0;
+    }
+    &.selected {
+        border-width: 2px;
+    }
+}
+
+.status-selected-bar {
+    height: 10px;
+    position: absolute;
+    margin-left: 6px;
+    margin-top: 18px;
+    &.complete {
+        border-left: 3px solid  #627B2C;
+    }
+    &.in-progress {
+        border-left: 3px solid  #D28C00;
+    }
+    &.no-question {
+        border-left: 3px solid  #979797;
+    }
+}
+
+.status-selected-text {
+    position: absolute;
+    top:26px;
+    @extend .number;
+    
+    &.complete {
+        color:  #627B2C;
+    }
+    &.in-progress {
+        color:  #D28C00;
+    }
+    &.no-question {
+        color:  #979797;
+    }
+}
+
+//popover
+.pop-body {
+    padding: 0.5rem 0.75rem;
+    font-size: 0.8rem;
+}
+.popover-header {
+    @extend .text-bold;
+}
+//dashboard
+.notification-header {
+    padding: 1rem 2rem;
+    @extend .bg-bright-gray;
+}
+
+//nav tabs
+.nav-active-is-primary .nav-is-link.active {
+    color: white;
+    background-color: $primary-highlight-color;
+}
+
+.nav-is-link{
+    display: block;
+    position: relative;
+    padding: 0.625rem 1rem
+}
+.nav-tabs .nav-is-link {
+    border: 1px solid transparent;
+    border-top-left-radius: 0.25rem;
+    border-top-right-radius: 0.25rem;
+    background: transparent;
+    color: inherit;
+}
+
+//select-file
+.select-file-box {
+    .select-zone {
+        border-color: #66B0BA;
+        width: 230px;
+        height: 115px;
+        position: relative;
+        padding: 0 20px;
+        .select-label {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            cursor: pointer;
+            input {
+                width: 1px;
+                height: 1px;
+                opacity: 0;
+                position: absolute;
+                bottom: 0;
+            }
+        }
+    }
+    .file-remove-link {
+        position: absolute;
+        top: 7px;
+        right: 10px;
+        padding: 3px 0;
+        z-index: 2;
+    }
+}
+.ie10 .file-remove-link {
+    display: none;
+ }
+
+//user sidenav
+.modal-dialog.user-sidenav {
+    background-color: $body-bg;
+    .sidenav .nav li > a {
+        white-space: normal;
+    }
+}
+
+.org .grantee_invite_form{
+    display: none;
+}
+
+.org .org_invite_form{
+    display: block;
+}
+
+.email .grantee_invite_form {
+    display: block;
+}
+
+.email .org_invite_form {
+    display: none;
+}
+
+.suggest-text {
+    width: 230px;
+    color: $sec-font-color;
+    padding-top: 5px;
+}
+.suggest-text-upload {
+    color: $sec-font-color;
+    padding-top: 5px;
+    font-family: $font-family-1;
+    font-size: 0.7rem;
+}
+
+.question_text {
+    font-size: 0.94rem;
+
+    p {
+        display: inline;
+    }
+
+    &_notes {
+        margin-left: 10px;
+        display: inline-block;
+    }
+}
+.info-circle {
+    border-radius: 100%;
+    border-width: 2px;
+    border-style: solid;
+    position: relative;
+}
+
+.due-date-error-color {
+    color: $error-color;
+}
+
+//confirmation
+.confirmation-highlighted-sec {
+    background-color: #F7F09C;
+    border: 1px solid #E4C03A;
+}
+
+
+//subscription
+.invitation-package:nth-child(odd){
+    background-color: #E9EFDD;
+}

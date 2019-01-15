@@ -1,0 +1,13 @@
+{% load crispy_forms_field %}
+
+
+<{% if tag %}{{ tag }}{% else %}div{% endif %} id="div_{{ field.auto_id }}" class="form-group{% if wrapper_class %} {{ wrapper_class }}{% endif %}{% if field.css_classes %} {{ field.css_classes }}{% endif %}">
+
+    <div class="{{ field_class }}">
+        <div class="form-control p-1{% if form_show_errors and field.errors %} is-invalid{% endif %}">
+            {% crispy_field field %}
+        </div>
+        {% include 'bootstrap4/layout/help_text_and_errors.html' %}
+    </div>
+
+</{% if tag %}{{ tag }}{% else %}div{% endif %}>

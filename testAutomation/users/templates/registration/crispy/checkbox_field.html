@@ -1,0 +1,5 @@
+<label class="md-check {% if field.field.required %}requiredField{% endif %}" for="{{ field.id_for_label }}">
+    {{field}}<i></i>
+</label>
+<span>I agree to the</span>
+<a href='{% if field.field.widget.attrs.link%}{% url field.field.widget.attrs.link %}{% else %}#{% endif %}' class="link text-u-l">{{field.label}}</a>&nbsp;{% if field.field.required %}<span class="asteriskField">*</span>{% endif %}

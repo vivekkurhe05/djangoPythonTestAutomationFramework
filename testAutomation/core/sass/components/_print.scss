@@ -1,0 +1,43 @@
+@media print {
+    * {
+        -webkit-print-color-adjust: exact;
+        color-adjust: exact;
+    }
+
+    .pace {
+        display: none;
+    }
+
+    .badge {
+        border: 0;
+    }
+
+    .flex-sm {
+        -ms-flex: 1;
+        flex: 1;
+        flex-grow: 1;
+        flex-shrink: 1;
+        flex-basis: auto;
+    }
+
+    .d-print-row {
+        -webkit-box-orient: horizontal !important;
+        -webkit-box-direction: normal !important;
+        -ms-flex-direction: row !important;
+        flex-direction: row !important;
+    }
+
+    .text-print-right {
+        text-align: right !important;
+    }
+
+    .print-align-items-start {
+        -webkit-box-align: start !important;
+        -ms-flex-align: start !important;
+        align-items: flex-start !important;
+    }
+
+    #accordion .collapse {
+        display: block;
+    }
+}

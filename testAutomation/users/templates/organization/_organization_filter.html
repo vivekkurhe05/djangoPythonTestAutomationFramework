@@ -1,0 +1,9 @@
+<div class="d-flex flex-column b-l" style="width: 50px">
+    <div class="scrollable hover">
+        <div class="text-center text-sm text-muted text-bold py-3 d-flex flex-column" id="filter">
+            {% for letter in 'ABCDEFGHIJKLMNOPQRSTUVWXYZ' %}
+                <a href="#">{{ letter }}</a>
+            {% endfor %}
+        </div>
+    </div>
+</div>

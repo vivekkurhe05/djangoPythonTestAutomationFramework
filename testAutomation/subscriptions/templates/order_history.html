@@ -1,0 +1,56 @@
+{% extends "app_base.html" %}
+
+{% block app_content %}
+<div class="box">
+    <div class="box-header">
+        <h2>My orders</h2>
+        <div class="mt-2">Your order history and invoices are listed below.</div>
+        <a href="{% url 'subscription' %}" class="btn is-primary w-xs mt-3">Back</a>
+    </div>
+    <div class="box-body">
+        <div class="table-responsive">
+            <table class="table" id="packages-list">
+                <thead>
+                    <tr>
+                        <th class="pl-4">Order ID:</th>
+                        <th class="">Date:</th>
+                        <th class="">Status:</th>
+                        <th class="w-xs"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for order in orders %}
+                        <tr>
+                            <td class="pl-4 number">{{order.get_formatted_id}}</td>
+                            <td class="number text-nowrap">{{order.created | date }}</td>
+                            <!-- conditional class-->
+                            <td class="text-bold {% if order.get_is_awaiting_payment %}has-cbronze-color{% endif %}">
+                                <!-- conditional -->
+                                {% if order.get_is_awaiting_payment %}
+                                <div class="d-flex align-items-center">
+                                    <span>Awaiting payment</span>
+                                    <div class="d-flex align-items-center justify-content-center info-circle bg-md-champagne has-cbronze-color min-size-25 bg-gold mx-1"
+                                    data-trigger="hover" data-toggle="popover" data-placement="top" data-html="true"
+                                    data-title="Order awaiting payment" data-boundary="viewport"
+                                    data-content="<p class='mb-2'>Orders cannot be completed until full payment is received by the Global Grant Community.</p>
+                                    Instruction on how to pay and contact details can be found on the invoice.">
+                                        <i class="fa fa-info"></i>
+                                    </div>
+                                </div>
+                                {% else %}
+                                    {{order.get_status_display}}
+                                {% endif %}
+                            </td>
+                            <td>
+                                <a class="btn w-xs white" href="{% url 'order-details' pk=order.pk %}">View</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <!-- pagination -->
+        {% include '_pagination.html' %}
+    </div>
+</div>
+{% endblock app_content %}

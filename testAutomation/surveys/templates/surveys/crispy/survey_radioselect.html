@@ -1,0 +1,14 @@
+{% load crispy_forms_filters %}
+<div id="div_{{ field.auto_id }}" class="form-group flex{% if wrapper_class %} {{ wrapper_class }}{% endif %}{% if form_show_errors and field.errors %} has-danger{% endif %}{% if field.css_classes %} {{ field.css_classes }}{% endif %}">
+    <div class="pt-1 text-bold{% if form_show_errors and field.errors %} form-control is-invalid{% endif %}">
+        {% for choice in field.field.choices %}
+        <div class="d-inline-block w">
+            <label for="id_{{ field.id_for_label }}_{{ forloop.counter }}" class="ui-check">
+                <input type="radio" {% if choice.0|stringformat:"s" == field.value|default_if_none:""|stringformat:"s" %} checked="checked"{% endif %} name="{{ field.html_name }}" id="id_{{ field.id_for_label }}_{{ forloop.counter }}" value="{{ choice.0 }}" {{ field.field.widget.attrs|flatatt }}><i class="mr-1"></i>
+                {{ choice.1 }}
+            </label>
+        </div>
+        {% endfor %}
+    </div>
+    {% include 'bootstrap4/layout/field_errors_block.html' %}
+</div>

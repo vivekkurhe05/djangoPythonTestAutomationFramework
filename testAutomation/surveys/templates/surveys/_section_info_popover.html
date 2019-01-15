@@ -1,0 +1,13 @@
+<div class='popover' role='tooltip'>
+    <div class='arrow'></div>
+    <div class='popover-header text-bold'></div>
+    <div class='pop-body px-3'>
+        <ul class='pl-3'>
+            {% for step in progress.sections %}
+                {% ifequal section.area.number step.section.area.number %}
+                    <li>{{ step.section.name }}</li>
+                {% endifequal %}
+            {% endfor %}
+        </ul>
+    </div>
+</div>

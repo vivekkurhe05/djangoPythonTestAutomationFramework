@@ -1,0 +1,15 @@
+{% with active_subscription=user.organisation.active_subscription latest_subscription=user.organisation.latest_subscription %}
+<label class="text-bold {% if not active_subscription %} has-pastel-red-color{% else %}has-cbronze-color{% endif %} clear">
+    <i class="fa fa-2x fa-warning mr-2 float-left"></i>
+    <span class="vr-middle text-s-md">
+        {% if active_subscription and active_subscription.get_is_renewal_due  %}
+            Your subscription expires in
+            <span class="number _700">
+                {{active_subscription.get_remaining.days}}
+            </span> days
+        {% elif latest_subscription.get_is_expired  %}
+            Your subscription has expired
+        {% endif %}
+    </span>
+</label>
+{% endwith %}

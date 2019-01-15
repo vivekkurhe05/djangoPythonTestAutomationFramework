@@ -1,0 +1,19 @@
+{% load i18n %} {% load humanize %} {% blocktrans %}
+Dear {{ user_name }},
+
+Thank you for your order:
+{% endblocktrans %}
+{% for item in order_items %}
+* {{ item.name }} - ${{ item.price | floatformat:2  | intcomma  }}
+{% endfor %}
+{% blocktrans %}
+Order total: ${{ order_total }}
+Your order number is {{ order_number }}
+
+Our finance team will issue an invoice, and your order will be completed upon payment.
+{% endblocktrans %}
+{% blocktrans %}
+Kind regards,
+
+The {{ site_name }} Team
+{% endblocktrans %}

@@ -1,0 +1,40 @@
+ips/gfgp-website:
+
+  PkgExclude:
+    - 'node_modules/'
+    - 'client_media/'
+    - 'static_media/'
+    - '.coverage'
+
+  PkgInclude:
+    - '*'
+
+  Build:
+    # Create the database
+    - createdb gfgp
+    # Install back-end
+    - virtualenv ~/.venv --python=`which python3`
+    - source ~/.venv/bin/activate
+    - pip install -r requirements.txt
+    - python manage.py collectstatic --noinput
+    - python manage.py migrate --noinput
+    # Install and build front-end
+    - source $NVM_DIR/nvm.sh
+    - nvm use 6
+    - npm install
+    - bower install
+    - grunt build
+    # Run the tests (make target)
+    - make ${TARGET:=test} verbosity=${VERBOSITY:=1}
+
+  PostInstall:
+    - /usr/local/bin/virtualenv . --python=`which python3`
+    - bin/pip install --upgrade pip
+    - ENV=${ENV_FOLDER:="/var/conf/env"}
+    - echo $DISTELLI_RELREVISION > $ENV/DISTELLI_RELREVISION
+    - envdir $ENV bin/pip install -r requirements.txt
+    - envdir $ENV bin/python manage.py collectstatic --noinput
+    - envdir $ENV bin/python manage.py migrate --noinput
+
+  Start:
+    - sudo supervisorctl restart all

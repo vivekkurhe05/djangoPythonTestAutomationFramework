@@ -1,0 +1,32 @@
+{
+  "name": "gfgp-website",
+  "scripts": {
+    "start": "npm install && bower install && grunt build && grunt"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/incuna/gfgp-website.git"
+  },
+  "bugs": {
+    "url": "https://github.com/incuna/gfgp-website/issues"
+  },
+  "description": "GFGP Website",
+  "author": "Incuna",
+  "license": "UNLICENSED",
+  "devDependencies": {
+    "eslint": "3.12.2",
+    "eslint-config-incuna": "1.0.0",
+    "eslint-plugin-import": "2.2.0",
+    "grunt": "1.0.1",
+    "grunt-contrib-concat": "1.0.1",
+    "grunt-contrib-watch": "1.0.0",
+    "grunt-eslint": "19.0.0",
+    "grunt-sass": "2.0.0",
+    "grunt-svgmin": "4.0.0",
+    "grunt-svgstore": "1.0.0",
+    "incuna-sass": "github:incuna/incuna-sass#7.0.0",
+    "incuna-transitions": "github:incuna/incuna-transitions#1.6.0",
+    "jit-grunt": "0.10.0",
+    "node-bourbon": "4.2.8"
+  }
+}

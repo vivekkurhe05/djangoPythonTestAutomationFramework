@@ -1,0 +1,63 @@
+{% extends "surveys/base-report.html" %}
+
+{% load level_display %}
+
+{% block report_summary %}
+    You are <span class="number _700 primary-font-color">{{ target_level_progress.percentage }}%</span>
+    compliant with the {{ object.level|level_display:'align-text-top' }} tier
+{% endblock %}
+
+{% block report_info %}
+    <p class="mb-0">This report details your compliance at each tier.</p>
+    <p>Changing your target tier will highlight the statistics relating to that new target.</p>
+{% endblock %}
+
+{% block report_total_progress %}
+    <div>{{ report_name }} by tier</div>
+    <div class="my-1 d-flex justify-content-center">
+    {% for level in compliance.levels.values %}
+        <div class="mx-1">
+            <div class="progress progress-vertical fa-rotate-180 white" data-toggle="tooltip" title="{{ level.label }}" >
+                <div class="progress-bar is-level-{{ level.level }}" style="height: {{ level.percentage }}%"></div>
+            </div>
+            <div class="number {% if not level.level == object.level %}sec-font-color{% endif %}">{{ level.percentage }}%</div>
+        </div>
+    {% endfor %}
+    </div>
+{% endblock %}
+
+{% block report_table_body %}
+    {% for step in compliance.sections %}
+        {% with section=step.section %}
+            {% ifchanged section.area.number %}
+                <tr>
+                    <td class="px-4" colspan="4">
+                        <span class="number _700 text-s-md">{{ section.area.number }}</span> <span class="text-bold">{{ section.area.name }}</span>
+                    </td>
+                </tr>
+            {% endifchanged %}
+            <tr>
+                <td class="pl-4 number">{{ section.get_code }}</td>
+                <td>{{ section.name }}</td>
+                <td>
+                    {% for level in step.levels %}
+                        <div class="d-flex align-items-center">
+                            {% if level.slug == 'no-question' %}
+                                <span class="text-sm{% if not level.level == object.level %} sec-font-color{% endif %}">No {{ level.label|lower }} tier questions for this section</span>
+                            {% else %}
+                                <div class="progress my-1 w-128 d-print-none" data-toggle="tooltip" title="{{ level.label }}">
+                                    <div class="progress-bar is-level-{{ level.level }}" style="width: {{ level.percentage }}%"></div>
+                                </div>
+                                <div class="d-print-none number mx-1 {% if not level.level == object.level %}sec-font-color{% endif %}">{{ level.percentage }}%</div>
+                                <div class="mx-1 d-print-block {% if level.level == object.level %}text-bold{% endif %}">{{ level.label }}: <span class="number {% if level.level == object.level %}_700{% endif %}">{{ level.percentage }}</span>%</div>
+                            {% endif %}
+                        </div>
+                    {% endfor %}
+                </td>
+                <td class="pr-4 d-print-none">
+                    <a href="{% url 'survey-section' pk=object.pk section=section.pk %}" class="btn w-xs white">Edit</a>
+                </td>
+            </tr>
+        {% endwith %}
+    {% endfor %}
+{% endblock %}

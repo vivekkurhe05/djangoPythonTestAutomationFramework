@@ -1,0 +1,14 @@
+{% load level_display %}
+{% load crispy_forms_tags %}
+
+<div class="align-self-center mr-2 level-toggle">
+    {{ object.level | level_display }}
+</div>
+<div id="level-form" class="collapse level-toggle" >
+    {% crispy form form.level_helper %}
+</div>
+<div class="align-self-center">
+    <a data-toggle=".level-toggle" class="d-print-none" >
+        <span class="level-toggle link text-u-l">Change</span><span class="collapse level-toggle link text-u-l ml-2">Cancel</span>
+    </a>
+</div>
